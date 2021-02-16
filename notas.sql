@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `PRODUCTOS`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `MARCAS` 
 (
-  `ID_MARCA` INT NOT NULL PRIMARY KEY,
+  `ID_MARCA` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `MARCA` VARCHAR(45) NOT NULL
 );
 
@@ -111,3 +111,41 @@ CREATE TABLE IF NOT EXISTS `AGENDA`
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+-- -----------------------------------------------------
+-- Insertar Usuario
+-- -----------------------------------------------------
+
+INSERT INTO `usuarios` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`,
+ `USUARIO`, `PASSWORD`, `CORREO`, `TELEFONO`)
+  VALUES ('1020763742', 'Manuel Santiago', 'Martinez Oses',
+   'manuel', 'admin123', 'manuel@gmail.com', '3121443252');
+
+-- -----------------------------------------------------
+-- Insertar Tecnico
+-- -----------------------------------------------------
+
+INSERT INTO `tecnicos` (`ID_TECNICO`, `NOMBRE`, `APELLIDO`,
+ `USUARIO`, `PASSWORD`, `CALIFICACION`, `CORREO`, `TELEFONO`)
+  VALUES ('1029847735', 'Diego', 'Palacio', 'diego', '12345',
+   '3', 'diego@gmail.com', '2345245345');
+
+-- -----------------------------------------------------
+-- Insertar Productos
+-- -----------------------------------------------------
+
+INSERT INTO `productos` (`ID_PRODUCTOS`, `NOMBRE`)
+ VALUES (NULL, 'Estufa'), (NULL, 'Lavadora'), (NULL, 'Horno'),
+  (NULL, 'Microondas'), (NULL, 'Lavaplatos'),(NULL, 'Refrigerador'),
+   (NULL, 'Campana extractora'), (NULL, 'Secadora'),
+    (NULL, 'Calefactor'), (NULL, 'Aire acondicionado');
+
+-- -----------------------------------------------------
+-- Insertar Marcas
+-- -----------------------------------------------------
+
+INSERT INTO `marcas` (`ID_MARCA`, `MARCA`)
+ VALUES (NULL, 'Whirpool'), (NULL, 'LG'), (NULL, 'Samsung'),
+  (NULL, 'Bosch'), (NULL, 'Electrolux'),(NULL, 'Panasonic'),
+   (NULL, 'Black&Decker'), (NULL, 'Toshiba'),
+    (NULL, 'Sanyo'), (NULL, 'Neff');
