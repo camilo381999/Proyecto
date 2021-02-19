@@ -7,8 +7,9 @@ require_once('../Modelo/Usuarios.php');
 		$Password = $_POST['Contrasena'];
 
 		$Modelo = new Usuarios();
-		if ($Modelo->login($Usuario,$Password)) {
-			header('Location: ../../Estudiantes/Pages/index.php');
+		//$Modelo->login($Usuario,$Password);
+		if($Modelo->login($Usuario,$Password)) {
+			header('Location: ../../Clientes/Pages/index.php');
 		}else{
 			header('Location: ../../index.php');
 		}

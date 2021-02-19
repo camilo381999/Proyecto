@@ -5,7 +5,7 @@
 		protected $db;
 		private $drive = "mysql";
 		private $host = "localhost";
-		private $dbname = "notas";
+		private $dbname = "tecniclick";
 		private $usuario = "root";
 		private $contrasena = "";
 

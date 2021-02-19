@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sistema de notas</title>
+	<title>Tecniclick</title>
 </head>
 <body>
  	<h1>Inicio de Sesión</h1>
