@@ -11,7 +11,11 @@
  		Contraseña <br>
  		<input type="password" name="Contrasena" required="" autocomplete="off" placeholder="Contraseña"><br><br>
  		<input type="submit" value="Inicia Sesión">
-
  	</form>
+	 <form method="POST" action="Clientes/Pages/registro.php">
+	 <input type="submit" value="Registrarse">
+ 	</form>
+	
+	<a href="">¿Olvidó su contraseña?</a>
 </body>
 </html>
