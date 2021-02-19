@@ -43,16 +43,35 @@ class Usuarios extends Conexion
 				$_SESSION['ID'] = $result['ID_TECNICO'];
 				$_SESSION['PERFIL'] = "Tecnico";
 				
-				//header('location: ../../Tecnicos/Pages/index.php');
-
 				return true;
-				//return 'Tecnico';
 			}
 		}
 		return false;
 		//return '';
 	}
 
+	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Usuario, $Password){
+
+		$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,USUARIO,PASSWORD,CORREO,TELEFONO) VALUES (:Cedula, :Nombre, :Apellido, :Usuario, :Password, :Correo, :Telefono)");
+		$statement->bindParam(':Cedula',$Cedula);
+		$statement->bindParam(':Nombre',$Nombre);
+		$statement->bindParam(':Apellido',$Apellido);
+		$statement->bindParam(':Usuario',$Usuario);
+		$statement->bindParam(':Password',$Password);
+		$statement->bindParam(':Correo',$Correo);
+		$statement->bindParam(':Telefono',$Telefono);            
+
+		if ($statement->execute()) {
+			$_SESSION['NOMBRE'] = $Nombre . " " . $Apellido;
+			$_SESSION['ID'] = $Cedula;
+			$_SESSION['PERFIL'] = "Usuario";
+			
+			header('Location: ../../Clientes/Pages/index.php');
+		}else{
+			header('Location: ../../Clientes/Pages/registro.php');
+		}
+
+	}
 
 	public function getNombre(){
 		return $_SESSION['NOMBRE'];

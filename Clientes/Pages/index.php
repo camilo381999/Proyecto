@@ -16,6 +16,9 @@ $ModeloUsuarios->validateSessionCliente();
     <title>Tecniclcik</title>
 </head>
 <body>
+
+    <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+    
     <h1>Inicio Clientes</h1>
     <h3>Bienvenido:  <?php echo $ModeloUsuarios->getNombre(); ?>
      - <?php echo $ModeloUsuarios->getPerfil(); ?></h3>

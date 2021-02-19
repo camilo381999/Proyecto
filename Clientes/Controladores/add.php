@@ -1,8 +1,8 @@
 <?php 
- require_once('../Modelo/Clientes.php');
+ require_once('../../Usuarios/Modelo/Usuarios.php');
 
  if ($_POST) {
- 	 $Modelo =  new Clientes();
+ 	 $Modelo =  new Usuarios();
 
  	 $Nombre = $_POST['Nombre'];
  	 $Apellido = $_POST['Apellido'];

@@ -1,11 +1,3 @@
-<?php 
-
-require_once('../../Usuarios/Modelo/Usuarios.php');
-
-$ModeloUsuarios = new Usuarios();
-$ModeloUsuarios->validateSession();
-
-?>
 
 <!DOCTYPE html>
 <html>
