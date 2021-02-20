@@ -1,0 +1,29 @@
+/*body{
+    background-image: url('../img/congruent_pentagon.png');
+}
+*/
+.jumbotron{
+    background-color:  #118AB2;
+    color: white;
+}
+
+
+.navbar{
+    background-color: #073B4C !important;
+}
+
+.navbar-brand:link, .navbar-brand:visited{
+    color: white;
+}
+
+.navbar-brand:hover, .navbar-brand:active{
+    color: #06D6A0 !important; 
+}
+
+#navbar li a:link, #navbar li a:visited {
+    color: white;
+}
+
+#navbar li a:hover, #navbar li a:active {
+    color:#06D6A0 !important; 
+}

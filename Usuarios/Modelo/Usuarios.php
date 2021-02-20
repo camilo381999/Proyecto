@@ -23,12 +23,12 @@ class Usuarios extends Conexion
 		//Comprueba si la consulta devuelve solo un usuario 
 		if ($statement->rowCount() == 1) {
 			$result = $statement->fetch();
+			
 			//Obtener el nombre y el id del usuario
 			$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
 			$_SESSION['ID'] = $result['ID_USUARIO'];
 			$_SESSION['PERFIL'] = "Usuario";
 			return true;
-			//return 'Usuario';
 		}else{
 			$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE USUARIO = :Usuario AND PASSWORD = :Password");
 			$statement->bindParam(':Usuario',$Usuario);
@@ -47,7 +47,6 @@ class Usuarios extends Conexion
 			}
 		}
 		return false;
-		//return '';
 	}
 
 	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Usuario, $Password){
@@ -66,11 +65,10 @@ class Usuarios extends Conexion
 			$_SESSION['ID'] = $Cedula;
 			$_SESSION['PERFIL'] = "Usuario";
 			
-			header('Location: ../../Clientes/Pages/index.php');
+			return true;
 		}else{
-			header('Location: ../../Clientes/Pages/registro.php');
+			return false;
 		}
-
 	}
 
 	public function getNombre(){
@@ -88,7 +86,7 @@ class Usuarios extends Conexion
 
 	public function validateSession(){
 		if ($_SESSION['ID'] == null) {
-			header('location: ../../index.php');
+			header('location: ../../ingresar.php');
 		}
 	}
 
@@ -106,7 +104,11 @@ class Usuarios extends Conexion
 				header('location: ../../Tecnicos/Pages/index.php');
 			}
 			
+		}else{
+					header('location: ../../ingresar.php');
 		}
+
+
 	}
 }
 

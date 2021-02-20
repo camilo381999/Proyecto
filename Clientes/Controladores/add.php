@@ -12,9 +12,15 @@
  	 $Usuario = $_POST['Usuario'];
  	 $Password = $_POST['Contrasena'];
 
- 	 $Modelo->add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Usuario, $Password);
+	  if($Modelo->add($Nombre, $Apellido, $Cedula, $Correo,
+	   $Telefono, $Usuario, $Password)){
+			header('Location: ../Pages/index.php');
+	  }else{
+		header('Location: ../../registro.php');
+	  }
+
  }else{
- 	header('Location: ../../index.php');
+ 	header('Location: ../../registro.php');
  }
 
 

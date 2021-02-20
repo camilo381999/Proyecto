@@ -1,12 +1,10 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tecniclick</title>
-</head>
-<body>
+<?php
+    include_once('templates/iniciar-html.php');
+	include_once('templates/menu.php');
+?>
  	<h1>Registro de usuario</h1>
- 	<form method="POST" action="../Controladores/add.php">
+ 	<form method="POST" action="Clientes/Controladores/add.php">
         Nombre <br>
  		<input type="text" name="Nombre" required="" autocomplete="off" placeholder="Nombre"> <br><br>
 
@@ -31,5 +29,6 @@
  		<input type="submit" value="Registrar">
  	</form>
 	 
-</body>
-</html>
+<?php
+    include_once('templates/terminar-html.php');
+?>
