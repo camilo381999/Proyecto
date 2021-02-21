@@ -3,31 +3,68 @@
     include_once('templates/iniciar-html.php');
 	include_once('templates/menu.php');
 ?>
- 	<h1>Registro de usuario</h1>
- 	<form method="POST" action="Clientes/Controladores/add.php">
-        Nombre <br>
- 		<input type="text" name="Nombre" required="" autocomplete="off" placeholder="Nombre"> <br><br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<!-- form start -->
+				<form class="form-container" id="form-registro" autocomplete="off" method="POST" action="Clientes/Controladores/add.php">
+				
+						<div class="registro-title">
+							<h1>Registro</h1>
+						</div>
+			
+						<div class="form-group">
+								<input name="Nombre" type="text" class="form-control" required="" autocomplete="off"  placeholder="Nombre">			
+						</div>
+									
+						<div class="form-group">
+							<input name="Apellido" type="text" class="form-control" required="" autocomplete="off" placeholder="Apellido">
+							
+							<span class="help-block" id="error"></span>                     
+						</div>
+									
+						<div class="form-group">
+							<input name="Cedula" type="text" class="form-control" required="" autocomplete="off" placeholder="Cedula">
+						
+							<span class="help-block" id="error"></span>                     
+						</div>
+									
+						<div class="form-group">
+							
+							<input name="Correo" type="email" class="form-control" required="" autocomplete="off" placeholder="Correo">
+							
+							<span class="help-block" id="error"></span>                     
+						</div>
 
-        Apellido <br>
- 		<input type="text" name="Apellido" required="" autocomplete="off" placeholder="Apellido"> <br><br>
+						<div class="form-group">
+						
+							<input name="Telefono" type="text" class="form-control" required="" autocomplete="off" placeholder="Telefono">
+						
+							<span class="help-block" id="error"></span>                     
+						</div>	
 
-		Cedula <br>
- 		<input type="text" name="Cedula" required="" autocomplete="off" placeholder="Cedula"> <br><br>
+						<div class="form-group">
+						
+							<input name="Usuario" type="text" class="form-control" required="" autocomplete="off" placeholder="Usuario">
+						
+							<span class="help-block" id="error"></span>                     
+						</div>
 
-        Correo <br>
- 		<input type="email" name="Correo" required="" autocomplete="off" placeholder="Correo"> <br><br>
+						<div class="form-group">
+						
+							<input name="Contrasena" type="password" class="form-control" required="" autocomplete="off" placeholder="Contraseña">
+					
+							<span class="help-block" id="error"></span>                     
+						</div>
+									
+							<button type="submit" class="btn btn-primary btn-block">Registrar</button>
 
-        Telefono <br>
- 		<input type="text" name="Telefono" required="" autocomplete="off" placeholder="Telefono"> <br><br>
-
-        Usuario <br>
- 		<input type="text" name="Usuario" required="" autocomplete="off" placeholder="Usuario"> <br><br>
-
- 		Contraseña <br>
- 		<input type="password" name="Contrasena" required="" autocomplete="off" placeholder="Contraseña"><br><br>
-
- 		<input type="submit" value="Registrar">
- 	</form>
+				</form>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		</div>
+	</div>
 	 
 <?php
     include_once('templates/terminar-html.php');
