@@ -5,10 +5,8 @@
     
     <div class="container">
         <div class="jumbotron">
-            <h1>Tecniclick</h1>
-            <p>
-                Servicios técnicos al alcance de un click 
-            </p>
+        <img src="img/logo.png" width="60%" height="60%" />
+            
         </div>
     </div>
 
