@@ -16,21 +16,14 @@ body{
     background-color: #073B4C !important;
 }
 
-.navbar-brand:link, .navbar-brand:visited{
-    color: white;
+.nav-link:link, .nav-link:visited{
+    color: white !important;
 }
 
-.navbar-brand:hover, .navbar-brand:active{
+.nav-link:hover, .nav-link:active{
     color: #06D6A0 !important; 
 }
 
-#navbar li a:link, #navbar li a:visited {
-    color: white;
-}
-
-#navbar li a:hover, #navbar li a:active {
-    color:#06D6A0 !important; 
-}
 
 .registro-title{
     text-align: center;
