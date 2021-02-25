@@ -15,7 +15,7 @@
 						</div>
 				
 						<div class="form-group">
-							<input name="Usuario" type="text"  class="form-control" required="" autocomplete="off" placeholder="Usuario"> 
+							<input name="Correo" type="text"  class="form-control" required="" autocomplete="off" placeholder="Correo"> 
 							<span class="help-block" id="error"></span>                     
 						</div>
 									

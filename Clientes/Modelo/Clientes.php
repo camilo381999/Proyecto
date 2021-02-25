@@ -11,25 +11,6 @@ class Clientes extends Conexion
 		$this->db = parent::__construct();
 	}
 
-	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Usuario, $Password){
-
-			$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,USUARIO,PASSWORD,CORREO,TELEFONO) VALUES (:Cedula, :Nombre, :Apellido, :Usuario, :Password, :Correo, :Telefono)");
-			$statement->bindParam(':Cedula',$Cedula);
-			$statement->bindParam(':Nombre',$Nombre);
-			$statement->bindParam(':Apellido',$Apellido);
-			$statement->bindParam(':Usuario',$Usuario);
-			$statement->bindParam(':Password',$Password);
-            $statement->bindParam(':Correo',$Correo);
-            $statement->bindParam(':Telefono',$Telefono);            
-
-			if ($statement->execute()) {
-				header('Location: ../Pages/index.php');
-			}else{
-				header('Location: ../Pages/registro.php');
-			}
-
-		}
-
 	public function get(){
 			$rows = null;
 			$statement = $this->db->prepare("SELECT * FROM usuarios");

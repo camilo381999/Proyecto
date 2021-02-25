@@ -24,10 +24,13 @@ body{
     color: #06D6A0 !important; 
 }
 
-
 .registro-title{
     text-align: center;
-    color: #777;
+    padding-bottom: 10px;
+}
+
+.ingreso-title{
+    text-align: center;
     padding-bottom: 10px;
 }
 

@@ -3,12 +3,12 @@
 require_once('../Modelo/Usuarios.php');
 
 	if ($_POST) {
-		$Usuario = $_POST['Usuario'];
+		$Correo = $_POST['Correo'];
 		$Password = $_POST['Contrasena'];
 
 		$Modelo = new Usuarios();
 		
-		if($Modelo->login($Usuario,$Password)) {
+		if($Modelo->login($Correo,$Password)) {
 			header('Location: ../../Clientes/Pages/index.php');
 		}else{
 			header('Location: ../../ingresar.php');

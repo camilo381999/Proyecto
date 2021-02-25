@@ -14,9 +14,11 @@ class Usuarios extends Conexion
 	}
 
 	//Metodo para realizar el llamado a la base de datos y comprobar el inicio de sesion
-	public function login($Usuario,$Password){
-		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE USUARIO = :Usuario AND PASSWORD = :Password");
-		$statement->bindParam(':Usuario',$Usuario);
+	public function login($Correo,$Password){
+		$statement = $this->db->prepare("SELECT * FROM usuarios
+		 WHERE CORREO = :Correo AND PASSWORD = :Password");
+		 
+		$statement->bindParam(':Correo',$Correo);
 		$statement->bindParam(':Password',$Password);
 		$statement->execute();
 		
@@ -30,8 +32,10 @@ class Usuarios extends Conexion
 			$_SESSION['PERFIL'] = "Usuario";
 			return true;
 		}else{
-			$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE USUARIO = :Usuario AND PASSWORD = :Password");
-			$statement->bindParam(':Usuario',$Usuario);
+			$statement = $this->db->prepare("SELECT * FROM tecnicos
+			 WHERE CORREO = :Correo AND PASSWORD = :Password");
+
+			$statement->bindParam(':Correo',$Correo);
 			$statement->bindParam(':Password',$Password);
 			$statement->execute();
 
@@ -49,13 +53,15 @@ class Usuarios extends Conexion
 		return false;
 	}
 
-	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Usuario, $Password){
+	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password){
 
-		$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,USUARIO,PASSWORD,CORREO,TELEFONO) VALUES (:Cedula, :Nombre, :Apellido, :Usuario, :Password, :Correo, :Telefono)");
+		$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,
+		PASSWORD,CORREO,TELEFONO) VALUES (:Cedula, :Nombre, :Apellido,
+		 :Password, :Correo, :Telefono)");
+
 		$statement->bindParam(':Cedula',$Cedula);
 		$statement->bindParam(':Nombre',$Nombre);
 		$statement->bindParam(':Apellido',$Apellido);
-		$statement->bindParam(':Usuario',$Usuario);
 		$statement->bindParam(':Password',$Password);
 		$statement->bindParam(':Correo',$Correo);
 		$statement->bindParam(':Telefono',$Telefono);            

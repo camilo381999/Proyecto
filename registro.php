@@ -46,13 +46,6 @@
 
 						<div class="form-group">
 						
-							<input name="Usuario" type="text" class="form-control" required="" autocomplete="off" placeholder="Usuario">
-						
-							<span class="help-block" id="error"></span>                     
-						</div>
-
-						<div class="form-group">
-						
 							<input name="Contrasena" type="password" class="form-control" required="" autocomplete="off" placeholder="Contraseña">
 					
 							<span class="help-block" id="error"></span>                     

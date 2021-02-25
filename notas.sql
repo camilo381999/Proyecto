@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS `USUARIOS`
   `ID_USUARIO` INT(15) NOT NULL PRIMARY KEY,
   `NOMBRE` VARCHAR(60) NOT NULL,
   `APELLIDO` VARCHAR(60) NOT NULL,
-
-  `USUARIO` VARCHAR(40) NOT NULL,
   `PASSWORD` VARCHAR(60) NOT NULL,
   `CORREO` VARCHAR(45) NOT NULL,
   `TELEFONO` VARCHAR(45) NOT NULL
@@ -23,11 +21,11 @@ CREATE TABLE IF NOT EXISTS `TECNICOS`
   `ID_TECNICO` INT(15) NOT NULL PRIMARY KEY,
   `NOMBRE` VARCHAR(60) NOT NULL,
   `APELLIDO` VARCHAR(60) NOT NULL,
-  `USUARIO` VARCHAR(40) NOT NULL,
   `PASSWORD` VARCHAR(60) NOT NULL,
   `CALIFICACION` VARCHAR(15) NOT NULL,
   `CORREO` VARCHAR(45) NOT NULL,
-  `TELEFONO` VARCHAR(45) NOT NULL
+  `TELEFONO` VARCHAR(45) NOT NULL,
+  `ESTADO` VARCHAR(40) NOT NULL
 );
 
 -- -----------------------------------------------------
@@ -117,18 +115,18 @@ CREATE TABLE IF NOT EXISTS `AGENDA`
 -- -----------------------------------------------------
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`,
- `USUARIO`, `PASSWORD`, `CORREO`, `TELEFONO`)
+ `PASSWORD`, `CORREO`, `TELEFONO`)
   VALUES ('1020763742', 'Manuel Santiago', 'Martinez Oses',
-   'manuel', 'admin123', 'manuel@gmail.com', '3121443252');
+  'admin123', 'manuel@gmail.com', '3121443252');
 
 -- -----------------------------------------------------
 -- Insertar Tecnico
 -- -----------------------------------------------------
 
 INSERT INTO `tecnicos` (`ID_TECNICO`, `NOMBRE`, `APELLIDO`,
- `USUARIO`, `PASSWORD`, `CALIFICACION`, `CORREO`, `TELEFONO`)
-  VALUES ('1029847735', 'Diego', 'Palacio', 'diego', '12345',
-   '3', 'diego@gmail.com', '2345245345');
+ `PASSWORD`, `CALIFICACION`, `CORREO`, `TELEFONO`, `ESTADO`)
+  VALUES ('1029847735', 'Diego', 'Palacio','12345',
+   '3', 'diego@gmail.com', '2345245345','Inactivo');
 
 -- -----------------------------------------------------
 -- Insertar Productos

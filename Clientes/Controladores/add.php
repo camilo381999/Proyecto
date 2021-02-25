@@ -9,11 +9,10 @@
 	 $Cedula = $_POST['Cedula'];
      $Correo = $_POST['Correo'];
      $Telefono = $_POST['Telefono'];
- 	 $Usuario = $_POST['Usuario'];
  	 $Password = $_POST['Contrasena'];
 
 	  if($Modelo->add($Nombre, $Apellido, $Cedula, $Correo,
-	   $Telefono, $Usuario, $Password)){
+	   $Telefono, $Password)){
 			header('Location: ../Pages/index.php');
 	  }else{
 		header('Location: ../../registro.php');
