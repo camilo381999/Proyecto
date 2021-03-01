@@ -10,8 +10,8 @@ include_once('templates/menu.php');
 ?> 
     <a href="Usuarios/Salir.php">Salir</a>
     
-    <h1>Inicio Clientes</h1>
-    <h3>Bienvenido:  <?php echo $ModeloUsuarios->getNombre(); ?>
+    <h1>Bienbenido</h1>
+    <h3>Bienvenido x2:  <?php echo $ModeloUsuarios->getNombre(); ?>
      - <?php echo $ModeloUsuarios->getPerfil(); ?></h3>
 <?php
     include_once('templates/terminar-html.php');
