@@ -1,7 +1,5 @@
 <?php
-
 include_once('Clientes/validarReg.php');
-//include_once('add.php');
 include_once('Usuarios.php');
 
 //Si el usuario le da al boton registrar
@@ -15,12 +13,13 @@ if (isset($_POST['registrar'])){
 	 if($validar->regis_valido()){
 		$Modelo = new Usuarios();
 
+		//Dentro del if se encripta la contraseña antes de registrar el usuario
 		if($Modelo -> add($validar-> getNombre(),
 		$validar-> getApellido(),
 		$validar-> getCedula(),
 		$validar-> getCorreo(),
 		$validar-> getTelefono(),
-		$validar-> getContrasena())){
+		password_hash($validar-> getContrasena(),PASSWORD_DEFAULT))){
 			 header('Location: Clientes/index.php');
 	   	}else{
 		 header('Location: /registro.php');

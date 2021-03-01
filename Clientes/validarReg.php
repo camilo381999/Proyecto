@@ -1,9 +1,13 @@
 <?php
+//include_once('../Usuarios.php');
+include_once('Usuarios.php');
 
 class ValidarRegistro{
 
     private $aviso_inicio;
     private $aviso_cierre;
+
+    private $usuarios;
 
     private $nombre;
     private $apellido;
@@ -21,6 +25,8 @@ class ValidarRegistro{
 
     public function __construct($nombre, $apellido, $cedula,$correo,$telefono, $contrasena) {
        
+        $this -> usuarios = new Usuarios();
+
         $this -> aviso_inicio = "<br><div class='alert alert-primary' role='alert'>";
         $this -> aviso_cierre = "</div>";
        
@@ -83,6 +89,10 @@ class ValidarRegistro{
             $this -> cedula = $cedula;
         }
 
+        if($this -> usuarios ->existe_cedula($cedula)){
+            return "Esta cédula ya está registrada";
+        }
+
         return "";
     }
 
@@ -93,6 +103,10 @@ class ValidarRegistro{
             $this -> correo = $correo;
         }
 
+        if($this -> usuarios ->existe_correo($correo)){
+            return "Este correo ya está registrado  <a href ='#'>Recuperar contraseña</a>";
+        }
+
         return "";
     }
 
@@ -101,6 +115,10 @@ class ValidarRegistro{
             return "Por favor escriba su teléfono";
         }else{
             $this -> telefono = $telefono;
+        }
+
+        if($this -> usuarios ->existe_telefono($telefono)){
+            return "Este teléfono ya está registrado";
         }
 
         return "";

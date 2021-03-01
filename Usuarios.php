@@ -75,6 +75,64 @@ class Usuarios extends Conexion
 		}
 	}
 
+	public function existe_correo($Correo){
+		$existe_correo = true;
+		try{
+		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE CORREO = :Correo");
+		$statement->bindParam(':Correo',$Correo);
+		$statement->execute();
+		
+		//Comprueba si la consulta devuelve solo un usuario 
+		if ($statement->rowCount() > 0) {
+			$existe_correo = true;
+		}else{
+			$existe_correo = false;
+		}
+		}catch(PDOException $ex){
+			print 'ERROR' . $ex -> getMessage();
+		}
+		return $existe_correo;
+	}
+
+	public function existe_cedula($Cedula){
+		$existe_cedula = true;
+		try{
+		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE ID_USUARIO = :Cedula");
+		$statement->bindParam(':Cedula',$Cedula);
+		$statement->execute();
+		
+		//Comprueba si la consulta devuelve solo un usuario 
+		if ($statement->rowCount() > 0) {
+			$existe_cedula = true;
+		}else{
+			$existe_cedula = false;
+		}
+		}catch(PDOException $ex){
+			print 'ERROR' . $ex -> getMessage();
+		}
+		return $existe_cedula;
+	}
+	
+	public function existe_telefono($Telefono){
+		$existe_telefono = true;
+		try{
+			$statement = $this->db->prepare("SELECT * FROM usuarios WHERE TELEFONO = :Telefono");
+			$statement->bindParam(':Telefono',$Telefono);
+			$statement->execute();
+			
+			//Comprueba si la consulta devuelve solo un usuario 
+			if ($statement->rowCount() > 0) {
+				$existe_telefono = true;
+			}else{
+				$existe_telefono = false;
+			}
+		}catch(PDOException $ex){
+			print 'ERROR' . $ex -> getMessage();
+		}
+		return $existe_telefono;
+	}
+
+
 	public function getNombre(){
 		return $_SESSION['NOMBRE'];
 	}
@@ -115,5 +173,4 @@ class Usuarios extends Conexion
 
 	}
 }
-
  ?>
