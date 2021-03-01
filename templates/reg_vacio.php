@@ -8,35 +8,48 @@
 
 				<div class="form-group">
 					<input name="Apellido" type="text" class="form-control"  placeholder="Apellido">
-
-					<span class="help-block" id="error"></span>
 				</div>
 
 				<div class="form-group">
 					<input name="Cedula" type="text" class="form-control"  placeholder="Cédula">
-
-					<span class="help-block" id="error"></span>
 				</div>
 
 				<div class="form-group">
-
 					<input name="Correo" type="email" class="form-control"  placeholder="Correo">
-
-					<span class="help-block" id="error"></span>
 				</div>
 
 				<div class="form-group">
-
 					<input name="Telefono" type="text" class="form-control"  placeholder="Teléfono">
-
-					<span class="help-block" id="error"></span>
 				</div>
 
 				<div class="form-group">
+					<select name="Localidad" class="form-control">
+						<option selected>Seleccionar localidad</option>
+						<option value="Antonio Nariño">Antonio Nariño</option>
+						<option value="Barrios Unidos">Barrios Unidos</option>
+						<option value="Bosa">Bosa</option>
+						<option value="Chapinero">Chapinero</option>
+						<option value="Ciudad Bolívar">Ciudad Bolívar</option>
+						<option value="Engativá">Engativá</option>
+						<option value="Fontibón">Fontibón</option>
+						<option value="Kennedy">Kennedy</option>
+						<option value="La Candelaria">La Candelaria</option>
+						<option value="Los Mártires">Los Mártires</option>
+						<option value="Puente Aranda">Puente Aranda</option>
+						<option value="Rafael Uribe Uribe">Rafael Uribe Uribe</option>
+						<option value="San Cristóbal">San Cristóbal</option>
+						<option value="Santa Fe">Santa Fe</option>
+						<option value="Suba">Suba</option>
+						<option value="Sumapaz">Sumapaz</option>
+						<option value="Teusaquillo">Teusaquillo</option>
+						<option value="Tunjuelito">Tunjuelito</option>
+						<option value="Usaquén">Usaquén</option>
+						<option value="Usme">Usme</option>
+					</select>
+				</div>
 
+				<div class="form-group">
 					<input name="Contrasena" type="password" class="form-control"  placeholder="Contraseña">
-
-					<span class="help-block" id="error"></span>
 				</div>
 
 				<button name="registrar" type="submit" class="btn btn-primary btn-block">Registrar</button>

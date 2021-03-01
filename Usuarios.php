@@ -51,11 +51,11 @@ class Usuarios extends Conexion
 		return false;
 	}
 
-	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password){
+	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password,$Localidad){
 
 		$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,
-		PASSWORD,CORREO,TELEFONO) VALUES (:Cedula, :Nombre, :Apellido,
-		 :Password, :Correo, :Telefono)");
+		PASSWORD,CORREO,TELEFONO,LOCALIDAD) VALUES (:Cedula, :Nombre, :Apellido,
+		 :Password, :Correo, :Telefono, :Localidad)");
 
 		$statement->bindParam(':Cedula',$Cedula);
 		$statement->bindParam(':Nombre',$Nombre);
@@ -63,6 +63,7 @@ class Usuarios extends Conexion
 		$statement->bindParam(':Password',$Password);
 		$statement->bindParam(':Correo',$Correo);
 		$statement->bindParam(':Telefono',$Telefono);            
+		$statement->bindParam(':Localidad',$Localidad);            
 
 		if ($statement->execute()) {
 			$_SESSION['NOMBRE'] = $Nombre . " " . $Apellido;
@@ -158,7 +159,7 @@ class Usuarios extends Conexion
 		$_SESSION['NOMBRE'] = null;
 		session_destroy();
 		header('Location: ../index.php');
-	}
+	} 
 
 	public function validateSessionCliente(){
 		if ($_SESSION['ID'] != null) {

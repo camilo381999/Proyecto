@@ -15,6 +15,7 @@ class ValidarRegistro{
     private $correo;
     private $telefono;
     private $contrasena1;
+    private $localidad;
 
     private $error_nombre;
     private $error_apellido;
@@ -22,8 +23,9 @@ class ValidarRegistro{
     private $error_correo;
     private $error_telefono;
     private $error_contrasena;
+    private $error_localidad;
 
-    public function __construct($nombre, $apellido, $cedula,$correo,$telefono, $contrasena) {
+    public function __construct($nombre, $apellido, $cedula,$correo,$telefono, $contrasena, $localidad) {
        
         $this -> usuarios = new Usuarios();
 
@@ -36,6 +38,7 @@ class ValidarRegistro{
         $this -> correo = "";
         $this -> telefono = "";
         $this -> contrasena1 = "";
+        $this -> localidad = "";
 
         //llama los metodos y si hay error los guarda en cada variable
         $this ->error_nombre = $this -> validar_nom($nombre);
@@ -44,6 +47,7 @@ class ValidarRegistro{
         $this ->error_correo = $this -> validar_cor($correo);
         $this ->error_telefono = $this -> validar_tel($telefono);
         $this ->error_contrasena = $this -> validar_cont($contrasena);
+        $this ->error_localidad = $this -> validar_local($localidad);
 
         if($this->error_contrasena === ""){
             $this -> contrasena1 = $contrasena;
@@ -131,6 +135,16 @@ class ValidarRegistro{
 
         return "";
     }
+    
+    private function validar_local($localidad){
+        if($localidad == "Seleccionar localidad"){
+            return "Por favor ingrese su localidad";
+        }else{
+            $this -> localidad = $localidad;
+        }
+
+        return "";
+    }
 
     public function getNombre(){
         return $this -> nombre;
@@ -150,6 +164,9 @@ class ValidarRegistro{
     }
     public function getContrasena(){
         return $this -> contrasena1;
+    }
+    public function getLocalidad(){
+        return $this -> localidad;
     }
 
 
@@ -171,6 +188,9 @@ class ValidarRegistro{
     }
     public function get_error_contrasena(){
         return $this -> error_contrasena;
+    }
+    public function get_error_localidad(){
+        return $this -> error_localidad;
     }
 
     //Muestra el nombre en value cuando se ha enviado el formulario y hay un error
@@ -234,6 +254,18 @@ class ValidarRegistro{
             echo $this -> aviso_inicio . $this -> error_telefono . $this -> aviso_cierre;
         }
     }
+    
+    public function mostrar_localidad(){
+        if($this -> localidad !== ""){
+            echo $this -> localidad;
+        }
+    }
+
+    public function mostrar_error_localidad(){
+        if($this -> get_error_localidad() !== ""){
+            echo $this -> aviso_inicio . $this -> error_localidad . $this -> aviso_cierre;
+        }
+    }
 
     public function mostrar_error_contrasena(){
         if($this -> error_contrasena !== ""){
@@ -247,7 +279,8 @@ class ValidarRegistro{
          $this -> error_cedula === "" &&
          $this -> error_correo === "" &&
          $this -> error_telefono === "" &&
-         $this -> error_contrasena === "" ){
+         $this -> error_contrasena === ""&&
+         $this -> error_localidad === "" ){
             return true;
          }else{
              return false;
