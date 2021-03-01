@@ -9,7 +9,7 @@ include_once('../Usuarios.php');
 		$Modelo = new Usuarios();
 		
 		if($Modelo->login($Correo,$Password)) {
-			header('Location: ../Clientes/index.php');
+			header('Location: ../index-Clientes.php');
 		}else{
 			header('Location: ../ingresar.php');
 		}

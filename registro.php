@@ -1,5 +1,5 @@
 <?php
-include_once('Clientes/validarReg.php');
+include_once('validarReg.php');
 include_once('Usuarios.php');
 
 //Si el usuario le da al boton registrar

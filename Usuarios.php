@@ -148,7 +148,7 @@ class Usuarios extends Conexion
 
 	public function validateSession(){
 		if ($_SESSION['ID'] == null) {
-			header('location: /ingresar.php');
+			header('location: /Proyecto/ingresar.php');
 		}
 	}
 
@@ -163,14 +163,12 @@ class Usuarios extends Conexion
 	public function validateSessionCliente(){
 		if ($_SESSION['ID'] != null) {
 			if ($_SESSION['PERFIL'] == 'Técnico' ) {
-				header('location: ../Tecnicos/index.php');
+				header('location: index-Tecnicos.php');
 			}
 			
 		}else{
-					header('location: /ingresar.php');
+					header('location: /Proyecto/ingresar.php');
 		}
-
-
 	}
 }
  ?>
