@@ -1,64 +1,57 @@
-
 <?php
-    include_once('templates/iniciar-html.php');
-	include_once('templates/menu.php');
+
+include_once('Clientes/validarReg.php');
+//include_once('add.php');
+include_once('Usuarios.php');
+
+//Si el usuario le da al boton registrar
+if (isset($_POST['registrar'])){
+
+	//Se valida que todos los datos esten completos
+	$validar = new ValidarRegistro($_POST['Nombre'], $_POST['Apellido'],
+	 $_POST['Cedula'], $_POST['Correo'], $_POST['Telefono'], $_POST['Contrasena'] );
+
+	 //Si el registro es valido se registra en la base de datos
+	 if($validar->regis_valido()){
+		$Modelo = new Usuarios();
+
+		if($Modelo -> add($validar-> getNombre(),
+		$validar-> getApellido(),
+		$validar-> getCedula(),
+		$validar-> getCorreo(),
+		$validar-> getTelefono(),
+		$validar-> getContrasena())){
+			 header('Location: Clientes/index.php');
+	   	}else{
+		 header('Location: /registro.php');
+	  	}  
+	 }
+}
+
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 ?>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<!-- form start -->
-				<form class="form-container" id="form-registro" autocomplete="off" method="POST" action="Clientes/Controladores/add.php">
-				
-						<div class="registro-title">
-							<h1>Registro</h1>
-						</div>
-			
-						<div class="form-group">
-								<input name="Nombre" type="text" class="form-control" required="" autocomplete="off"  placeholder="Nombre">			
-						</div>
-									
-						<div class="form-group">
-							<input name="Apellido" type="text" class="form-control" required="" autocomplete="off" placeholder="Apellido">
-							
-							<span class="help-block" id="error"></span>                     
-						</div>
-									
-						<div class="form-group">
-							<input name="Cedula" type="text" class="form-control" required="" autocomplete="off" placeholder="Cedula">
-						
-							<span class="help-block" id="error"></span>                     
-						</div>
-									
-						<div class="form-group">
-							
-							<input name="Correo" type="email" class="form-control" required="" autocomplete="off" placeholder="Correo">
-							
-							<span class="help-block" id="error"></span>                     
-						</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		<div class="col-md-4 col-sm-4 col-xs-12">
+			<!-- form start -->
+			<form class="form-container" id="form-registro" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
-						<div class="form-group">
-						
-							<input name="Telefono" type="text" class="form-control" required="" autocomplete="off" placeholder="Telefono">
-						
-							<span class="help-block" id="error"></span>                     
-						</div>	
+				<?php
+					if(isset($_POST['registrar'])){
+						include_once('templates/reg_validado.php');
+					}else{
+						include_once('templates/reg_vacio.php');
+					}
+				?>
 
-						<div class="form-group">
-						
-							<input name="Contrasena" type="password" class="form-control" required="" autocomplete="off" placeholder="Contraseña">
-					
-							<span class="help-block" id="error"></span>                     
-						</div>
-									
-							<button type="submit" class="btn btn-primary btn-block">Registrar</button>
-
-				</form>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12"></div>
+			</form>
 		</div>
+		<div class="col-md-4 col-sm-4 col-xs-12"></div>
 	</div>
-	 
+</div>
+
 <?php
-    include_once('templates/terminar-html.php');
+include_once('templates/terminar-html.php');
 ?>

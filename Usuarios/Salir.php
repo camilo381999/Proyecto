@@ -1,6 +1,6 @@
 <?php 
 
-require_once('../Modelo/Usuarios.php');
+include_once('../Usuarios.php');
 
 $ModeloUsuarios = new Usuarios();
 $ModeloUsuarios->salir();

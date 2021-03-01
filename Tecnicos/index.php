@@ -1,5 +1,5 @@
 <?php
-require_once("../../Usuarios/Modelo/Usuarios.php");
+require_once("../Usuarios.php");
 
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
@@ -16,8 +16,8 @@ $ModeloUsuarios->validateSession();
     <title>Tecniclcik</title>
 </head>
 <body>
-    <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
-    <h1>Inicio Tecnicos</h1>
+    <a href="../Usuarios/Salir.php">Salir</a>
+    <h1>Inicio Técnicos</h1>
     <h3>Bienvenido:  <?php echo $ModeloUsuarios->getNombre(); ?>
      - <?php echo $ModeloUsuarios->getPerfil(); ?></h3>
 </body>

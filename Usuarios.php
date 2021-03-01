@@ -1,10 +1,8 @@
 <?php 
 
-require_once('../../Conexion.php');
+include_once('Conexion.php');
 session_start();
-/**
- * 
- */
+
 class Usuarios extends Conexion
 {
 	
@@ -45,7 +43,7 @@ class Usuarios extends Conexion
 				//Obtener el nombre y el id del tecnico
 				$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
 				$_SESSION['ID'] = $result['ID_TECNICO'];
-				$_SESSION['PERFIL'] = "Tecnico";
+				$_SESSION['PERFIL'] = "Técnico";
 				
 				return true;
 			}
@@ -92,7 +90,7 @@ class Usuarios extends Conexion
 
 	public function validateSession(){
 		if ($_SESSION['ID'] == null) {
-			header('location: ../../ingresar.php');
+			header('location: /ingresar.php');
 		}
 	}
 
@@ -101,17 +99,17 @@ class Usuarios extends Conexion
 		$_SESSION['PERFIL'] = null;
 		$_SESSION['NOMBRE'] = null;
 		session_destroy();
-		header('Location: ../../index.php');
+		header('Location: ../index.php');
 	}
 
 	public function validateSessionCliente(){
 		if ($_SESSION['ID'] != null) {
-			if ($_SESSION['PERFIL'] == 'Tecnico' ) {
-				header('location: ../../Tecnicos/Pages/index.php');
+			if ($_SESSION['PERFIL'] == 'Técnico' ) {
+				header('location: ../Tecnicos/index.php');
 			}
 			
 		}else{
-					header('location: ../../ingresar.php');
+					header('location: /ingresar.php');
 		}
 
 

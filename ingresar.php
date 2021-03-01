@@ -8,7 +8,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<!-- form start -->
-				<form class="form-container" id="form-ingreso" autocomplete="off" method="POST" action="Usuarios/Controladores/Login.php">
+				<form class="form-container" id="form-ingreso" autocomplete="off" method="POST" action="Usuarios/Login.php">
 				
 						<div class="ingreso-title">
 						<h1>Inicio de Sesión</h1>
