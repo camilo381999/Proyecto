@@ -45,3 +45,43 @@ body{
 .btn{
     background: #118AB2;
 }
+
+
+
+.menu__option {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 20px;
+    font-size: 13px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #fff;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 180px;
+    height: 180px;
+    color: #073B4C;
+    background-color: #fff;
+    text-decoration: none;
+    margin: auto;
+    font-weight: 500;
+}
+
+.main-menu__options {
+    margin: 40px 0 60px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    align-content: stretch;
+    font-weight: 700;
+    margin: 20px 0 30px;
+}
+
+.option__image {
+    width: 50%;
+    margin-bottom: 5px;
+    display: block;
+    min-height: 75px;
+    margin: 0 auto 20px;
+}

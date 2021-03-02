@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4000" height="1200" viewBox="0 0 4000 1200">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 635px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: Verdana;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-width: 1px;
+      }
+
+      .cls-3 {
+        font-size: 190.5px;
+      }
+
+      .cls-4 {
+        stroke: #feffff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <text id="TecniClick" class="cls-1" x="767" y="713.5">TecniClick</text>
+  <rect id="Rectángulo_1" data-name="Rectángulo 1" class="cls-2" x="511" y="782" width="3363" height="29"/>
+  <text id="Servicios_técnicos_al_alcance_de_un_click" data-name="Servicios técnicos al alcance de un click" class="cls-3" x="92.667" y="1022">Servicios técnicos al alcance de un click</text>
+  <path id="Rectángulo_2" data-name="Rectángulo 2" class="cls-4" d="M80.182,423.076L229.11,247.805l19.565,16.625L99.748,439.7Z"/>
+  <path id="Rectángulo_2_copia" data-name="Rectángulo 2 copia" class="cls-4" d="M405.526,402.786L548.094,235l18.73,15.915L424.256,418.7Z"/>
+  <path id="Rectángulo_3" data-name="Rectángulo 3" class="cls-4" d="M22.195,616L296.64,852.41l-19.189,22.276L3.006,638.276Z"/>
+  <path id="Rectángulo_3_copia" data-name="Rectángulo 3 copia" class="cls-4" d="M742.6,203.076L508.106,479.163,485.7,460.13,720.187,184.043Z"/>
+  <path id="Rectángulo_4" data-name="Rectángulo 4" class="cls-4" d="M507.775,591.24L799.561,253.708l28.931,25.01L536.706,616.25Z"/>
+  <path id="Rectángulo_5" data-name="Rectángulo 5" class="cls-4" d="M55.423,491.821l44.6-51.969,20.923,17.954-44.6,51.969Z"/>
+  <path id="Rectángulo_5_copia" data-name="Rectángulo 5 copia" class="cls-4" d="M29.672,566.241l45.383-57.1,22.99,18.271-45.383,57.1Z"/>
+  <path id="Rectángulo_6" data-name="Rectángulo 6" class="cls-4" d="M617.862,576.071l27.378,23.376-24.024,28.139-27.379-23.375Z"/>
+  <path id="Rectángulo_6_copia_2" data-name="Rectángulo 6 copia 2" class="cls-4" d="M566.872,581.071l27.369,23.387-24.036,28.129L542.836,609.2Z"/>
+  <path id="Rectángulo_6_copia" data-name="Rectángulo 6 copia" class="cls-4" d="M623.371,678.018l25.964,24.936L623.706,729.64,597.742,704.7Z"/>
+  <path id="Rectángulo_7" data-name="Rectángulo 7" class="cls-4" d="M428.682,222.7l19.961,17.049L350.859,354.233,330.9,337.184Z"/>
+  <path id="Rectángulo_5_copia_2" data-name="Rectángulo 5 copia 2" class="cls-4" d="M298.532,853.08l48.842-54.174,21.81,19.664-48.841,54.174Z"/>
+  <path id="Rectángulo_5_copia_4" data-name="Rectángulo 5 copia 4" class="cls-4" d="M445.532,781.08l48.842-54.174,21.81,19.664-48.841,54.174Z"/>
+  <path id="Rectángulo_5_copia_3" data-name="Rectángulo 5 copia 3" class="cls-4" d="M371.532,817.08l48.842-54.174,21.81,19.664-48.841,54.174Z"/>
+  <path id="Rectángulo_5_copia_5" data-name="Rectángulo 5 copia 5" class="cls-4" d="M520.157,738.593l52.327-50.815,20.458,21.067L540.615,759.66Z"/>
+  <path id="Rectángulo_5_copia_7" data-name="Rectángulo 5 copia 7" class="cls-4" d="M650.532,703.08l48.842-54.174,21.81,19.664-48.841,54.174Z"/>
+  <path id="Rectángulo_5_copia_12" data-name="Rectángulo 5 copia 12" class="cls-4" d="M345.2,210.223L401.3,256.847l-18.771,22.584L326.43,232.806Z"/>
+  <path id="Rectángulo_5_copia_11" data-name="Rectángulo 5 copia 11" class="cls-4" d="M252.532,267.08l48.842-54.174,21.81,19.664-48.841,54.174Z"/>
+  <path id="Rectángulo_5_copia_14" data-name="Rectángulo 5 copia 14" class="cls-4" d="M2.532,637.08l48.842-54.174,21.81,19.664L24.343,656.744Z"/>
+  <path id="Rectángulo_5_copia_10" data-name="Rectángulo 5 copia 10" class="cls-4" d="M469.136,217.272l56.14,46.51-18.725,22.6-56.14-46.509Z"/>
+  <path id="Rectángulo_5_copia_13" data-name="Rectángulo 5 copia 13" class="cls-4" d="M764.348,180.629l54.532,48.442-19.5,21.954-54.532-48.442Z"/>
+  <path id="Rectángulo_5_copia_9" data-name="Rectángulo 5 copia 9" class="cls-4" d="M587.009,229.327l56.352,46.312-18.645,22.687-56.352-46.312Z"/>
+  <path id="Rectángulo_5_copia_8" data-name="Rectángulo 5 copia 8" class="cls-4" d="M665.751,578.432l53.975,49.06-19.751,21.731L646,600.162Z"/>
+</svg>
