@@ -7,7 +7,7 @@ if (isset($_POST['registrar'])){
 
 	//Se valida que todos los datos esten completos
 	$validar = new ValidarRegistro($_POST['Nombre'], $_POST['Apellido'],
-	 $_POST['Cedula'], $_POST['Correo'], $_POST['Telefono'], $_POST['Contrasena'] );
+	 $_POST['Cedula'], $_POST['Correo'], $_POST['Telefono'], $_POST['Contrasena'], $_POST['Localidad'] );
 
 	 //Si el registro es valido se registra en la base de datos
 	 if($validar->regis_valido()){
@@ -19,8 +19,9 @@ if (isset($_POST['registrar'])){
 		$validar-> getCedula(),
 		$validar-> getCorreo(),
 		$validar-> getTelefono(),
-		password_hash($validar-> getContrasena(),PASSWORD_DEFAULT))){
-			 header('Location: Clientes/index.php');
+		password_hash($validar-> getContrasena(),PASSWORD_DEFAULT),
+		$validar-> getLocalidad())){
+			 header('Location: /Proyecto/index-Clientes.php');
 	   	}else{
 		 header('Location: /registro.php');
 	  	}  
