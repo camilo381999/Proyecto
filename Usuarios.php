@@ -161,6 +161,14 @@ class Usuarios extends Conexion
 		}
 	}
 
+	public function sesionIniciada(){
+		if (isset($_SESSION['ID']) && isset($_SESSION['PERFIL'])) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public function Salir()
 	{
 		$_SESSION['ID'] = null;
