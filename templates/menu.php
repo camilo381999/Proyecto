@@ -16,18 +16,43 @@ $ControlSesion = new Usuarios();
             <?php
             if ($ControlSesion->sesionIniciada()) {
             ?>
+                <ul class="navbar-nav mr-auto"></ul>
+
                 <ul class="nav navbar-nav navbar-right">
+
                     <?php
                     if ($ControlSesion->getPerfil() == 'Usuario') {
                     ?>
-                        <li>
-                            <a class="nav-link" href="#"><?php echo $ControlSesion->getNombre(); ?></a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $ControlSesion->getNombre(); ?>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Mi perfil</a>
+                                <a class="dropdown-item" href="#">Actualizar datos</a>
+                            </div>
                         </li>
+
+                        <li>
+                            <a class="nav-link" href="Usuarios/Salir.php">Cerrar sesión</a>
+                        </li>
+                        
                     <?php
                     } elseif ($ControlSesion->getPerfil() == 'Técnico') {
                     ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $ControlSesion->getNombre(); ?>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Mi perfil</a>
+                                <a class="dropdown-item" href="#">Actualizar datos</a>
+                            </div>
+                        </li>
+
                         <li>
-                            <a class="nav-link" href="#"><?php echo $ControlSesion->getNombre(); ?></a>
+                            <a class="nav-link" href="Usuarios/Salir.php">Cerrar sesión</a>
                         </li>
                     <?php
                     }
@@ -44,6 +69,7 @@ $ControlSesion = new Usuarios();
                         <a class="nav-link" href="#">Preguntas frecuentes</a>
                     </li>
                 </ul>
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="nav-link" href="ingresar.php">Iniciar sesión</a>
@@ -58,3 +84,4 @@ $ControlSesion = new Usuarios();
         </div>
     </div>
 </nav>
+

@@ -16,7 +16,6 @@ include_once('templates/menu.php');
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h1>Bienvenido <?php echo $ModeloUsuarios->getNombre(); ?></h1>
                 <h3>¿Qué deseas hacer?</h3>
-                <a href="Usuarios/Salir.php">Salir</a>
             </div>
         </div>
 

@@ -55,19 +55,29 @@ body{
     width: 50%;
     height: 50%;
     margin-bottom: 20px;
-    font-size: 13px;
+    font-size: 17px;
     padding: 20px;
     position: relative;
-    border: 1px solid #fff;
+    border: 1px solid #f2f2f2;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 10px 0px #000;
+    color: #000;
     text-align: center;
     border-radius: 10px;
     max-width: 180px;
     height: 180px;
-    color: #073B4C;
-    background-color: #fff;
     text-decoration: none;
     margin: auto;
     font-weight: 500;
+    
+}
+
+.menu__option:hover {
+    background-color: #fff;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 10px 0px #fff;
+    color: #000;
+    text-decoration: none;
 }
 
 .main-menu__options {
