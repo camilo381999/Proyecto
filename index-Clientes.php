@@ -21,7 +21,7 @@ include_once('templates/menu.php');
 		<div class="row">
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="#" class="menu__option" id="btnPublicar">
+                    <a href="cl_PublicarServicio.php" class="menu__option" id="btnPublicar">
                         <img class="option__image" src="img/icon-publicar.svg" alt="icon-publicar"> 
                         Publicar Servicio
                     </a>
@@ -29,7 +29,7 @@ include_once('templates/menu.php');
             </div>
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="#" class="menu__option" id="btnCancelar">
+                    <a href="cl_CancelarServicio.php" class="menu__option" id="btnCancelar">
                         <img class="option__image" src="img/icon-cancelar.svg" alt="icon-cancelar"> 
                         Cancelar Servicio
                     </a>
@@ -37,7 +37,7 @@ include_once('templates/menu.php');
             </div>  
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="#" class="menu__option" id="btnHistorial">
+                    <a href="cl_HistorialServicio.php" class="menu__option" id="btnHistorial">
                         <img class="option__image" src="img/icon-historial.svg" alt="icon-historial"> 
                         Historial de Servicios
                     </a>
@@ -46,7 +46,7 @@ include_once('templates/menu.php');
 
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="#" class="menu__option" id="btnActualizar">
+                    <a href="cl_ActualizarDatos.php" class="menu__option" id="btnActualizar">
                         <img class="option__image" src="img/icon-actualizar.svg" alt="icon-actualizar"> 
                         Actualizar datos
                     </a>
@@ -54,7 +54,7 @@ include_once('templates/menu.php');
             </div>
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="#" class="menu__option" id="btnPQRs">
+                    <a href="cl_PQRs.php" class="menu__option" id="btnPQRs">
                         <img class="option__image" src="img/icon-pqrs.svg" alt="icon-pqrs"> 
                         PQRs
                     </a>
