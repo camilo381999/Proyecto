@@ -22,7 +22,7 @@ include_once('templates/menu.php');
 		<div class="row">
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="main-menu__options">
-                    <a href="tc_MuroPublicaciones.php" class="menu__option" id="btnPublicaciones">
+                    <a href="tc_MuroPublicaciones.php" class="menu__option" id="btnPublicaciones" >
                         <img class="option__image" src="img/icon-publicaciones.svg" alt="icon-publicaciones"> 
                         Muro de Publicaciones
                     </a>
