@@ -5,13 +5,13 @@ include_once('templates/menu.php');
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active" style="background-image:url('/Proyecto/img/MABE.jpg')">
+                    <div class="carousel-item active" style="background-image:url('/Proyecto/img/tecniclickbanner3.jpg')">
                         <!-- <img src="/Proyecto/img/MABE.jpg" class="d-block w-100" alt="..."> -->
                     </div>
-                    <div class="carousel-item" style="background-image:url('/Proyecto/img/tecnico2.jpg')">
+                    <div class="carousel-item" style="background-image:url('/Proyecto/img/tecniclickbanner2.jpg')">
 <!--                         <img src="/Proyecto/img/tecnico2.jpg" class="d-block w-100" alt="...">
  -->                    </div>
-                    <div class="carousel-item" style="background-image:url('/Proyecto/img/slider-linea-blanca.jpg')">
+                    <div class="carousel-item" style="background-image:url('/Proyecto/img/tecniclickbanner1.jpg')">
 <!--                         <img src="/Proyecto/img/slider-linea-blanca.jpg" class="d-block w-100" alt="...">
  -->                    </div>
                 </div>
