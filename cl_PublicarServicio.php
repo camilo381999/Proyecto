@@ -7,13 +7,12 @@ $ModeloUsuarios = new Usuarios();
 $ModeloUsuarios->validateSessionCliente();
 
 
-        if(isset($_POST['publicar'])){
-            $Modelo= new Publicacion();
-
-            if($Modelo-> add($_POST['Descripcion'],$_POST['Marca'],$_POST['Producto'],$_POST['fecha'],$_POST['hora'])){
-                //redireccionar a alguna pagina
-            }
-        }
+if(isset($_POST['publicar'])){
+    $Modelo= new Publicacion();
+    if($Modelo-> add($_POST['Descripcion'],$_POST['Servicio'],$_POST['Marca'],$_POST['Producto'],$_POST['fecha'],$_POST['hora'])){
+        //redireccionar a alguna pagina
+    }
+}
 
 
 include_once('templates/iniciar-html.php');
@@ -25,16 +24,21 @@ include_once('templates/menu.php');
 
     <form class="form-container" id="form-publicacion" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="registro-title">
-                    <h1>Publicar servicio</h1>
-                </div>
-            </div>
-        </div>
+        
+        <h1>Publicar servicio</h1>
+
 
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
+
+                <div class="form-group">
+                    <select name="Servicio" class="form-control">
+                        <option selected>Seleccionar un servicio</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                        <option value="Reparacion">Reparación</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <select name="Marca" class="form-control">
                         <option selected>Seleccionar Marca</option>
@@ -73,10 +77,10 @@ include_once('templates/menu.php');
             </div>
 
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <label for="fecha">Start date:</label><br>
+                <label for="fecha">Escoge la fecha de tu servicio:</label><br>
                 <input type="date" class="form-control" id="fecha" name="fecha" value="2021-01-01" min="2021-01-01" max="2025-12-31" required><br>
 
-                <label for="hora">Choose a time for your meeting:</label><br>
+                <label for="hora">Escoge la hora de tu servicio:</label><br>
                 <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br><br>
             </div>
         </div>

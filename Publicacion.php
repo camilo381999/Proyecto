@@ -8,16 +8,17 @@ class Publicacion extends Conexion {
 		$this->db = parent::__construct();
 	}
 
-    public function add($Descripcion, $Marca, $Tipo, $Fecha,$Hora) {
+    public function add($Descripcion, $Servicio, $Marca, $Tipo, $Fecha,$Hora) {
 
         $usuario=new Usuarios();
 
         $idUsuario= $usuario->getId(); 
-		$statement = $this->db->prepare("INSERT INTO requerimientos (DESCRIPCION,MARCA,
-		TIPO,FECHA,HORA,USUARIOS_ID_USUARIO) VALUES (:Descripcion, :Marca, :Tipo,
+		$statement = $this->db->prepare("INSERT INTO requerimientos (DESCRIPCION,SERVICIO,MARCA,
+		TIPO,FECHA,HORA,USUARIOS_ID_USUARIO) VALUES (:Descripcion, :Servicio, :Marca, :Tipo,
 		 :Fecha, :Hora, :idUsuario)");
 
 		$statement->bindParam(':Descripcion', $Descripcion);
+        $statement->bindParam(':Servicio', $Servicio);
 		$statement->bindParam(':Marca', $Marca);
 		$statement->bindParam(':Tipo', $Tipo);
 		$statement->bindParam(':Fecha', $Fecha);
@@ -31,7 +32,18 @@ class Publicacion extends Conexion {
 		}
 	}
 
+    public function consultarPublicaciones() {
 
+        $usuario=new Usuarios();
+
+        $idUsuario= $usuario->getId(); 
+		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE, (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS LOCALIDAD, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos");
+        
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+	}
 
 }
 
