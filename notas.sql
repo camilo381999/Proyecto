@@ -1,8 +1,13 @@
 -- -----------------------------------------------------
--- Tabla `USUARIOS`
+-- Base de datos
+-- -----------------------------------------------------
+CREATE DATABASE tecniclick CHARACTER SET utf8;
+
+-- -----------------------------------------------------
+-- Table USUARIOS
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `USUARIOS`
+CREATE TABLE IF NOT EXISTS `USUARIOS` 
 (
   `ID_USUARIO` INT(15) NOT NULL PRIMARY KEY,
   `NOMBRE` VARCHAR(60) NOT NULL,
@@ -13,8 +18,9 @@ CREATE TABLE IF NOT EXISTS `USUARIOS`
   `LOCALIDAD` VARCHAR(60) NOT NULL
 );
 
+
 -- -----------------------------------------------------
--- Tabla `TECNICOS`
+-- Table `TECNICOS`
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `TECNICOS` 
@@ -31,8 +37,9 @@ CREATE TABLE IF NOT EXISTS `TECNICOS`
 );
 
 -- -----------------------------------------------------
--- Tabla `FACTURA`
+-- Table `FACTURA`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `FACTURA` 
 (
   `ID_FACTURA` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -55,7 +62,28 @@ CREATE TABLE IF NOT EXISTS `FACTURA`
 );
 
 -- -----------------------------------------------------
--- Tabla `AGENDA`
+-- Table `REQUERIMIENTOS`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `REQUERIMIENTOS` 
+(
+  `ID_PUBLICACION` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `DESCRIPCION` VARCHAR(200) NOT NULL,
+  `MARCA` VARCHAR(45) NOT NULL,
+  `TIPO` VARCHAR(45) NOT NULL,
+  `FECHA` VARCHAR(45) NOT NULL,
+  `USUARIOS_ID_USUARIO` INT NOT NULL,
+  INDEX `fk_REQUERIMIENTOS_USUARIOS1_idx` (`USUARIOS_ID_USUARIO` ASC),
+  CONSTRAINT `fk_REQUERIMIENTOS_USUARIOS1`
+    FOREIGN KEY (`USUARIOS_ID_USUARIO`)
+    REFERENCES `USUARIOS` (`ID_USUARIO`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+
+-- -----------------------------------------------------
+-- Table `AGENDA`
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `AGENDA` 
@@ -64,21 +92,25 @@ CREATE TABLE IF NOT EXISTS `AGENDA`
   `FECHA` VARCHAR(45) NOT NULL,
   `HORA` VARCHAR(45) NOT NULL,
   `UBICACION` VARCHAR(45) NOT NULL,
-  `USUARIOS_ID_USUARIO` INT(15) NOT NULL,
   `TECNICOS_ID_TECNICO` INT(15) NOT NULL,
-  INDEX `fk_AGENDA_USUARIOS_idx` (`USUARIOS_ID_USUARIO` ASC),
+  `REQUERIMIENTOS_ID_PUBLICACION` INT NOT NULL,
   INDEX `fk_AGENDA_TECNICOS1_idx` (`TECNICOS_ID_TECNICO` ASC),
-  CONSTRAINT `fk_AGENDA_USUARIOS`
-    FOREIGN KEY (`USUARIOS_ID_USUARIO`)
-    REFERENCES `USUARIOS` (`ID_USUARIO`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_AGENDA_REQUERIMIENTOS1_idx` (`REQUERIMIENTOS_ID_PUBLICACION` ASC),
   CONSTRAINT `fk_AGENDA_TECNICOS1`
     FOREIGN KEY (`TECNICOS_ID_TECNICO`)
     REFERENCES `TECNICOS` (`ID_TECNICO`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AGENDA_REQUERIMIENTOS1`
+    FOREIGN KEY (`REQUERIMIENTOS_ID_PUBLICACION`)
+    REFERENCES `REQUERIMIENTOS` (`ID_PUBLICACION`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+ ALTER TABLE `usuarios` ADD UNIQUE(`ID_USUARIO`);
+ ALTER TABLE `usuarios` ADD UNIQUE(`CORREO`);
+ ALTER TABLE `usuarios` ADD UNIQUE(`TELEFONO`);
 
 -- -----------------------------------------------------
 -- Insertar Usuario
@@ -99,6 +131,3 @@ INSERT INTO `tecnicos` (`ID_TECNICO`, `NOMBRE`, `APELLIDO`,
    '3', 'diego@gmail.com', '2345245345','Inactivo');
 
 
- ALTER TABLE `usuarios` ADD UNIQUE(`ID_USUARIO`);
- ALTER TABLE `usuarios` ADD UNIQUE(`CORREO`);
- ALTER TABLE `usuarios` ADD UNIQUE(`TELEFONO`);
