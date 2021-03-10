@@ -29,12 +29,13 @@ body{
     }
 }
 
-.registro-title{
-    text-align: center;
-    padding-bottom: 10px;
+.publicacion-title{
+    text-align: center !important;
+    padding-bottom: 10px !important;
+    color: white!important;
 }
 
-.ingreso-title{
+.title{
     text-align: center;
     padding-bottom: 10px;
 }

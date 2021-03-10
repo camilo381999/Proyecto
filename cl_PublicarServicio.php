@@ -7,9 +7,9 @@ $ModeloUsuarios = new Usuarios();
 $ModeloUsuarios->validateSessionCliente();
 
 
-if(isset($_POST['publicar'])){
-    $Modelo= new Publicacion();
-    if($Modelo-> add($_POST['Descripcion'],$_POST['Servicio'],$_POST['Marca'],$_POST['Producto'],$_POST['fecha'],$_POST['hora'])){
+if (isset($_POST['publicar'])) {
+    $Modelo = new Publicacion();
+    if ($Modelo->add($_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
         //redireccionar a alguna pagina
     }
 }
@@ -19,14 +19,14 @@ include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
 
- 
+
 <div class="container">
 
     <form class="form-container" id="form-publicacion" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
-        
-        <h1>Publicar servicio</h1>
-
+        <div class="title">
+            <h1>Publicar servicio</h1>
+        </div>
 
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -72,7 +72,7 @@ include_once('templates/menu.php');
                 </div>
 
                 <div class="form-group">
-                    <textarea name="Descripcion" class="form-control"  placeholder="Añade una descripción" cols="200" rows="3" required></textarea>
+                    <textarea name="Descripcion" class="form-control" placeholder="Añade una descripción" cols="200" rows="3" required></textarea>
                 </div>
             </div>
 

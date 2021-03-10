@@ -23,7 +23,7 @@
 				<!-- form start -->
 				<form class="form-container" id="form-ingreso" autocomplete="off" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 				
-				<div class="ingreso-title">
+				<div class="title">
 					<h1>Inicio de Sesión</h1>
 				</div>
 				
@@ -53,7 +53,6 @@
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		</div>
-		<div class="col-md-4 col-sm-4 col-xs-12"></div>
 	</div>
 </div>
 	
