@@ -40,8 +40,67 @@ class Publicacion extends Conexion {
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		 FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		  (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO)
-		   AS LOCALIDAD, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos");
+		   AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos");
         
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function servicioAceptado($Fecha, $Hora, $Ubicacion, $idPublicacion) {
+
+        $usuario=new Usuarios();
+
+        $idTecnico= $usuario->getId(); 
+		$statement = $this->db->prepare("INSERT INTO agenda (FECHA,HORA,UBICACION,
+		TECNICOS_ID_TECNICO,REQUERIMIENTOS_ID_PUBLICACION,ESTADO) 
+		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, :idPublicacion, 'pendiente')");
+
+		$statement->bindParam(':Fecha', $Fecha);
+        $statement->bindParam(':Hora', $Hora);
+        $statement->bindParam(':Ubicacion', $Ubicacion);
+		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->bindParam(':idPublicacion', $idPublicacion);
+
+        if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function idPublicacion() {
+
+        $usuario=new Usuarios();
+        $idUsuario= $usuario->getId(); 
+		$statement = $this->db->prepare("SELECT * FROM requerimientos
+		 WHERE USUARIOS_ID_USUARIO  = :idUsuario ");
+        $statement->bindParam(':idUsuario', $idUsuario);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function consultarServiciosAceptados($idPublicacion) {
+
+        $usuario=new Usuarios();
+
+        $idUsuario= $usuario->getId(); 
+		$statement = $this->db->prepare("SELECT * FROM agenda
+		 WHERE REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion");
+        $statement->bindParam(':idPublicacion', $idPublicacion);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function informacionTecnico($idTecnico) {
+
+		$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE ID_TECNICO = :idTecnico ");
+        $statement->bindParam(':idTecnico', $idTecnico);
         $statement->execute();
 
         $result = $statement->fetchAll();
