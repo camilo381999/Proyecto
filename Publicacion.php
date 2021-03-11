@@ -79,15 +79,12 @@ class Publicacion extends Conexion {
         $statement->bindParam(':idUsuario', $idUsuario);
         $statement->execute();
 
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
         return $result;
 	}
 
 	public function consultarServiciosAceptados($idPublicacion) {
 
-        $usuario=new Usuarios();
-
-        $idUsuario= $usuario->getId(); 
 		$statement = $this->db->prepare("SELECT * FROM agenda
 		 WHERE REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion");
         $statement->bindParam(':idPublicacion', $idPublicacion);
@@ -103,7 +100,7 @@ class Publicacion extends Conexion {
         $statement->bindParam(':idTecnico', $idTecnico);
         $statement->execute();
 
-        $result = $statement->fetchAll();
+        $result = $statement->fetch();
         return $result;
 	}
 
