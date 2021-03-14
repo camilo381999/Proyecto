@@ -154,17 +154,21 @@ class Usuarios extends Conexion
 	}
 
 
-	public function validateSession()
+	public function validateSessionTecnicos()
 	{
 		if ($_SESSION['ID'] == null) {
 			header('location: /Proyecto/ingresar.php');
 		}
+		if ($_SESSION['PERFIL'] == 'Usuario') {
+			header('location: index-Clientes.php');
+		}
 	}
 
-	public function sesionIniciada(){
+	public function sesionIniciada()
+	{
 		if (isset($_SESSION['ID']) && isset($_SESSION['PERFIL'])) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -178,14 +182,26 @@ class Usuarios extends Conexion
 		header('Location: ../index.php');
 	}
 
-	public function validateSessionCliente()
+	public function validateSessionIndex()
 	{
-		if ($_SESSION['ID'] != null) {
+		if ($this-> sesionIniciada()) {
 			if ($_SESSION['PERFIL'] == 'Técnico') {
 				header('location: index-Tecnicos.php');
 			}
-		} else {
+			if ($_SESSION['PERFIL'] == 'Usuario') {
+				header('location: index-Clientes.php');
+			}
+		}
+	}
+	
+	public function validateSessionClientes()
+	{
+		if ($_SESSION['ID'] == null) {
 			header('location: /Proyecto/ingresar.php');
+		}
+
+		if ($_SESSION['PERFIL'] == 'Técnico') {
+			header('location: index-Tecnicos.php');
 		}
 	}
 }

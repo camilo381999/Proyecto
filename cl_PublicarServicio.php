@@ -4,7 +4,7 @@ include_once("Publicacion.php");
 
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
-$ModeloUsuarios->validateSessionCliente();
+$ModeloUsuarios->validateSessionClientes();
 
 
 if (isset($_POST['publicar'])) {

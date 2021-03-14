@@ -4,7 +4,7 @@ include_once("Publicacion.php");
 
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
-$ModeloUsuarios->validateSessionCliente();
+$ModeloUsuarios->validateSessionClientes();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
@@ -24,7 +24,8 @@ include_once('templates/menu.php');
             <?php
             $Modelo = new Publicacion();
             $resultado = $Modelo->idPublicacion();
-            $agenda = $Modelo->consultarServiciosAceptados($resultado['ID_PUBLICACION']);
+            if($resultado!=null){
+                $agenda = $Modelo->consultarServiciosAceptados($resultado['ID_PUBLICACION']);
                 foreach ($agenda as $dato) {
                 $tecnicos = $Modelo->informacionTecnico($dato['TECNICOS_ID_TECNICO']);
             ?>
@@ -42,7 +43,8 @@ include_once('templates/menu.php');
                     </div>
                 </div><br>
             <?php
-            }
+             }
+         }
             ?>
         </div>
         <div class="col-md-2 col-sm-12 col-xs-12"></div>

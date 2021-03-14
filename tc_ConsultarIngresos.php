@@ -3,7 +3,7 @@ include_once("Usuarios.php");
 
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
-$ModeloUsuarios->validateSession();
+$ModeloUsuarios->validateSessionTecnicos();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
