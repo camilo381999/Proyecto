@@ -7,10 +7,15 @@ $ModeloUsuarios->validateSessionClientes();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
-?> 
+?>
 
-<h1>PQRs</h1>
+<div class="publicacion-title">
+    <br>
+    <h1>PQRs</h1>
+    <br>
+</div>
+
 
 <?php
-    include_once('templates/terminar-html.php');
+include_once('templates/terminar-html.php');
 ?>

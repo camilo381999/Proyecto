@@ -7,10 +7,14 @@ $ModeloUsuarios->validateSessionClientes();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
-?> 
+?>
 
-<h1>Historial de servicios</h1>
+<div class="publicacion-title">
+    <br>
+    <h1>Historial de servicios</h1>
+    <br>
+</div>
 
 <?php
-    include_once('templates/terminar-html.php');
+include_once('templates/terminar-html.php');
 ?>

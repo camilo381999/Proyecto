@@ -7,10 +7,13 @@ $ModeloUsuarios->validateSessionTecnicos();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
-?> 
-
-<h1>Consultar ingresos semanales</h1>
+?>
+<div class="publicacion-title">
+    <br>
+    <h1>Consultar ingresos semanales</h1>
+    <br>
+</div>
 
 <?php
-    include_once('templates/terminar-html.php');
+include_once('templates/terminar-html.php');
 ?>

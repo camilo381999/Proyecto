@@ -35,7 +35,7 @@ include_once('templates/menu.php');
                     <select name="Servicio" class="form-control">
                         <option selected>Seleccionar un servicio</option>
                         <option value="Mantenimiento">Mantenimiento</option>
-                        <option value="Reparacion">Reparación</option>
+                        <option value="Reparación">Reparación</option>
                     </select>
                 </div>
 
