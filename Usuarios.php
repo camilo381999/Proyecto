@@ -76,6 +76,68 @@ class Usuarios extends Conexion
 		}
 	}
 
+	public function update($Id, $Nombre, $Apellido, $Telefono, $Password, $Localidad)
+	{
+
+		$statement = $this->db->prepare("UPDATE usuarios SET NOMBRE =:Nombre, APELLIDO =:Apellido, TELEFONO = :Telefono, PASSWORD 
+			=:Password,LOCALIDAD =:Localidad WHERE ID_USUARIO = :Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->bindParam(':Nombre', $Nombre);
+		$statement->bindParam(':Apellido', $Apellido);
+		$statement->bindParam(':Telefono', $Telefono);
+		$statement->bindParam(':Password', $Password);
+		$statement->bindParam(':Localidad', $Localidad);
+
+		if ($statement->execute()) {
+			$_SESSION['NOMBRE'] = $Nombre . " " . $Apellido;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function updateTecnico($Id, $Nombre, $Apellido, $Telefono, $Password, $Localidad)
+	{
+
+		$statement = $this->db->prepare("UPDATE tecnicos SET NOMBRE =:Nombre, APELLIDO =:Apellido, TELEFONO = :Telefono, PASSWORD 
+			=:Password,LOCALIDAD =:Localidad WHERE ID_TECNICO = :Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->bindParam(':Nombre', $Nombre);
+		$statement->bindParam(':Apellido', $Apellido);
+		$statement->bindParam(':Telefono', $Telefono);
+		$statement->bindParam(':Password', $Password);
+		$statement->bindParam(':Localidad', $Localidad);
+
+		if ($statement->execute()) {
+			$_SESSION['NOMBRE'] = $Nombre . " " . $Apellido;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function getById($Id)
+	{
+		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE ID_USUARIO = :Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->execute();
+		if ($statement->rowCount() == 1) {
+			$result = $statement->fetch();
+		}
+		return $result;
+	}
+
+	public function getByIdTecnico($Id)
+	{
+		$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE ID_TECNICO = :Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->execute();
+		if ($statement->rowCount() == 1) {
+			$result = $statement->fetch();
+		}
+		return $result;
+	}
+
 	public function existe_correo($Correo)
 	{
 		$existe_correo = true;
@@ -184,7 +246,7 @@ class Usuarios extends Conexion
 
 	public function validateSessionIndex()
 	{
-		if ($this-> sesionIniciada()) {
+		if ($this->sesionIniciada()) {
 			if ($_SESSION['PERFIL'] == 'Técnico') {
 				header('location: index-Tecnicos.php');
 			}
@@ -193,7 +255,7 @@ class Usuarios extends Conexion
 			}
 		}
 	}
-	
+
 	public function validateSessionClientes()
 	{
 		if ($_SESSION['ID'] == null) {

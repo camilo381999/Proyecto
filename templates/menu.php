@@ -30,7 +30,6 @@ $ControlSesion = new Usuarios();
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Mi perfil</a>
-                                <a class="dropdown-item" href="#">Actualizar datos</a>
                             </div>
                         </li>
 
