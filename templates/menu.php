@@ -29,7 +29,7 @@ $ControlSesion = new Usuarios();
                                 <?php echo $ControlSesion->getNombre(); ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Mi perfil</a>
+                                <a class="dropdown-item" href="cl_Perfil.php">Mi perfil</a>
                             </div>
                         </li>
 
@@ -45,8 +45,7 @@ $ControlSesion = new Usuarios();
                                 <?php echo $ControlSesion->getNombre(); ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Mi perfil</a>
-                                <a class="dropdown-item" href="#">Actualizar datos</a>
+                                <a class="dropdown-item" href="tc_Perfil.php">Mi perfil</a>
                             </div>
                         </li>
 
