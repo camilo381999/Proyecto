@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `AGENDA`
     FOREIGN KEY (`TECNICOS_ID_TECNICO`)
     REFERENCES `TECNICOS` (`ID_TECNICO`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON UPDATE NO ACTION
 );
 
 -- -----------------------------------------------------
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `CALIFICACION`
   `COMENTARIO` VARCHAR(300) NOT NULL,
   `CALIFICACION` VARCHAR(45) NOT NULL,
   `TIPO_SERVICIO` VARCHAR(45) NOT NULL,
-  INDEX `fk_CALIFICACION_TECNICOS1_idx` (`TECNICOS_ID_TECNICO` ASC) VISIBLE,
+  INDEX `fk_CALIFICACION_TECNICOS1_idx` (`TECNICOS_ID_TECNICO` ASC),
   CONSTRAINT `fk_CALIFICACION_TECNICOS1`
     FOREIGN KEY (`TECNICOS_ID_TECNICO`)
     REFERENCES `TECNICOS` (`ID_TECNICO`)
@@ -160,22 +160,36 @@ CREATE TABLE IF NOT EXISTS `CALIFICACION`
  ALTER TABLE `usuarios` ADD UNIQUE(`CORREO`);
  ALTER TABLE `usuarios` ADD UNIQUE(`TELEFONO`);
 
+ -- -----------------------------------------------------
+-- Table `RECUPERACION_PASSWORD`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RECUPERACION_PASSWORD`(
+  `ID_RECUPERACION` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `USUARIOS_ID_USUARIO` INT NOT NULL,
+  `URL_SECRETA` VARCHAR(255) NOT NULL,
+  `FECHA` VARCHAR(45) NOT NULL,
+   FOREIGN KEY (`USUARIOS_ID_USUARIO`)
+    REFERENCES `USUARIOS` (`ID_USUARIO`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE
+)
+
 -- -----------------------------------------------------
 -- Insertar Usuario
 -- -----------------------------------------------------
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`,
- `PASSWORD`, `CORREO`, `TELEFONO`)
+ `PASSWORD`, `CORREO`, `TELEFONO`,`LOCALIDAD`)
   VALUES ('1020763742', 'Manuel Santiago', 'Martinez Oses',
-  'admin123', 'manuel@gmail.com', '3121443252');
+  '$2y$10$VdfnF/XzPoIdRFmPgVRn8O2GkKUXgV4E1nFc/21UEJtqinDnzRn0W', 'manuel@gmail.com', '3121443252','Usaquén');
 
 -- -----------------------------------------------------
 -- Insertar Tecnico
 -- -----------------------------------------------------
 
 INSERT INTO `tecnicos` (`ID_TECNICO`, `NOMBRE`, `APELLIDO`,
- `PASSWORD`, `CALIFICACION`, `CORREO`, `TELEFONO`, `ESTADO`)
-  VALUES ('1029847735', 'Diego', 'Palacio','12345',
-   '3', 'diego@gmail.com', '2345245345','Inactivo');
+ `PASSWORD`, `CALIFICACION`, `CORREO`, `TELEFONO`, `ESTADO`,`LOCALIDAD`)
+  VALUES ('1029847735', 'Diego', 'Palacio','$2y$10$VdfnF/XzPoIdRFmPgVRn8O2GkKUXgV4E1nFc/21UEJtqinDnzRn0W',
+   '3', 'diego@gmail.com', '2345245345','Inactivo','Usaquén');
 
 
