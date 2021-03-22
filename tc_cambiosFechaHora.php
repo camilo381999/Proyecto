@@ -10,14 +10,10 @@ $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionTecnicos();
 
-$Modelo = new Publicacion();
-$resultado = $Modelo->getPostByid($idPublicacion);
-
-
 if (isset($_GET['aceptar'])) {
     $Modelo = new Publicacion();
-    if ($Modelo->servicioPendiente("true", $idPublicacion, $_GET['Fecha'], $_GET['Hora'], $resultado['LOCALIDAD'])) {
-        //redireccionar a alguna pagina
+    if ($Modelo->servicioPendiente("true", $_GET['Id'], $_GET['Fecha'], $_GET['Hora'], $_GET['Ubicacion'])) {
+        header('Location: /Proyecto/index-Tecnicos.php');
     }
 }
 
@@ -36,17 +32,28 @@ include_once('templates/menu.php');
                     <h1>Proponer un horario diferentel</h1>
                 </div>
 
+                <?php
+                $Modelo = new Publicacion();
+                $resultado = $Modelo->getPostByid($idPublicacion);
+                ?>
+
+                <input type="hidden" name="Id" value=<?php echo $idPublicacion;?> >
+
                 <div class="form-group">
-                    <label>Nombre y ubicación del cliente</label>
-                    <input type="text" class="form-control" disabled value="<?php echo $resultado['CLIENTE'] . ', ' . $resultado['LOCALIDAD']; ?>">
+                    <label>Nombre del cliente</label>
+                    <input type="text" class="form-control" disabled value="<?php echo $resultado['CLIENTE']; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label>Ubicacion del cliente</label><br>
+                    <input type="text" class="form-control" readonly name="Ubicacion" value=<?php echo $resultado['LOCALIDAD'];?> >
                 </div>
 
                 <div class="form-group">
                     <label>Producto y tipo de servicio</label>
                     <input type="text" class="form-control" disabled value="<?php echo $resultado['TIPO'] . ' marca ' . $resultado['MARCA'] . ', ' . $resultado['SERVICIO']; ?>">
                 </div>
-                
-                
+                                
                 <div class="form-group">
                     <label for="fecha">¿Qué día propones?:</label><br>
                     <input type="date" class="form-control" id="fecha" name="Fecha" value=<?php echo $resultado['FECHA'];?> min="2021-01-01" max="2025-12-31" required>
