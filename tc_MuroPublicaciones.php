@@ -34,10 +34,18 @@ include_once('templates/menu.php');
                         <p class="card-text"><?php echo $dato['TIPO'] . ' marca ' . $dato['MARCA'] ?></p>
                         <p class="card-text"><?php echo $dato['DESCRIPCION'] ?></p>
                         <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                        
                         <a href="tc_controladorServicios.php?Id=<?php echo $dato['ID_PUBLICACION'];?>&
+                        Boton=<?php echo "false";?>&
                         Fecha=<?php echo $dato['FECHA'];?>&
                         Hora=<?php echo $dato['HORA'];?>&
                         Ubicacion=<?php echo $dato['LOCALIDAD'];?>" class="btn btn-primary">Aceptar</a>
+                        
+                        <a href="tc_cambiosFechaHora.php?Id=<?php echo $dato['ID_PUBLICACION'];?>&
+                        Fecha=<?php echo $dato['FECHA'];?>&
+                        Hora=<?php echo $dato['HORA'];?>&" class="btn btn-primary">
+                            Proponer otro horario
+                        </a>
                     </div>
                 </div><br>
             <?php

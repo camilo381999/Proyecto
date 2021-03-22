@@ -127,6 +127,17 @@ class Usuarios extends Conexion
 		return $result;
 	}
 
+	public function getUsuarioByidPublicacion($idPublicacion) {
+
+		$statement = $this->db->prepare("SELECT USUARIOS_ID_USUARIO FROM requerimientos
+		 WHERE ID_PUBLICACION  = :idPublicacion ");
+        $statement->bindParam(':idPublicacion', $idPublicacion);
+        $statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+	}
+
 	public function getByIdTecnico($Id)
 	{
 		$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE ID_TECNICO = :Id");

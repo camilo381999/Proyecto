@@ -27,13 +27,13 @@ include_once('templates/menu.php');
             if ($resultado != null) {
                 $agenda = $Modelo->consultarServiciosAceptados($resultado['ID_PUBLICACION']);
                 foreach ($agenda as $dato) {
-                    $tecnicos = $Modelo->informacionTecnico($dato['TECNICOS_ID_TECNICO']);
+                    $tecnicos = $Modelo->informacionTecnico($dato['ID_TECNICO']);
             ?>
                     <div class="card">
                         <h5 class="card-header"><?php echo $resultado['SERVICIO']; ?></h5>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5>
-                            <p class="card-text"><?php echo $dato['TECNICOS_ID_TECNICO'] . ' - ' . $dato['ESTADO'] ?></p>
+                            <p class="card-text"><?php echo $dato['ID_TECNICO'] . ' - ' . $dato['ESTADO_SERVICIO'] ?></p>
                             <p class="card-text"><?php echo $tecnicos['CORREO']  ?></p>
                             <p class="card-text"><?php echo  '  Teléfono: ' . $tecnicos['TELEFONO'] ?></p>
                             <p class="card-text"><?php echo '  Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
