@@ -65,7 +65,7 @@ include_once('templates/menu.php');
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
                 <a href="cl_ServiciosPublicados.php" class="menu__option" id="btnPublicado">
-                    <img class="option__image" src="img/icon-publicar.svg" alt="icon-publicar">
+                    <img class="option__image" src="img/icon-ConsultarPost.svg" alt="icon-publicar">
                     Servicios publicados
                 </a>
             </div>

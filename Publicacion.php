@@ -41,7 +41,7 @@ class Publicacion extends Conexion {
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		 FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		  (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO)
-		   AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos");
+		   AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos");
         
         $statement->execute();
 
@@ -49,19 +49,26 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
-	public function servicioAceptado($Fecha, $Hora, $Ubicacion) {
+	public function selectPendiente() {
 
-        $usuario=new Usuarios();
+		$statement = $this->db->prepare("SELECT * FROM pendiente ");
+        $statement->execute();
 
-        $idTecnico= $usuario->getId(); 
+        $result = $statement->fetch();
+        return $result;
+	}
+
+	public function servicioAceptado($Fecha, $Hora, $Ubicacion,$idTecnico,$idPendiente) {
+
 		$statement = $this->db->prepare("INSERT INTO agenda (FECHA,HORA,UBICACION,
-		TECNICOS_ID_TECNICO,ESTADO) 
-		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'pendiente')");
+		TECNICOS_ID_TECNICO,ESTADO,PENDIENTE_ID_PENDIENTE) 
+		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'Aceptado', :idPendiente)");
 
 		$statement->bindParam(':Fecha', $Fecha);
         $statement->bindParam(':Hora', $Hora);
         $statement->bindParam(':Ubicacion', $Ubicacion);
 		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->bindParam(':idPendiente', $idPendiente);
 
         if ($statement->execute()) {
 			return true;
@@ -88,7 +95,7 @@ class Publicacion extends Conexion {
 
 		$statement = $this->db->prepare("INSERT INTO pendiente (NOMBRE_TECNICO, LOCALIDAD, TIPO_SERVICIO, ESTADO_SERVICIO, ID_TECNICO,
 		ID_CLIENTE,CORREO_TECNICO, CAMBIOS_TECNICO, FECHA, HORA, REQUERIMIENTOS_ID_PUBLICACION) 
-		VALUES (:NombreTecnico,:Ubicacion, :TipoServicio, 'Pendiete', :idTecnico, :idCliente, :CorreoTecnico, :Boton, :Fecha, :Hora, :idPublicacion)");
+		VALUES (:NombreTecnico,:Ubicacion, :TipoServicio, 'Pendiente', :idTecnico, :idCliente, :CorreoTecnico, :Boton, :Fecha, :Hora, :idPublicacion)");
 
 		$statement->bindParam(':NombreTecnico',$nombreTecnico);
 		$statement->bindParam(':Ubicacion', $Ubicacion);
@@ -120,6 +127,24 @@ class Publicacion extends Conexion {
         $result = $statement->fetch();
         return $result;
 	}
+
+	public function getPendienteByidClient($idCliente) {
+		$statement = $this->db->prepare("SELECT * FROM pendiente
+		WHERE ID_CLIENTE  = :idUsuario AND ESTADO_SERVICIO = 'Pendiente' ");
+        $statement->bindParam(':idUsuario', $idCliente);
+        $statement->execute();
+
+        $result = $statement->fetch();
+		return $result;        
+	}
+
+	public function updateEstadoServicioPend($idPendiente) {
+		
+		$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Aceptado'
+		WHERE ID_PENDIENTE  = :idPendiente ");
+        $statement->bindParam(':idPendiente', $idPendiente);
+        $statement->execute();
+	}	
 
 	public function getPostByid($idPublicacion) {
 

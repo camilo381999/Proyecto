@@ -85,7 +85,21 @@ include_once('templates/menu.php');
             </div>
         </div>
 
-        <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
+        <?php 
+        $ModeloPendiente = new Publicacion();
+        $pendientes=$ModeloPendiente->selectPendiente();
+        $usuario=new Usuarios();
+        $idUsuario= $usuario->getId();
+        $posts=$ModeloPendiente->publicacion($idUsuario);
+        if($pendientes != null || $posts != null){
+            print_r($pendientes);        
+        ?>
+            <button name="publicar" type="submit" disabled class="btn btn-primary btn-block">Publicar servicio</button>
+        <?php }else{ ?>
+            <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
+        <?php } ?>
+
+        
     </form>
 </div>
 

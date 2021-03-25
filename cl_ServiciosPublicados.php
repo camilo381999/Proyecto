@@ -39,7 +39,10 @@ include_once('templates/menu.php');
                             <p class="card-text"><?php echo '  Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
                             <p class="card-text"><?php echo ' C.C: ' . $tecnicos['ID_TECNICO'] ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
-                            <a href="#" class="btn btn-primary">Aceptar</a>
+                            <a href="cl_controladorAceptar.php?IdTecnico=<?php echo $dato['ID_TECNICO'];?>&
+                            Fecha=<?php echo $dato['FECHA'];?>&
+                            Hora=<?php echo $dato['HORA'];?>&
+                            idPublicacion=<?php echo $resultado['ID_PUBLICACION'];?>" class="btn btn-primary">Aceptar</a>
                         </div>
                     </div><br>
             <?php

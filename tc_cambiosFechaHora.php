@@ -29,7 +29,7 @@ include_once('templates/menu.php');
 
             <form class="form-container" id="form-cambioFechaHora" method="GET" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                 <div class="title">
-                    <h1>Proponer un horario diferentel</h1>
+                    <h1>Proponer un horario diferente</h1>
                 </div>
 
                 <?php
@@ -45,7 +45,7 @@ include_once('templates/menu.php');
                 </div>
 
                 <div class="form-group">
-                    <label>Ubicacion del cliente</label><br>
+                    <label>Ubicación del cliente</label><br>
                     <input type="text" class="form-control" readonly name="Ubicacion" value=<?php echo $resultado['LOCALIDAD'];?> >
                 </div>
 
