@@ -127,15 +127,38 @@ class Usuarios extends Conexion
 		return $result;
 	}
 
-	public function getUsuarioByidPublicacion($idPublicacion) {
+	public function getByCorreo($Correo)
+	{
+		$statement = $this->db->prepare("SELECT * FROM usuarios WHERE CORREO = :Correo");
+		$statement->bindParam(':Correo', $Correo);
+		$statement->execute();
+		if ($statement->rowCount() == 1) {
+			$result = $statement->fetch();
+		}
+		return $result;
+	}
+
+	public function getByCorreoTecnico($Correo)
+	{
+		$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE CORREO = :Correo");
+		$statement->bindParam(':Correo', $Correo);
+		$statement->execute();
+		if ($statement->rowCount() == 1) {
+			$result = $statement->fetch();
+		}
+		return $result;
+	}
+
+	public function getUsuarioByidPublicacion($idPublicacion)
+	{
 
 		$statement = $this->db->prepare("SELECT USUARIOS_ID_USUARIO FROM requerimientos
 		 WHERE ID_PUBLICACION  = :idPublicacion ");
-        $statement->bindParam(':idPublicacion', $idPublicacion);
-        $statement->execute();
+		$statement->bindParam(':idPublicacion', $idPublicacion);
+		$statement->execute();
 
-        $result = $statement->fetch();
-        return $result;
+		$result = $statement->fetch();
+		return $result;
 	}
 
 	public function getByIdTecnico($Id)
@@ -154,6 +177,26 @@ class Usuarios extends Conexion
 		$existe_correo = true;
 		try {
 			$statement = $this->db->prepare("SELECT * FROM usuarios WHERE CORREO = :Correo");
+			$statement->bindParam(':Correo', $Correo);
+			$statement->execute();
+
+			//Comprueba si la consulta devuelve solo un usuario 
+			if ($statement->rowCount() > 0) {
+				$existe_correo = true;
+			} else {
+				$existe_correo = false;
+			}
+		} catch (PDOException $ex) {
+			print 'ERROR' . $ex->getMessage();
+		}
+		return $existe_correo;
+	}
+
+	public function existe_correoTecnico($Correo)
+	{
+		$existe_correo = true;
+		try {
+			$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE CORREO = :Correo");
 			$statement->bindParam(':Correo', $Correo);
 			$statement->execute();
 
@@ -209,6 +252,20 @@ class Usuarios extends Conexion
 		return $existe_telefono;
 	}
 
+	public function url_secreta($idUsuario, $url)
+	{
+		$result = false;
+		try {
+			$statement = $this->db->prepare("INSERT INTO recuperacion_password(ID_USUARIO,URL_SECRETA,FECHA)
+			  VALUES (:idUsuario, :url, NOW())");
+			$statement->bindParam(':idUsuario', $idUsuario);
+			$statement->bindParam(':url', $url);
+			$result = $statement->execute();
+		} catch (PDOException $ex) {
+			print 'ERROR' . $ex->getMessage();
+		}
+		return $result;
+	}
 
 
 	public function getNombre()
@@ -278,3 +335,4 @@ class Usuarios extends Conexion
 		}
 	}
 }
+?>

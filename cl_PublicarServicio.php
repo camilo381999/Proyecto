@@ -92,7 +92,7 @@ include_once('templates/menu.php');
         $idUsuario= $usuario->getId();
         $posts=$ModeloPendiente->publicacion($idUsuario);
         if($pendientes != null || $posts != null){
-            print_r($pendientes);        
+            /* print_r($pendientes);   */      
         ?>
             <button name="publicar" type="submit" disabled class="btn btn-primary btn-block">Publicar servicio</button>
         <?php }else{ ?>
