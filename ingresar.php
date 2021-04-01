@@ -60,8 +60,6 @@ include_once('templates/menu.php');
 		<div class="col-md-4 col-sm-4 col-xs-12"></div>
 	</div>
 </div>
-</div>
-
 
 <?php
 include_once('templates/terminar-html.php');
