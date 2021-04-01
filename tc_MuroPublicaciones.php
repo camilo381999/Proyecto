@@ -24,8 +24,15 @@ include_once('templates/menu.php');
             <?php
             $Modelo = new Publicacion();
             $resultado = $Modelo->consultarPublicaciones();
-
             foreach ($resultado as $dato) {
+                if($Modelo->selectAceptadosPendienteByIdPost($dato['ID_PUBLICACION']) == null ){
+                    $usuario=new Usuarios();
+                    $idTecnico= $usuario->getId();
+
+                    $postEnPendientes=$Modelo->selectPendienteByIdPost($dato['ID_PUBLICACION'], $idTecnico);
+                    if($postEnPendientes == null){
+                        
+                    
             ?>
                 <div class="card">
                     <h5 class="card-header"><?php echo $dato['SERVICIO']; ?></h5>
@@ -49,6 +56,8 @@ include_once('templates/menu.php');
                     </div>
                 </div><br>
             <?php
+                    }
+                }
             }
             ?>
         </div>

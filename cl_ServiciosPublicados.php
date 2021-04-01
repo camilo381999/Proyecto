@@ -24,13 +24,16 @@ include_once('templates/menu.php');
             <?php
             $Modelo = new Publicacion();
             $resultado = $Modelo->idPublicacion();
+            //print_r($resultado);
+            echo "<br>";
             if ($resultado != null) {
-                $agenda = $Modelo->consultarServiciosAceptados($resultado['ID_PUBLICACION']);
-                foreach ($agenda as $dato) {
-                    $tecnicos = $Modelo->informacionTecnico($dato['ID_TECNICO']);
-            ?>
-                    <div class="card">
-                        <h5 class="card-header"><?php echo $resultado['SERVICIO']; ?></h5>
+                foreach ($resultado as $idpost) {
+                    $servAceptado = $Modelo->consultarServiciosAceptados($idpost['ID_PUBLICACION']);
+                    foreach ($servAceptado as $dato) {
+                        $tecnicos = $Modelo->informacionTecnico($dato['ID_TECNICO']);
+                        /*echo $dato['ESTADO_SERVICIO'];*/?>
+                        <div class="card">
+                        <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5>
                             <p class="card-text"><?php echo $dato['ID_TECNICO'] . ' - ' . $dato['ESTADO_SERVICIO'] ?></p>
@@ -39,15 +42,30 @@ include_once('templates/menu.php');
                             <p class="card-text"><?php echo '  Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
                             <p class="card-text"><?php echo ' C.C: ' . $tecnicos['ID_TECNICO'] ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+
+                            <?php
+                            if($dato['ESTADO_SERVICIO']=="Aceptado"){
+                                echo "Ya agendaste una cita con este técnico.";
+                            }else{
+                            ?>
                             <a href="cl_controladorAceptar.php?IdTecnico=<?php echo $dato['ID_TECNICO'];?>&
                             Fecha=<?php echo $dato['FECHA'];?>&
                             Hora=<?php echo $dato['HORA'];?>&
-                            idPublicacion=<?php echo $resultado['ID_PUBLICACION'];?>" class="btn btn-primary">Aceptar</a>
+                            idPublicacion=<?php echo $idpost['ID_PUBLICACION'];?>" class="btn btn-primary">Aceptar</a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div><br>
+                        
+              <?php } ?>
+                    
+          <?php } ?>
+               
+                    
             <?php
                 }
-            }
+            
             ?>
         </div>
         <div class="col-md-2 col-sm-12 col-xs-12"></div>

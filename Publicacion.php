@@ -37,11 +37,12 @@ class Publicacion extends Conexion {
 
         $usuario=new Usuarios();
 
-        $idUsuario= $usuario->getId(); 
+        $idUsuario= $usuario->getId();
+
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		 FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
-		  (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO)
-		   AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos");
+		  (SELECT LOCALIDAD FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS LOCALIDAD,
+		   ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos");
         
         $statement->execute();
 
@@ -53,6 +54,28 @@ class Publicacion extends Conexion {
 
 		$statement = $this->db->prepare("SELECT * FROM pendiente ");
         $statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+	}
+
+	public function selectAceptadosPendienteByIdPost($idPublicacion) {
+
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO = 'Aceptado' AND REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion");
+        $statement->bindParam(':idPublicacion', $idPublicacion);
+		
+		$statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+	}
+
+	public function selectPendienteByIdPost($idPublicacion, $idTecnico) {
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ID_TECNICO = :idTecnico AND REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion");
+        $statement->bindParam(':idTecnico', $idTecnico);
+		$statement->bindParam(':idPublicacion', $idPublicacion);
+		
+		$statement->execute();
 
         $result = $statement->fetch();
         return $result;
@@ -81,12 +104,11 @@ class Publicacion extends Conexion {
 
         $usuario=new Usuarios();
 		$idCl= $usuario->getUsuarioByidPublicacion($idPublicacion);
-
         $idTecnico= $usuario->getId();
 		$nombreTecnico = $usuario->getNombre();
 		$idCliente = $idCl['USUARIOS_ID_USUARIO'];
 
-		$requerimiento= $this->publicacion($idCliente);
+		$requerimiento= $this->publicacion($idCliente, $idPublicacion);
 
 		$tipoServicio = $requerimiento['SERVICIO'];
 		
@@ -124,7 +146,7 @@ class Publicacion extends Conexion {
         $statement->bindParam(':idUsuario', $idUsuario);
         $statement->execute();
 
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
         return $result;
 	}
 
@@ -146,6 +168,22 @@ class Publicacion extends Conexion {
         $statement->execute();
 	}	
 
+	public function deleteRequerimiento($idCliente) {
+		
+		$statement = $this->db->prepare("DELETE FROM requerimientos
+		WHERE USUARIOS_ID_USUARIO = :idCliente ");
+        $statement->bindParam(':idCliente', $idCliente);
+        $statement->execute();
+	}	
+
+	public function deletePendiente($idCliente) {
+		
+		$statement = $this->db->prepare("DELETE FROM pendiente
+		WHERE ID_CLIENTE = :idCliente AND ESTADO_SERVICIO = 'Pendiente' ");
+        $statement->bindParam(':idCliente', $idCliente);
+        $statement->execute();
+	}	
+
 	public function getPostByid($idPublicacion) {
 
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
@@ -160,11 +198,12 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
-	public function publicacion($idUsuario) {
+	public function publicacion($idUsuario, $idPublicacion) {
 
 		$statement = $this->db->prepare("SELECT * FROM requerimientos
-		WHERE USUARIOS_ID_USUARIO  = :idUsuario ");
+		WHERE USUARIOS_ID_USUARIO  = :idUsuario AND ID_PUBLICACION = :idRequerimiento ");
         $statement->bindParam(':idUsuario', $idUsuario);
+		$statement->bindParam(':idRequerimiento', $idPublicacion);
         $statement->execute();
 
         $result = $statement->fetch();

@@ -84,21 +84,7 @@ include_once('templates/menu.php');
                 <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br><br>
             </div>
         </div>
-
-        <?php 
-        $ModeloPendiente = new Publicacion();
-        $pendientes=$ModeloPendiente->selectPendiente();
-        $usuario=new Usuarios();
-        $idUsuario= $usuario->getId();
-        $posts=$ModeloPendiente->publicacion($idUsuario);
-        if($pendientes != null || $posts != null){
-            /* print_r($pendientes);   */      
-        ?>
-            <button name="publicar" type="submit" disabled class="btn btn-primary btn-block">Publicar servicio</button>
-        <?php }else{ ?>
-            <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
-        <?php } ?>
-
+        <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
         
     </form>
 </div>
