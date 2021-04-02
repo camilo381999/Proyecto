@@ -42,6 +42,7 @@ include_once('templates/menu.php');
                             <p class="card-text"><?php echo '  Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
                             <p class="card-text"><?php echo ' C.C: ' . $tecnicos['ID_TECNICO'] ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                            <br>
 
                             <?php
                             if($dato['ESTADO_SERVICIO']=="Aceptado"){

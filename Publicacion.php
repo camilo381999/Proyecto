@@ -231,6 +231,38 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
+	public function get_agenda($Id)
+	{
+		$statement = $this->db->prepare("SELECT * FROM agenda WHERE TECNICOS_ID_TECNICO = :Id AND ESTADO = 'Aceptado' ");
+		$statement->bindParam(':Id', $Id);
+		$statement->execute();
+		$result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function get_pendiente_by_Id($id) {
+
+		$statement = $this->db->prepare("SELECT * FROM pendiente
+		 WHERE ID_PENDIENTE = :id");
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+	}
+
+	public function servicioTerminado($idAgenda) {
+		
+		$statement = $this->db->prepare("UPDATE agenda SET ESTADO = 'Terminado'
+		WHERE ID_CITA  = :idAgenda ");
+        $statement->bindParam(':idAgenda', $idAgenda);
+		if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 
 ?>
