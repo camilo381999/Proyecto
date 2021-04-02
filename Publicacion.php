@@ -223,7 +223,8 @@ class Publicacion extends Conexion {
 
 	public function informacionTecnico($idTecnico) {
 
-		$statement = $this->db->prepare("SELECT * FROM tecnicos WHERE ID_TECNICO = :idTecnico ");
+		$statement = $this->db->prepare("SELECT * FROM tecnicos
+		 WHERE ID_TECNICO = :idTecnico ");
         $statement->bindParam(':idTecnico', $idTecnico);
         $statement->execute();
 
@@ -233,10 +234,30 @@ class Publicacion extends Conexion {
 
 	public function get_agenda($Id)
 	{
-		$statement = $this->db->prepare("SELECT * FROM agenda WHERE TECNICOS_ID_TECNICO = :Id AND ESTADO = 'Aceptado' ");
+		$statement = $this->db->prepare("SELECT * FROM agenda
+		 WHERE TECNICOS_ID_TECNICO = :Id AND ESTADO = 'Aceptado' ");
 		$statement->bindParam(':Id', $Id);
 		$statement->execute();
 		$result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function get_agenda_historial($Id)
+	{
+		$statement = $this->db->prepare("SELECT * FROM agenda
+		 WHERE TECNICOS_ID_TECNICO = :Id AND (ESTADO = 'Terminado' OR ESTADO = 'Cancelado')");
+		$statement->bindParam(':Id', $Id);
+		$statement->execute();
+		$result = $statement->fetchAll();
+        return $result;
+	}
+
+	public function get_agenda_historial_cliente($IdAgenda)
+	{
+		$statement = $this->db->prepare("SELECT * FROM agenda WHERE PENDIENTE_ID_PENDIENTE = :Id AND (ESTADO = 'Terminado' OR ESTADO = 'Cancelado')");
+		$statement->bindParam(':Id', $IdAgenda);
+		$statement->execute();
+		$result = $statement->fetch();
         return $result;
 	}
 
@@ -261,6 +282,16 @@ class Publicacion extends Conexion {
 		} else {
 			return false;
 		}
+	}
+
+	public function get_pendiente_idClient($idCliente) {
+		$statement = $this->db->prepare("SELECT * FROM pendiente
+		WHERE ID_CLIENTE  = :idUsuario");
+        $statement->bindParam(':idUsuario', $idCliente);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+		return $result;        
 	}
 
 }
