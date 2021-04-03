@@ -41,7 +41,14 @@ include_once('templates/menu.php');
                             <h5 class="card-title"><?php echo $idpost['NOMBRE_TECNICO'] . ', ' . $idpost['LOCALIDAD']; ?></h5>
                             <p class="card-text"><?php echo $dato['TIPO'] . ' - ' . $dato['MARCA']; ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA']; ?></p>
-                            <p class="card-text"><?php echo "Costo del servicio: "; ?></p>
+                            <p class="card-text"><?php 
+                            if($idpost['TIPO_SERVICIO']=="Mantenimiento"){
+                                echo "Costo del servicio: $30.000"; 
+                            }else{
+                                echo "Costo del servicio: $40.000";
+                            }
+                            
+                            ?></p>
                             <a href="#">Escribir un mensaje</a>                            
                             <?php 
                              echo "<br>";
