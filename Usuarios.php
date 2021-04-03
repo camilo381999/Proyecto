@@ -267,6 +267,22 @@ class Usuarios extends Conexion
 		return $result;
 	}
 
+	public function url_secreta_existe($url){
+		try {
+			$statement = $this->db->prepare("SELECT * FROM recuperacion_password WHERE URL_SECRETA = :url");
+			$statement->bindParam(':url', $url);
+			$statement->execute();
+
+			//Comprueba si la consulta devuelve solo un usuario 
+			if ($statement->rowCount() == 1) {
+				$result = $statement->fetch();
+			} 
+		} catch (PDOException $ex) {
+			print 'ERROR' . $ex->getMessage();
+		}
+		return $result;
+	}
+
 
 	public function getNombre()
 	{
