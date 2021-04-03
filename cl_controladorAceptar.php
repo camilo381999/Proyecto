@@ -13,19 +13,16 @@ $idCliente= $usuario->getId();
 
 $publicacion=$Modelo->getPostByid($idPublicacion);
 
-$pendiente=$Modelo->getPendienteByidClient($idCliente);
+$pendiente=$Modelo->getPendienteByidClient($idCliente,$idPublicacion,$idTecnico);
 
+//Actualiza el estado del servico a aceptado
+$Modelo->updateEstadoServicioPend($pendiente['ID_PENDIENTE'], $idTecnico);
 
-if($Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'])){
-    //
-    $Modelo->updateEstadoServicioPend($pendiente['ID_PENDIENTE']);
+//Borrar de la tabla pendiente las demás solicitudes
+$Modelo-> deletePendiente($idCliente,$idPublicacion);
 
-    //Borrar de la tabla pendiente las demás solicitudes
-    $Modelo-> deletePendiente($idCliente);
-    //$Modelo->deleteRequerimiento($idCliente);
-    header('Location: index-Clientes.php');
-}else{
-    header('Location: index-Clientes.php');
-}
+//Agrega a la agenda
+$Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE']);
 
+header('Location: index-Clientes.php');
 ?>

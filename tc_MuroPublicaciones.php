@@ -3,6 +3,7 @@ include_once("Usuarios.php");
 include_once("Publicacion.php");
 
 $ModeloUsuarios = new Usuarios();
+$idTecnico= $ModeloUsuarios->getId();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionTecnicos();
 
@@ -23,16 +24,22 @@ include_once('templates/menu.php');
         <div class="col-md-8 col-sm-12 col-xs-12">
             <?php
             $Modelo = new Publicacion();
+            
+            //retorna todos los datos de la tabla "requerimientos"
             $resultado = $Modelo->consultarPublicaciones();
+            
+            //a cada fila de requerimientos la llama dato
             foreach ($resultado as $dato) {
-                if($Modelo->selectAceptadosPendienteByIdPost($dato['ID_PUBLICACION']) == null ){
-                    $usuario=new Usuarios();
-                    $idTecnico= $usuario->getId();
 
-                    $postEnPendientes=$Modelo->selectPendienteByIdPost($dato['ID_PUBLICACION'], $idTecnico);
-                    if($postEnPendientes == null){
-                        
-                    
+                //comprueba si en pendientes ya existe un servicio aceptado por el tecnico
+                $postEnPendientesTecnico=$Modelo->selectPendienteByIdPost($dato['ID_PUBLICACION'], $idTecnico);
+                $postEnPendientes=$Modelo->getPendienteXIdPost($dato['ID_PUBLICACION']);
+                
+                //si el arreglo es vacio significa que el tecnico no ha aceptado ese servicio 
+                if($postEnPendientesTecnico==null){
+
+                    //si el arreglo es diferente de vacio significa que el estado es pendiente y ningun tecnico ha sido agendado para este servicio
+                    if($postEnPendientes == null || $postEnPendientes['ESTADO_SERVICIO'] == "Pendiente"){
             ?>
                 <div class="card">
                     <h5 class="card-header"><?php echo $dato['SERVICIO']; ?></h5>
@@ -55,9 +62,18 @@ include_once('templates/menu.php');
                         </a>
                     </div>
                 </div><br>
-            <?php
-                    }
-                }
+
+            <?php            
+                    }/*else{
+                        echo "el servicio no lo puede tomar 2 ";
+                        echo $dato['ID_PUBLICACION'];
+                        echo "<br>";
+                    }*/
+                }/*else{
+                    echo "el servicio no lo puede tomar 1 ";
+                    echo $dato['ID_PUBLICACION'];
+                    echo "<br>";
+                }*/
             }
             ?>
         </div>
