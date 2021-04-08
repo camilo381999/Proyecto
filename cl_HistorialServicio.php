@@ -29,7 +29,7 @@ include_once('templates/menu.php');
                 echo "No hay servicios";
             } else {
                 foreach ($resultado as $dato) {
-                    if($dato['ESTADO_SERVICIO'] != "Aceptado"){
+                    if(!is_null($dato)){
                         $agenda = $Modelo->get_agenda_historial_cliente($dato['ID_PENDIENTE']);
                         if (!is_null($agenda)) {
                             $requerimiento = $Modelo->publicacion($dato['ID_CLIENTE'], $dato['REQUERIMIENTOS_ID_PUBLICACION']);
