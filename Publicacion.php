@@ -365,21 +365,31 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
-	public function servicioTerminado($idAgenda) {
+	//Se cambia el estado del servicio a terminado en la tabla agenda y pendiente
+	public function servicioTerminado($idAgenda,$idPendiente) {
 		
 		$statement = $this->db->prepare("UPDATE agenda SET ESTADO = 'Terminado'
 		WHERE ID_CITA  = :idAgenda ");
         $statement->bindParam(':idAgenda', $idAgenda);
+		$statement->execute();
+		
+
+		$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Terminado'
+		WHERE ID_PENDIENTE = :idPendiente ");
+        $statement->bindParam(':idPendiente', $idPendiente);
 		if ($statement->execute()) {
 			return true;
 		} else {
 			return false;
 		}
+
+
 	}
 
+	//trae todos los servicios que tenga el cliente en la tabla de pendiente
 	public function get_pendiente_idClient($idCliente) {
 		$statement = $this->db->prepare("SELECT * FROM pendiente
-		WHERE ID_CLIENTE  = :idUsuario");
+		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado')");
         $statement->bindParam(':idUsuario', $idCliente);
         $statement->execute();
 

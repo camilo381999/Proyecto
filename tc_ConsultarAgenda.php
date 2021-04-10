@@ -41,7 +41,7 @@ include_once('templates/menu.php');
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
                             <p class="card-text"><?php echo $dato['ESTADO'] ?></p>
 
-                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA']; ?>" 
+                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA'];?>&IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE'];?>" 
                             class="btn btn-primary">
                                 Terminar servicio
                             </a>
