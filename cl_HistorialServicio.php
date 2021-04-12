@@ -29,11 +29,11 @@ include_once('templates/menu.php');
                 echo "No hay servicios";
             } else {
                 foreach ($resultado as $dato) {
-                    if(!is_null($dato)){
+                    if (!is_null($dato)) {
                         $agenda = $Modelo->get_agenda_historial_cliente($dato['ID_PENDIENTE']);
                         if (!is_null($agenda)) {
                             $requerimiento = $Modelo->publicacion($dato['ID_CLIENTE'], $dato['REQUERIMIENTOS_ID_PUBLICACION']);
-                ?>
+            ?>
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO'] ?></h5>
                                 <div class="card-body">
@@ -42,10 +42,18 @@ include_once('templates/menu.php');
                                     <p class="card-text"><?php echo $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                                     <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
                                     <p class="card-text"><?php echo $agenda['FECHA'] . ' / ' . $agenda['HORA'] ?></p>
+                                    <p class="card-text"><?php
+                                                            if ($dato['TIPO_SERVICIO'] == "Mantenimiento") {
+                                                                echo "Costo del servicio: $30.000";
+                                                            } else {
+                                                                echo "Costo del servicio: $40.000";
+                                                            }
+
+                                                            ?></p>
                                     <p class="card-text"><?php echo $agenda['ESTADO'] ?></p>
                                 </div>
                             </div><br>
-                <?php
+            <?php
                         }
                     }
                 }

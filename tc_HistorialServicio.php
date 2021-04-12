@@ -37,6 +37,14 @@ include_once('templates/menu.php');
                             <p class="card-text"><?php echo $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                             <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                            <p class="card-text"><?php
+                                                    if ($pendiente['TIPO_SERVICIO'] == "Mantenimiento") {
+                                                        echo "Costo del servicio: $30.000";
+                                                    } else {
+                                                        echo "Costo del servicio: $40.000";
+                                                    }
+
+                                                    ?></p>
                             <p class="card-text"><?php echo $dato['ESTADO'] ?></p>
                         </div>
                     </div><br>

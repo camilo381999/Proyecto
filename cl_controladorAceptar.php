@@ -5,6 +5,7 @@ $idTecnico = $_GET['IdTecnico'];
 $Fecha = $_GET['Fecha'];
 $Hora = $_GET['Hora'];
 $idPublicacion = $_GET['idPublicacion'];
+$Servicio = $_GET['Servicio'];
 
 $Modelo = new Publicacion();
 
@@ -22,7 +23,12 @@ $Modelo->updateEstadoServicioPend($pendiente['ID_PENDIENTE'], $idTecnico);
 $Modelo-> deletePendiente($idCliente,$idPublicacion);
 
 //Agrega a la agenda
-$Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE']);
+
+if($Servicio == "Mantenimiento"){
+    $Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'],'30000');
+}else{
+$Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'],'40000');
+}
 
 header('Location: index-Clientes.php');
 ?>

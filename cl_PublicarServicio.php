@@ -9,8 +9,9 @@ $ModeloUsuarios->validateSessionClientes();
 
 if (isset($_POST['publicar'])) {
     $Modelo = new Publicacion();
-    if ($Modelo->add($_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
+    if ($Modelo->add($_POST['Direccion'],$_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
         //redireccionar a alguna pagina
+        header('Location: index-Clientes.php');
     }
 }
 
@@ -77,15 +78,19 @@ include_once('templates/menu.php');
             </div>
 
             <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <textarea name="Direccion" class="form-control" placeholder="Escribe tu dirección" cols="200" rows="1" required></textarea>
+                </div>
+
                 <label for="fecha">Escoge la fecha de tu servicio:</label><br>
                 <input type="date" class="form-control" id="fecha" name="fecha" value="2021-01-01" min="2021-01-01" max="2025-12-31" required><br>
 
                 <label for="hora">Escoge la hora de tu servicio:</label><br>
-                <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br><br>
+                <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br>
             </div>
         </div>
         <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
-        
+
     </form>
 </div>
 

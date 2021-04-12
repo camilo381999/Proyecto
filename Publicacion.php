@@ -9,15 +9,16 @@ class Publicacion extends Conexion {
 		$this->db = parent::__construct();
 	}
 
-    public function add($Descripcion, $Servicio, $Marca, $Tipo, $Fecha,$Hora) {
+    public function add($Direccion,$Descripcion, $Servicio, $Marca, $Tipo, $Fecha,$Hora) {
 
         $usuario=new Usuarios();
 
         $idUsuario= $usuario->getId(); 
-		$statement = $this->db->prepare("INSERT INTO requerimientos (DESCRIPCION,SERVICIO,MARCA,
-		TIPO,FECHA,HORA,USUARIOS_ID_USUARIO) VALUES (:Descripcion, :Servicio, :Marca, :Tipo,
+		$statement = $this->db->prepare("INSERT INTO requerimientos (DIRECCION,DESCRIPCION,SERVICIO,MARCA,
+		TIPO,FECHA,HORA,USUARIOS_ID_USUARIO) VALUES (:Direccion,:Descripcion, :Servicio, :Marca, :Tipo,
 		 :Fecha, :Hora, :idUsuario)");
 
+		$statement->bindParam(':Direccion', $Direccion);
 		$statement->bindParam(':Descripcion', $Descripcion);
         $statement->bindParam(':Servicio', $Servicio);
 		$statement->bindParam(':Marca', $Marca);
@@ -105,17 +106,18 @@ class Publicacion extends Conexion {
 	}
 
 	//Crea el nuevo dato en la agenda
-	public function servicioAceptado($Fecha, $Hora, $Ubicacion,$idTecnico,$idPendiente) {
+	public function servicioAceptado($Fecha, $Hora, $Ubicacion,$idTecnico,$idPendiente,$costo) {
 		echo $Fecha." - ".$Hora." - ".$idTecnico." - ".$idPendiente;
 		$statement = $this->db->prepare("INSERT INTO agenda (FECHA,HORA,UBICACION,
-		TECNICOS_ID_TECNICO,ESTADO,PENDIENTE_ID_PENDIENTE) 
-		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'Aceptado', :idPendiente)");
+		TECNICOS_ID_TECNICO,ESTADO,PENDIENTE_ID_PENDIENTE,COSTO) 
+		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'Aceptado', :idPendiente, :Costo)");
 
 		$statement->bindParam(':Fecha', $Fecha);
         $statement->bindParam(':Hora', $Hora);
         $statement->bindParam(':Ubicacion', $Ubicacion);
 		$statement->bindParam(':idTecnico', $idTecnico);
 		$statement->bindParam(':idPendiente', $idPendiente);
+		$statement->bindParam(':Costo', $costo);
 
         if ($statement->execute()) {
 			return true;
@@ -258,8 +260,6 @@ class Publicacion extends Conexion {
 
 		
 	}
-	
-
 	
 	public function getPublicacionByidPost($idPublicacion) {
 

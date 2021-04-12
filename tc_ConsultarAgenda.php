@@ -36,15 +36,27 @@ include_once('templates/menu.php');
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $cliente['NOMBRE'] . ' ' . $cliente['APELLIDO'] . ', ' . $dato['UBICACION'] ?></h5>
                             <p class="card-text"><?php echo "Teléfono: " . $cliente['TELEFONO'] ?></p>
+                            <p class="card-text"><?php echo "Dirección: " . $requerimiento['DIRECCION'] ?></p>
                             <p class="card-text"><?php echo $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                             <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
                             <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                            <p class="card-text"><?php
+                                                    if ($pendiente['TIPO_SERVICIO'] == "Mantenimiento") {
+                                                        echo "Costo del servicio: $30.000";
+                                                    } else {
+                                                        echo "Costo del servicio: $40.000";
+                                                    }
+
+                                                    ?></p>
                             <p class="card-text"><?php echo $dato['ESTADO'] ?></p>
 
-                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA'];?>&IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE'];?>" 
-                            class="btn btn-primary">
+                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA']; ?>&IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>" class="btn btn-primary">
                                 Terminar servicio
                             </a>
+
+                            <a href="cl_controladorCancelar.php?Fecha=<?php echo $dato['FECHA']; ?>&
+                            Hora=<?php echo $dato['HORA']; ?>&
+                            idPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>" class="btn btn-primary">Cancelar</a>
                         </div>
                     </div><br>
             <?php
