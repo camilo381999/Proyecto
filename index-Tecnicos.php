@@ -64,6 +64,15 @@ include_once('templates/menu.php');
                 </a>
             </div>
         </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="main-menu__options">
+                <a href="cl_PQRs.php" class="menu__option" id="btnPQRs">
+                    <img class="option__image" src="img/icon-pqrs.svg" alt="icon-pqrs">
+                    PQRs
+                </a>
+            </div>
+        </div>
     </div>
 
 </div>

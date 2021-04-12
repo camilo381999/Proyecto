@@ -50,7 +50,12 @@ include_once('templates/menu.php');
                                                     ?></p>
                             <p class="card-text"><?php echo $dato['ESTADO'] ?></p>
 
-                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA']; ?>&IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>" class="btn btn-primary">
+                            <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA']; ?>&
+                            IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>&
+                            idUsuario=<?php echo $pendiente['ID_CLIENTE']; ?>&
+                            idTecnico=<?php echo $pendiente['ID_TECNICO']; ?>&
+                            Fecha=<?php echo $dato['FECHA']; ?>&
+                            Costo=<?php echo $dato['COSTO']; ?>" class="btn btn-primary">
                                 Terminar servicio
                             </a>
 

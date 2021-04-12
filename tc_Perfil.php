@@ -15,8 +15,8 @@ include_once('templates/menu.php');
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12"></div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="col-md-3 col-sm-4 col-xs-12"></div>
+        <div class="col-md-6 col-sm-4 col-xs-12">
             <!-- form start -->
             <form class="form-container" id="form-registro">
                 <div class="title">
@@ -57,7 +57,7 @@ include_once('templates/menu.php');
                 </div>
         </div>
         </form>
-        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-3 col-sm-4 col-xs-12"></div>
     </div>
 </div>
 

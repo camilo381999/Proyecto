@@ -347,7 +347,8 @@ class Publicacion extends Conexion {
 
 	public function get_agenda_historial_cliente($IdAgenda)
 	{
-		$statement = $this->db->prepare("SELECT * FROM agenda WHERE PENDIENTE_ID_PENDIENTE = :Id AND (ESTADO = 'Terminado' OR ESTADO = 'Cancelado')");
+		$statement = $this->db->prepare("SELECT * FROM agenda WHERE PENDIENTE_ID_PENDIENTE = :Id AND
+		 (ESTADO = 'Terminado' OR ESTADO = 'Cancelado')");
 		$statement->bindParam(':Id', $IdAgenda);
 		$statement->execute();
 		$result = $statement->fetch();
@@ -366,24 +367,28 @@ class Publicacion extends Conexion {
 	}
 
 	//Se cambia el estado del servicio a terminado en la tabla agenda y pendiente
-	public function servicioTerminado($idAgenda,$idPendiente) {
+	public function servicioTerminado($idAgenda,$idPendiente,$idUsuario,$idTecnico,$Fecha,$Costo) {
 		
 		$statement = $this->db->prepare("UPDATE agenda SET ESTADO = 'Terminado'
 		WHERE ID_CITA  = :idAgenda ");
         $statement->bindParam(':idAgenda', $idAgenda);
-		$statement->execute();
-		
+		$statement->execute();	
 
 		$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Terminado'
 		WHERE ID_PENDIENTE = :idPendiente ");
         $statement->bindParam(':idPendiente', $idPendiente);
+		$statement->execute();
+
+		$statement = $this->db->prepare("INSERT INTO factura (FECHA, COSTO, USUARIOS_ID_USUARIO, TECNICOS_ID_TECNICO) VALUES (:Fecha, :Costo, :idUsuario, :idTecnico)");
+        $statement->bindParam(':Fecha', $Fecha);
+        $statement->bindParam(':Costo', $Costo);
+        $statement->bindParam(':idUsuario', $idUsuario);
+        $statement->bindParam(':idTecnico', $idTecnico);
 		if ($statement->execute()) {
 			return true;
 		} else {
 			return false;
 		}
-
-
 	}
 
 	//trae todos los servicios que tenga el cliente en la tabla de pendiente

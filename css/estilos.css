@@ -46,6 +46,16 @@ body{
     background: #fff;
     padding: 30px;
     margin-top: 10vh;
+    margin-bottom: 5vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.form-container2{
+    background: #fff;
+    padding: 30px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #000;
 }
