@@ -33,7 +33,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="cl_ServiciosPublicados.php" class="menu__option" id="btnPublicado">
                     <img class="option__image" src="img/icon-ConsultarPost.svg" alt="icon-publicar">
-                    Servicios publicados
+                    Perfiles de técnicos
                 </a>
             </div>
         </div>
@@ -41,7 +41,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="cl_CancelarServicio.php" class="menu__option" id="btnCancelar">
                     <img class="option__image" src="img/icon-cancelar.svg" alt="icon-cancelar">
-                    Cancelar Servicio
+                    Servicios activos
                 </a>
             </div>
         </div>

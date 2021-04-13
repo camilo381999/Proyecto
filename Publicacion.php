@@ -217,16 +217,16 @@ class Publicacion extends Conexion {
 		return $result;        
 	}
 
-	
-
 	public function cancelacionServicioPendiente($fecha, $hora, $idPendiente){
 		$statement = $this->db->prepare("SELECT IF( DATEDIFF(:fecha, CURRENT_DATE) >= 1 ,'true','false') AS DIFDATE");
+		//echo "SELECT IF( DATEDIFF(".$fecha.", CURRENT_DATE) >= 1 ,'true','false') AS DIFDATE";
 		$statement->bindParam(':fecha', $fecha);
         $statement->execute();
 		$boolFechaQ = $statement->fetch();
 		$boolFecha=$boolFechaQ['DIFDATE'];
 
 		if($boolFecha=="true"){
+			//echo "falta mas de un dia";
 			$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Cancelado'
 			WHERE ID_PENDIENTE  = :idPendiente ");
 			$statement->bindParam(':idPendiente', $idPendiente);
@@ -236,13 +236,16 @@ class Publicacion extends Conexion {
 			WHERE PENDIENTE_ID_PENDIENTE  = :idPendiente ");
 			$statement->bindParam(':idPendiente', $idPendiente);
 			$statement->execute();
+			return true;
 		}else{
+			//echo "en el mismo dia";
 			$statement = $this->db->prepare("SELECT IF( TIMEDIFF(:hora, CURRENT_TIME) >= '2:00:00' ,'true','false') AS DIFTIME");
 			$statement->bindParam(':hora', $hora);
 			$statement->execute();
 			$boolHoraQ = $statement->fetch();
 			$boolHora=$boolHoraQ['DIFTIME'];
-			if($boolFecha=="true"){
+			//echo $boolHora;
+			if($boolHora=="true"){
 				$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Cancelado'
 				WHERE ID_PENDIENTE  = :idPendiente ");
 				$statement->bindParam(':idPendiente', $idPendiente);
@@ -252,8 +255,10 @@ class Publicacion extends Conexion {
 				WHERE PENDIENTE_ID_PENDIENTE  = :idPendiente ");
 				$statement->bindParam(':idPendiente', $idPendiente);
 				$statement->execute();
+				return true;
 			}else{
-				echo "La cancelacion de servicios debe realizarse con 2 horas de anticipacion, por fvor cominiquese con su tecnico";
+				//echo "La cancelacion de servicios debe realizarse con 2 horas de anticipacion, por fvor cominiquese con su tecnico";
+				return false;
 			}
 
 		}

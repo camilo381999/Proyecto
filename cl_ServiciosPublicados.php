@@ -31,7 +31,6 @@ include_once('templates/menu.php');
             $resultado = $Modelo->selectPublicacionXidCliente($idCliente);
             //print_r($resultado);
 
-            echo "<br>";
             if ($resultado != null) {
 
                 //toma el id de cada post para consultarlo en la tabla de pendientes
@@ -43,12 +42,19 @@ include_once('templates/menu.php');
                         $tecnicos = $Modelo->informacionTecnico($dato['ID_TECNICO']);
 
                         //muestra el srvicio para aceptar un tecnico si el estado es pendiente
-                        if ($dato['ESTADO_SERVICIO'] == "Pendiente") {
-                            /*echo $dato['ESTADO_SERVICIO'];*/ ?>
+                        if ($dato['ESTADO_SERVICIO'] == "Pendiente") { ?>
+
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5>
+                                    <?php
+                                    if($dato['CAMBIOS_TECNICO']=="true"){
+                                        echo "<div class='alert alert-primary' role='alert'>";
+                                        echo "Este tecnico propone un cambio. Tu solicitud está para el ".$idpost['FECHA']." a las ".$idpost['HORA'];
+                                        echo "</div>";
+                                    }
+                                    ?>
                                     <p class="card-text"><?php echo $dato['ID_TECNICO'] . ' - ' . $dato['ESTADO_SERVICIO'] ?></p>
                                     <p class="card-text"><?php echo $tecnicos['CORREO']  ?></p>
                                     <p class="card-text"><?php echo  '  Teléfono: ' . $tecnicos['TELEFONO'] ?></p>
@@ -68,7 +74,7 @@ include_once('templates/menu.php');
                                 Fecha=<?php echo $dato['FECHA']; ?>&
                                 Hora=<?php echo $dato['HORA']; ?>&
                                 idPublicacion=<?php echo $idpost['ID_PUBLICACION']; ?>&
-                                Servicio=<?php echo $dato['TIPO_SERVICIO']; ?>" class="btn btn-primary">Aceptar</a>
+                                Servicio=<?php echo $dato['TIPO_SERVICIO']; ?>"  class="btn btn-primary">Aceptar</a>
 
                                 </div>
                             </div><br>
@@ -77,7 +83,8 @@ include_once('templates/menu.php');
                         }
                     }
                 }
-            } ?>
+            } 
+            ?>
         </div>
         <div class="col-md-2 col-sm-12 col-xs-12"></div>
     </div>

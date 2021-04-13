@@ -30,5 +30,16 @@ if($Servicio == "Mantenimiento"){
 $Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'],'40000');
 }
 
-header('Location: index-Clientes.php');
+$validacionPost=true;
+
+//script del alert
+if($validacionPost){
+    echo "<script>";
+    echo "alert('¡Su cita se agendó correctamente con este tecnico!');" ;
+    echo "window.location.href = 'index.php';" ;
+    echo "</script>"; 
+
+}
+
+//header('Location: index-Clientes.php');
 ?>

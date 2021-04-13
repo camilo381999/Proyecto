@@ -13,7 +13,16 @@ $ModeloUsuarios->validateSessionTecnicos();
 if (isset($_GET['aceptar'])) {
     $Modelo = new Publicacion();
     if ($Modelo->servicioPendiente("true", $_GET['Id'], $_GET['Fecha'], $_GET['Hora'], $_GET['Ubicacion'])) {
-        header('Location: /Proyecto/index-Tecnicos.php');
+        $validacionPost=true;
+
+        //script del alert
+        if($validacionPost){
+            echo "<script>";
+            echo "alert('¡Usted ha aceptado este servicio!');" ;
+            //redireccionar a alguna pagina
+            echo "window.location.href = 'index.php';" ;
+            echo "</script>"; 
+        }
     }
 }
 
