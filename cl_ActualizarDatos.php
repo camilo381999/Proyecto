@@ -9,6 +9,9 @@ $Id = $ModeloUsuarios->getId();
 $result = $ModeloUsuarios->getById($Id);
 include_once('validarActu.php');
 
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
+
 $validar = new ValidarActualizar(
     $result['NOMBRE'],
     $result['APELLIDO'],
@@ -36,10 +39,13 @@ if (isset($_POST['actualizar'])) {
             $validar->getLocalidad()
         );
     }
+
+    echo "<script> Swal.fire('¡Se han actualizado sus datos con éxito!');";
+    //redireccionar a alguna pagina
+    /*  echo "window.location.href = 'index.php';"; */
+    echo "</script>";
 }
 
-include_once('templates/iniciar-html.php');
-include_once('templates/menu.php');
 ?>
 
 
@@ -107,7 +113,7 @@ include_once('templates/menu.php');
                 </div>
 
                 <div class="form-group">
-                    <input name="Contrasena" type="password" class="form-control" placeholder="Nueva contraseña o Actual" >
+                    <input name="Contrasena" type="password" class="form-control" placeholder="Nueva contraseña o Actual">
                     <?php
                     $validar->mostrar_error_contrasena();
                     ?>

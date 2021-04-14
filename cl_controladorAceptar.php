@@ -9,37 +9,43 @@ $Servicio = $_GET['Servicio'];
 
 $Modelo = new Publicacion();
 
-$usuario=new Usuarios();
-$idCliente= $usuario->getId(); 
+$usuario = new Usuarios();
+$idCliente = $usuario->getId();
 
-$publicacion=$Modelo->getPostByid($idPublicacion);
+$publicacion = $Modelo->getPostByid($idPublicacion);
 
-$pendiente=$Modelo->getPendienteByidClient($idCliente,$idPublicacion,$idTecnico);
+$pendiente = $Modelo->getPendienteByidClient($idCliente, $idPublicacion, $idTecnico);
 
 //Actualiza el estado del servico a aceptado
 $Modelo->updateEstadoServicioPend($pendiente['ID_PENDIENTE'], $idTecnico);
 
 //Borrar de la tabla pendiente las demás solicitudes
-$Modelo-> deletePendiente($idCliente,$idPublicacion);
+$Modelo->deletePendiente($idCliente, $idPublicacion);
 
 //Agrega a la agenda
 
-if($Servicio == "Mantenimiento"){
-    $Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'],'30000');
-}else{
-$Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'],$idTecnico, $pendiente['ID_PENDIENTE'],'40000');
+if ($Servicio == "Mantenimiento") {
+    $Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'], $idTecnico, $pendiente['ID_PENDIENTE'], '30000');
+} else {
+    $Modelo->servicioAceptado($Fecha, $Hora, $publicacion['LOCALIDAD'], $idTecnico, $pendiente['ID_PENDIENTE'], '40000');
 }
 
-$validacionPost=true;
+$validacionPost = true;
 
 //script del alert
-if($validacionPost){
-    echo "<script>";
-    echo "alert('¡Su cita se agendó correctamente con este tecnico!');" ;
-    echo "window.location.href = 'index.php';" ;
-    echo "</script>"; 
+if ($validacionPost) {
+
+    include_once('templates/iniciar-html.php');
+    include_once('templates/menu.php');
+
+    echo "<script> Swal.fire('¡Su cita se agendó correctamente con este tecnico!');";
+    //echo "alert('¡Su cita se agendó correctamente con este tecnico!');" ;
+    //redireccionar a alguna pagina
+    /* echo "window.location.href = 'index.php';"; */
+    echo "</script>";
+    //header('Location: index-Clientes.php');
 
 }
 
 //header('Location: index-Clientes.php');
-?>
+include_once('templates/terminar-html.php');

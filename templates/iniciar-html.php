@@ -8,6 +8,9 @@
     <title>Tecniclick</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="stylesheet" href="plugins/SweetAlert/dist/sweetalert2.min.css">
+    <script src="plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>

@@ -42,7 +42,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="tc_ConsultarIngresos.php" class="menu__option" id="btnIngresos">
                     <img class="option__image" src="img/icon-ingresos.svg" alt="icon-ingresos">
-                    Ingresos Semanales
+                     Ingresos Semanales
                 </a>
             </div>
         </div>

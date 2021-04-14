@@ -5,28 +5,28 @@ include_once("Publicacion.php");
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionClientes();
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
+
 
 if (isset($_POST['publicar'])) {
     $Modelo = new Publicacion();
-    if ($Modelo->add($_POST['Direccion'],$_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
-        
-        $validacionPost=true;
+    if ($Modelo->add($_POST['Direccion'], $_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
+
+        $validacionPost = true;
 
         //script del alert
-        if($validacionPost){
-            echo "<script>";
-            echo "alert('¡Se ha publicado su requerimiento con éxito!');" ;
+        if ($validacionPost) {
+            echo "<script> Swal.fire('¡Se ha publicado su requerimiento con éxito!');";
             //redireccionar a alguna pagina
-            echo "window.location.href = 'index.php';" ;
-            echo "</script>"; 
+           /*  echo "window.location.href = 'index.php';"; */
+            echo "</script>";
         }
         //header('Location: index-Clientes.php');
     }
 }
 
 
-include_once('templates/iniciar-html.php');
-include_once('templates/menu.php');
 ?>
 
 <div class="container">
@@ -91,13 +91,15 @@ include_once('templates/menu.php');
                 </div>
 
                 <label for="fecha">Escoge la fecha de tu servicio:</label><br>
-                <input type="date" class="form-control" id="fecha" name="fecha" value="<?php $hoy = date('Y-m-j'); echo $hoy; ?>" min="<?php $hoy = date('Y-m-j'); echo $hoy; ?>" max="2021-12-31" required><br>
+                <input type="date" class="form-control" id="fecha" name="fecha" value="<?php $hoy = date('Y-m-j');
+                                                                                        echo $hoy; ?>" min="<?php $hoy = date('Y-m-j');
+                                                                                                            echo $hoy; ?>" max="2021-12-31" required><br>
 
                 <label for="hora">Escoge la hora de tu servicio:</label><br>
                 <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br>
             </div>
         </div>
-        <button name="publicar" type="submit"  class="btn btn-primary btn-block">Publicar servicio</button>
+        <button name="publicar" type="submit" class="btn btn-primary btn-block">Publicar servicio</button>
 
     </form>
 </div>
