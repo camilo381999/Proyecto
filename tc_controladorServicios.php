@@ -1,4 +1,6 @@
 <?php
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 include_once("Publicacion.php");
 
 $idPublicacion = $_GET['Id'];
@@ -13,23 +15,25 @@ if($Modelo->servicioPendiente($Boton, $idPublicacion, $Fecha, $Hora, $Ubicacion)
 
         //script del alert
         if($validacionPost){
-            echo "<script>";
-            echo "alert('¡Usted ha aceptado este servicio!');" ;
-            //redireccionar a alguna pagina
-            echo "window.location.href = 'index.php';" ;
-            echo "</script>"; 
+            echo "<script> Swal.fire('¡Usted ha aceptado este servicio!').then(
+                function() {
+                    window.location.href = 'index.php';
+                });";
+            echo "</script>";
+            
         }
 }else{
     $validacionPost=true;
 
     //script del alert
     if($validacionPost){
-        echo "<script>";
-        echo "alert('¡No see ha podido agendar este servicio!');" ;
-        //redireccionar a alguna pagina
-        echo "window.location.href = 'index.php';" ;
-        echo "</script>"; 
+        echo "<script> Swal.fire('¡No see ha podido agendar este servicio!').then(
+            function() {
+                window.location.href = 'index.php';
+            });";
+        echo "</script>";
+        
     }
 }
-
+include_once('templates/terminar-html.php');
 ?>

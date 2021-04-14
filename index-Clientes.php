@@ -18,8 +18,6 @@ include_once('templates/menu.php');
         <br>
     </div>
 
-
-
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
@@ -73,6 +71,62 @@ include_once('templates/menu.php');
     </div>
 
 </div>
+
+<script>
+Swal.fire({
+    title: "Por favor califica a tu técnico",
+    text: "Estas preguntas podrian ayudar a tu tecnico a mejorar su servicio",
+    html: '<form action="<?php echo $_SERVER['PHP_SELF'] ?>" >'+
+            '<div class="form-group">'+
+                
+                '<p>'+
+                '¿Como describiría la presentacion personal del técnico?<br><br>'+
+                '<label><input type="radio" name="pregunta1" id="pregunta1" value="1" required>Excelente </label>'+'    '+
+                '<label><input type="radio" name="pregunta1" id="pregunta1" value="0.5">Regular </label>'+'    '+
+                '<label><input type="radio" name="pregunta1" id="pregunta1" value="0">Mala </label><br>'+'    '+
+                '</p>'+
+
+                '<p>'+
+                '¿Que tan atento fue el técnico al prestar el servicio?<br><br>'+
+                '<label><input type="radio" name="pregunta2" value="1" required>Excelente</label>'+'    '+
+                '<label><input type="radio" name="pregunta2" value="0.5">Regular</label>'+'    '+
+                '<label><input type="radio" name="pregunta2" value="0">Malo</label><br>'+'    '+
+                '</p>'+
+
+                '<p>'+
+                '¿Como calificaría la puntualidad del técnico?<br><br>'+
+                '<label><input type="radio" name="pregunta3" value="1" required>Excelente</label>'+'    '+
+                '<label><input type="radio" name="pregunta3" value="0.5">Regular</label>'+'    '+
+                '<label><input type="radio" name="pregunta3" value="0">Malo</label><br>'+'    '+
+                '</p>'+
+
+                '<p>'+
+                '¿Como describiría los conocimientos del tecnico para atender su requerimiento?<br><br>'+
+                '<label><input type="radio" name="pregunta4" value="1" required>Excelente</label>'+'    '+
+                '<label><input type="radio" name="pregunta4" value="0.5">Regular</label>'+'    '+
+                '<label><input type="radio" name="pregunta4" value="0">Malo</label><br>'+'    '+
+                '</p>'+
+
+                '<p>'+
+                '¿El técnico dió solución a su requerimiento?<br><br>'+
+                '<label><input type="radio" name="pregunta5" value="1" required>Si</label>'+'    '+
+                '<label><input type="radio" name="pregunta5" value="0">No</label><br>'+
+                '</p>'+
+
+                '<textarea name="comentario" class="form-control" placeholder="Añade un comentario sobre el tecnico" cols="200" rows="3" required></textarea>'+
+            '</div>'+
+          '</form>',
+    preConfirm: () => {
+        const pregunta1 = Swal.getPopup().querySelector('#pregunta1').value
+        const pregunta2 = Swal.getPopup().querySelector('#pregunta2').value
+        
+        return { pregunta1: pregunta1, pregunta2: pregunta2 }
+    }
+}).then(
+		function() {
+			window.location.href = "cl_controladorCalificacion.php?pregunta1=$_GET['pregunta1']";
+		});
+</script>
 
 <?php
 include_once('templates/terminar-html.php');

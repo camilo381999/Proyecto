@@ -1,4 +1,6 @@
 <?php
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 include_once("Publicacion.php");
 
 $idTecnico = $_GET['IdTecnico'];
@@ -35,10 +37,13 @@ $validacionPost = true;
 //script del alert
 if ($validacionPost) {
 
-    include_once('templates/iniciar-html.php');
-    include_once('templates/menu.php');
+    
 
-    echo "<script> Swal.fire('¡Su cita se agendó correctamente con este tecnico!');";
+    echo "<script> 
+        Swal.fire('¡Su cita se agendó correctamente con este tecnico!').then(
+        function() {
+            window.location.href = 'index.php';
+        });";
     //echo "alert('¡Su cita se agendó correctamente con este tecnico!');" ;
     //redireccionar a alguna pagina
     /* echo "window.location.href = 'index.php';"; */

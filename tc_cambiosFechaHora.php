@@ -1,4 +1,6 @@
 <?php
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 include_once("Usuarios.php");
 include_once("Publicacion.php");
 
@@ -17,17 +19,17 @@ if (isset($_GET['aceptar'])) {
 
         //script del alert
         if($validacionPost){
-            echo "<script>";
-            echo "alert('¡Usted ha aceptado este servicio!');" ;
-            //redireccionar a alguna pagina
-            echo "window.location.href = 'index.php';" ;
-            echo "</script>"; 
+            echo "<script> Swal.fire('¡Usted ha aceptado este servicio!').then(
+                function() {
+                    window.location.href = 'index.php';
+                });";
+            echo "</script>";
+            
         }
     }
 }
 
-include_once('templates/iniciar-html.php');
-include_once('templates/menu.php');
+
 ?>
 
 <div class="container">

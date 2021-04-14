@@ -17,7 +17,10 @@ if (isset($_POST['publicar'])) {
 
         //script del alert
         if ($validacionPost) {
-            echo "<script> Swal.fire('¡Se ha publicado su requerimiento con éxito!');";
+            echo "<script> Swal.fire('¡Se ha publicado su requerimiento con éxito!').then(
+                function() {
+                    window.location.href = 'index.php';
+                });";
             //redireccionar a alguna pagina
            /*  echo "window.location.href = 'index.php';"; */
             echo "</script>";

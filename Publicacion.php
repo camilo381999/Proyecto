@@ -107,10 +107,10 @@ class Publicacion extends Conexion {
 
 	//Crea el nuevo dato en la agenda
 	public function servicioAceptado($Fecha, $Hora, $Ubicacion,$idTecnico,$idPendiente,$costo) {
-		echo $Fecha." - ".$Hora." - ".$idTecnico." - ".$idPendiente;
+		//echo $Fecha." - ".$Hora." - ".$idTecnico." - ".$idPendiente;
 		$statement = $this->db->prepare("INSERT INTO agenda (FECHA,HORA,UBICACION,
-		TECNICOS_ID_TECNICO,ESTADO,PENDIENTE_ID_PENDIENTE,COSTO) 
-		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'Aceptado', :idPendiente, :Costo)");
+		TECNICOS_ID_TECNICO,ESTADO,CALIFICADO,PENDIENTE_ID_PENDIENTE,COSTO) 
+		VALUES (:Fecha, :Hora, :Ubicacion, :idTecnico, 'Aceptado', 'false', :idPendiente, :Costo)");
 
 		$statement->bindParam(':Fecha', $Fecha);
         $statement->bindParam(':Hora', $Hora);
@@ -399,6 +399,17 @@ class Publicacion extends Conexion {
 	//trae todos los servicios que tenga el cliente en la tabla de pendiente
 	public function get_pendiente_idClient($idCliente) {
 		$statement = $this->db->prepare("SELECT * FROM pendiente
+		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado')");
+        $statement->bindParam(':idUsuario', $idCliente);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+		return $result;        
+	}
+
+	//consulta la agenda para verificar si ya se calificó el servicio de un tecnico
+	public function get_agenda_calificacion($idCliente) {
+		$statement = $this->db->prepare("SELECT CALIFICADO FROM agenda
 		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado')");
         $statement->bindParam(':idUsuario', $idCliente);
         $statement->execute();

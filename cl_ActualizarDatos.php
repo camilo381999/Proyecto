@@ -40,9 +40,10 @@ if (isset($_POST['actualizar'])) {
         );
     }
 
-    echo "<script> Swal.fire('¡Se han actualizado sus datos con éxito!');";
-    //redireccionar a alguna pagina
-    /*  echo "window.location.href = 'index.php';"; */
+    echo "<script> Swal.fire('¡Se han actualizado sus datos con éxito!').then(
+        function() {
+            window.location.href = 'index.php';
+        });";
     echo "</script>";
 }
 

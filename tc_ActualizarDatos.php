@@ -1,4 +1,6 @@
 <?php
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 include_once("Usuarios.php");
 
 $ModeloUsuarios = new Usuarios();
@@ -36,10 +38,15 @@ if (isset($_POST['actualizar'])) {
             $validar->getLocalidad()
         );
     }
+
+    echo "<script> Swal.fire('¡Se han actualizado sus datos con éxito!').then(
+        function() {
+            window.location.href = 'index.php';
+        });";
+    echo "</script>";
 }
 
-include_once('templates/iniciar-html.php');
-include_once('templates/menu.php');
+
 ?>
 
 
