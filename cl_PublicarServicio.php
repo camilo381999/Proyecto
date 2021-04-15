@@ -13,23 +13,14 @@ if (isset($_POST['publicar'])) {
     $Modelo = new Publicacion();
     if ($Modelo->add($_POST['Direccion'], $_POST['Descripcion'], $_POST['Servicio'], $_POST['Marca'], $_POST['Producto'], $_POST['fecha'], $_POST['hora'])) {
 
-        $validacionPost = true;
-
         //script del alert
-        if ($validacionPost) {
             echo "<script> Swal.fire('¡Se ha publicado su requerimiento con éxito!').then(
                 function() {
                     window.location.href = 'index.php';
                 });";
-            //redireccionar a alguna pagina
-           /*  echo "window.location.href = 'index.php';"; */
             echo "</script>";
-        }
-        //header('Location: index-Clientes.php');
     }
 }
-
-
 ?>
 
 <div class="container">

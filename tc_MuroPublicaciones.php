@@ -54,7 +54,6 @@ include_once('templates/menu.php');
                                                         } else {
                                                             echo "Costo del servicio: $40.000";
                                                         }
-
                                                         ?></p>
 
                                 <a href="tc_controladorServicios.php?Id=<?php echo $dato['ID_PUBLICACION']; ?>&

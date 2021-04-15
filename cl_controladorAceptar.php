@@ -2,6 +2,11 @@
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 include_once("Publicacion.php");
+include_once("Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+//Validar la sesion si es cliente o tecnico
+$ModeloUsuarios->validateSessionClientes();
 
 $idTecnico = $_GET['IdTecnico'];
 $Fecha = $_GET['Fecha'];
@@ -40,7 +45,7 @@ if ($validacionPost) {
     
 
     echo "<script> 
-        Swal.fire('¡Su cita se agendó correctamente con este tecnico!').then(
+        Swal.fire('¡Su cita se agendó correctamente con este técnico!').then(
         function() {
             window.location.href = 'index.php';
         });";

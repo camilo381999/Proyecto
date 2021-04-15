@@ -477,6 +477,28 @@ class Publicacion extends Conexion {
 		return $result;
 	}
 
+	// Añadir datos a la tabla de pqr
+	public function añadirPqr($Correo,$Seleccion,$Descripcion,$Nombre) {
+
+        $usuario=new Usuarios();
+
+        $idUsuario= $usuario->getId(); 
+		$statement = $this->db->prepare("INSERT INTO pqr (ID_USUARIO,CORREO,SELECCION_AYUDA,DESCRIPCION,
+		NOMBRE) VALUES (:idUsuario,:Correo, :Seleccion, :Descripcion, :Nombre)");
+
+		$statement->bindParam(':Descripcion', $Descripcion);
+        $statement->bindParam(':Correo', $Correo);
+		$statement->bindParam(':Seleccion', $Seleccion);
+		$statement->bindParam(':Nombre', $Nombre);
+		$statement->bindParam(':idUsuario', $idUsuario);
+
+        if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 
 ?>

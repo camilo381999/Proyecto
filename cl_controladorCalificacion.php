@@ -4,6 +4,10 @@ include_once('templates/menu.php');
 include_once("Publicacion.php");
 include_once("Usuarios.php");
 
+$ModeloUsuarios = new Usuarios();
+//Validar la sesion si es cliente o tecnico
+$ModeloUsuarios->validateSessionClientes();
+
 $idCita=$_POST['idCita'];
 $idTecnico=$_POST['idTecnico'];
 $NombreTecnico=$_POST['NombreTecnico'];
