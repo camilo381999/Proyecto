@@ -23,10 +23,10 @@ $tipoServicio=$_GET['tipoServicio'];
             </div>
             <div class="form-group">  
 
-                <input type="text" name="idCita"  value="<?php echo $idCita; ?>">
-                <input type="text" name="idTecnico"  value="<?php echo $idTecnico; ?>">
-                <input type="text" name="NombreTecnico"  value="<?php echo $NombreTecnico; ?>">
-                <input type="text" name="tipoServicio"  value="<?php echo $tipoServicio ?>">
+                <input type="text" name="idCita" hidden value="<?php echo $idCita; ?>">
+                <input type="text" name="idTecnico" hidden value="<?php echo $idTecnico; ?>">
+                <input type="text" name="NombreTecnico" hidden value="<?php echo $NombreTecnico; ?>">
+                <input type="text" name="tipoServicio" hidden value="<?php echo $tipoServicio ?>">
 
                 <p>
                 ¿Como describiría la presentacion personal del técnico?<br>
