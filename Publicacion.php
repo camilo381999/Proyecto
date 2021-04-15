@@ -105,6 +105,16 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
+	public function selectFinalizadosPendienteByIdCliente($idCliente) {
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO = 'Terminado' AND ID_CLIENTE = :idCliente");
+        $statement->bindParam(':idCliente', $idCliente);
+		
+		$statement->execute();
+
+        $result = $statement->fetchAll();
+        return $result;
+	}
+
 	//Crea el nuevo dato en la agenda
 	public function servicioAceptado($Fecha, $Hora, $Ubicacion,$idTecnico,$idPendiente,$costo) {
 		//echo $Fecha." - ".$Hora." - ".$idTecnico." - ".$idPendiente;
@@ -408,14 +418,63 @@ class Publicacion extends Conexion {
 	}
 
 	//consulta la agenda para verificar si ya se calificó el servicio de un tecnico
-	public function get_agenda_calificacion($idCliente) {
-		$statement = $this->db->prepare("SELECT CALIFICADO FROM agenda
-		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado')");
-        $statement->bindParam(':idUsuario', $idCliente);
-        $statement->execute();
+	public function validar_agenda_calificacion($idPendiente) {
 
-        $result = $statement->fetchAll();
-		return $result;        
+		$statement = $this->db->prepare("SELECT * FROM agenda WHERE CALIFICADO='false' AND PENDIENTE_ID_PENDIENTE= :idPendiente");
+		$statement->bindParam(':idPendiente', $idPendiente);
+		$statement->execute();
+	
+		$result = $statement->fetch();
+
+		return $result;
+	}
+
+	//Agrega un nuevo comentario al tecnico
+	public function add_calificacion($idTecnico,$idCliente, $comentario,$calificacion,$tipoServicio,$idAgenda) {
+		$statement = $this->db->prepare("INSERT INTO calificacion (TECNICOS_ID_TECNICO, ID_CLIENTE, COMENTARIO,	CALIFICACION, TIPO_SERVICIO	) 
+		VALUES (:idTecnico, :idCliente, :comentario, :calificacion, :tipoServicio)");
+        $statement->bindParam(':idTecnico', $idTecnico);
+		$statement->bindParam(':idCliente', $idCliente);
+		$statement->bindParam(':comentario', $comentario);
+		$statement->bindParam(':calificacion', $calificacion);
+		$statement->bindParam(':tipoServicio', $tipoServicio);
+		$statement->execute();
+		
+		$statement = $this->db->prepare("UPDATE agenda SET CALIFICADO = 'true'
+		WHERE ID_CITA  = :idAgenda ");
+		$statement->bindParam(':idAgenda', $idAgenda);
+		$statement->execute();
+		
+		$statement = $this->db->prepare("UPDATE tecnicos SET CALIFICACION = (SELECT ROUND(AVG(CALIFICACION),2) AS PROMEDIO_CALIFICACION FROM calificacion WHERE TECNICOS_ID_TECNICO = :idTecnico)
+		WHERE ID_TECNICO = :idTecnico");
+		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->execute();
+		
+		return true;
+	}
+
+	//obtiene los comentarios del tecnico usando el id
+	public function get_comentarios_tecnico($idTecnico) {
+
+		$statement = $this->db->prepare("SELECT * FROM calificacion WHERE TECNICOS_ID_TECNICO= :idTecnico");
+		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->execute();
+	
+		$result = $statement->fetchAll();
+
+		return $result;
+	}
+
+	//obtiene la calificacion promedio del cliente basado en su id
+	public function get_promedio_calificacion($idTecnico) {
+
+		$statement = $this->db->prepare("SELECT ROUND(AVG(CALIFICACION),2) AS PROMEDIO_CALIFICACION FROM calificacion WHERE TECNICOS_ID_TECNICO = :idTecnico");
+		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->execute();
+	
+		$result = $statement->fetch();
+
+		return $result;
 	}
 
 }

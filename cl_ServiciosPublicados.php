@@ -47,7 +47,7 @@ include_once('templates/menu.php');
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5>
+                                    <a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>"><h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5></a>
                                     <?php
                                     if($dato['CAMBIOS_TECNICO']=="true"){
                                         echo "<div class='alert alert-primary' role='alert'>";

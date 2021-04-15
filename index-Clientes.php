@@ -1,5 +1,6 @@
 <?php
 include_once("Usuarios.php");
+include_once("Publicacion.php");
 
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
@@ -7,10 +8,28 @@ $ModeloUsuarios->validateSessionClientes();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
+
+$idUsuario = $ModeloUsuarios->getId();
+
+$publicacion = new Publicacion();
+
+$finalizados = $publicacion->selectFinalizadosPendienteByIdCliente($idUsuario);
+
+if(!$finalizados==null){
+    foreach($finalizados as $req){
+        $agenda=$publicacion->validar_agenda_calificacion($req['ID_PENDIENTE']);
+        if(!$agenda==null){
+            if($agenda['CALIFICADO']== 'false'){
+                header('Location: cl_Calificacion.php?idCita='.$agenda['ID_CITA'].'&idTecnico='.$req['ID_TECNICO'].'&NombreTecnico='.$req['NOMBRE_TECNICO'].'&tipoServicio='.$req['TIPO_SERVICIO']);
+            }
+        }
+    }
+}
+
+
 ?>
 
 <div class="container">
-
     <div class="publicacion-title">
         <br>
         <h1>Bienvenido <?php echo $ModeloUsuarios->getNombre(); ?></h1>
@@ -72,61 +91,7 @@ include_once('templates/menu.php');
 
 </div>
 
-<script>
-Swal.fire({
-    title: "Por favor califica a tu técnico",
-    text: "Estas preguntas podrian ayudar a tu tecnico a mejorar su servicio",
-    html: '<form action="<?php echo $_SERVER['PHP_SELF'] ?>" >'+
-            '<div class="form-group">'+
-                
-                '<p>'+
-                '¿Como describiría la presentacion personal del técnico?<br><br>'+
-                '<label><input type="radio" name="pregunta1" id="pregunta1" value="1" required>Excelente </label>'+'    '+
-                '<label><input type="radio" name="pregunta1" id="pregunta1" value="0.5">Regular </label>'+'    '+
-                '<label><input type="radio" name="pregunta1" id="pregunta1" value="0">Mala </label><br>'+'    '+
-                '</p>'+
 
-                '<p>'+
-                '¿Que tan atento fue el técnico al prestar el servicio?<br><br>'+
-                '<label><input type="radio" name="pregunta2" value="1" required>Excelente</label>'+'    '+
-                '<label><input type="radio" name="pregunta2" value="0.5">Regular</label>'+'    '+
-                '<label><input type="radio" name="pregunta2" value="0">Malo</label><br>'+'    '+
-                '</p>'+
-
-                '<p>'+
-                '¿Como calificaría la puntualidad del técnico?<br><br>'+
-                '<label><input type="radio" name="pregunta3" value="1" required>Excelente</label>'+'    '+
-                '<label><input type="radio" name="pregunta3" value="0.5">Regular</label>'+'    '+
-                '<label><input type="radio" name="pregunta3" value="0">Malo</label><br>'+'    '+
-                '</p>'+
-
-                '<p>'+
-                '¿Como describiría los conocimientos del tecnico para atender su requerimiento?<br><br>'+
-                '<label><input type="radio" name="pregunta4" value="1" required>Excelente</label>'+'    '+
-                '<label><input type="radio" name="pregunta4" value="0.5">Regular</label>'+'    '+
-                '<label><input type="radio" name="pregunta4" value="0">Malo</label><br>'+'    '+
-                '</p>'+
-
-                '<p>'+
-                '¿El técnico dió solución a su requerimiento?<br><br>'+
-                '<label><input type="radio" name="pregunta5" value="1" required>Si</label>'+'    '+
-                '<label><input type="radio" name="pregunta5" value="0">No</label><br>'+
-                '</p>'+
-
-                '<textarea name="comentario" class="form-control" placeholder="Añade un comentario sobre el tecnico" cols="200" rows="3" required></textarea>'+
-            '</div>'+
-          '</form>',
-    preConfirm: () => {
-        const pregunta1 = Swal.getPopup().querySelector('#pregunta1').value
-        const pregunta2 = Swal.getPopup().querySelector('#pregunta2').value
-        
-        return { pregunta1: pregunta1, pregunta2: pregunta2 }
-    }
-}).then(
-		function() {
-			window.location.href = "cl_controladorCalificacion.php?pregunta1=$_GET['pregunta1']";
-		});
-</script>
 
 <?php
 include_once('templates/terminar-html.php');
