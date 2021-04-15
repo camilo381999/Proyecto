@@ -21,7 +21,7 @@ if (isset($_POST['enviar'])) {
         //script del alert
         echo "<script> Swal.fire({
                 title: 'Solicitud enviada',
-                text: 'Proximamente alguien se comunicara con usted!',
+                text: 'Próximamente alguien se comunicará con usted!',
               }).then(
                 function() {
                     window.location.href = 'index.php';

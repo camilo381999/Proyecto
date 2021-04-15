@@ -2,6 +2,11 @@
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 include_once("Publicacion.php");
+include_once("Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+//Validar la sesion si es cliente o tecnico
+$ModeloUsuarios->validateSessionTecnicos();
 
 $idPublicacion = $_GET['Id'];
 $Boton = $_GET['Boton'];
@@ -27,7 +32,7 @@ if($Modelo->servicioPendiente($Boton, $idPublicacion, $Fecha, $Hora, $Ubicacion)
 
     //script del alert
     if($validacionPost){
-        echo "<script> Swal.fire('¡No see ha podido agendar este servicio!').then(
+        echo "<script> Swal.fire('¡No se ha podido agendar este servicio!').then(
             function() {
                 window.location.href = 'index.php';
             });";

@@ -2,6 +2,11 @@
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 include_once("Publicacion.php");
+include_once("Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+//Validar la sesion si es cliente o tecnico
+$ModeloUsuarios->validateSessionClientes();
 
 $fecha = $_GET['Fecha'];
 $hora = $_GET['Hora'];
@@ -26,7 +31,7 @@ if ($Modelo->cancelacionServicioPendiente($fecha, $hora, $idPendiente)) {
 
 	//script del alert
 	if ($validacionPost) {
-		echo "<script> Swal.fire('¡Quedan menos de 2 horas para su cita, por favor cominiquese con su técnico para cancelar!').then(
+		echo "<script> Swal.fire('¡Quedan menos de 2 horas para su cita, por favor comuniquese con su técnico para cancelar!').then(
 			function() {
 				window.location.href = 'index.php';
 			});";
