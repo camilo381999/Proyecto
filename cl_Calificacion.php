@@ -29,7 +29,7 @@ $tipoServicio=$_GET['tipoServicio'];
                 <input type="text" name="tipoServicio" hidden value="<?php echo $tipoServicio ?>">
 
                 <p>
-                ¿Como describiría la presentacion personal del técnico?<br>
+                ¿Como describiría la presentación personal del técnico?<br>
                 <label><input type="radio" name="pregunta1" id="pregunta1" value="1" required>Excelente </label>
                 <label><input type="radio" name="pregunta1" id="pregunta1" value="0.5">Regular </label>
                 <label><input type="radio" name="pregunta1" id="pregunta1" value="0">Mala </label><br>
@@ -50,7 +50,7 @@ $tipoServicio=$_GET['tipoServicio'];
                 </p>
 
                 <p>
-                ¿Como describiría los conocimientos del tecnico para atender su requerimiento?<br>
+                ¿Como describiría los conocimientos del técnico para atender su requerimiento?<br>
                 <label><input type="radio" name="pregunta4" value="1" required>Excelente   </label>
                 <label><input type="radio" name="pregunta4" value="0.5">Regular   </label>
                 <label><input type="radio" name="pregunta4" value="0">Malo   </label><br>
@@ -62,7 +62,7 @@ $tipoServicio=$_GET['tipoServicio'];
                 <label><input type="radio" name="pregunta5" value="0">No   </label><br>
                 </p>
 
-                <textarea name="comentario" class="form-control" placeholder="Añade un comentario sobre el tecnico" cols="200" rows="3" required></textarea><br>
+                <textarea name="comentario" class="form-control" placeholder="Añade un comentario sobre el técnico" cols="200" rows="3" required></textarea><br>
 
                 <button name="enviar" type="submit" class="btn btn-primary btn-block">Enviar</button>
             </div>
