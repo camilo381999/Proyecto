@@ -45,7 +45,7 @@ if ($validacionPost) {
     
 
     echo "<script> 
-        Swal.fire('¡Su cita se agendó correctamente con este técnico!').then(
+        Swal.fire('¡Su cita se agendó correctamente con éste técnico!').then(
         function() {
             window.location.href = 'index.php';
         });";
