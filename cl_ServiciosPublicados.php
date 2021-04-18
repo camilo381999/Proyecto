@@ -47,20 +47,21 @@ include_once('templates/menu.php');
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                                 <div class="card-body">
-                                    <a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>"><h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] . ', ' . $tecnicos['LOCALIDAD'] ?></h5></a>
+                                <label>Técnico:</label>
+                                    <a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>"><h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] ?></h5></a>
                                     <?php
                                     if($dato['CAMBIOS_TECNICO']=="true"){
                                         echo "<div class='alert alert-primary' role='alert'>";
-                                        echo "Este tecnico propone un cambio. Tu solicitud está para el ".$idpost['FECHA']." a las ".$idpost['HORA'];
+                                        echo "El técnico propone un cambio. Tu solicitud está para el ".$idpost['FECHA']." a las ".$idpost['HORA'];
                                         echo "</div>";
                                     }
                                     ?>
-                                    <p class="card-text"><?php echo $dato['ID_TECNICO'] . ' - ' . $dato['ESTADO_SERVICIO'] ?></p>
-                                    <p class="card-text"><?php echo $tecnicos['CORREO']  ?></p>
-                                    <p class="card-text"><?php echo  '  Teléfono: ' . $tecnicos['TELEFONO'] ?></p>
-                                    <p class="card-text"><?php echo '  Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
-                                    <p class="card-text"><?php echo ' C.C: ' . $tecnicos['ID_TECNICO'] ?></p>
-                                    <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                                    <p class="card-text"><?php echo 'Localidad: ' . $tecnicos['LOCALIDAD'] ?></p>
+                                    <p class="card-text"><?php echo 'Estado del servicio: ' . $dato['ESTADO_SERVICIO'] ?></p>
+                                    <p class="card-text"><?php echo 'Correo: ' . $tecnicos['CORREO']  ?></p>
+                                    <p class="card-text"><?php echo  'Teléfono: ' . $tecnicos['TELEFONO'] ?></p>
+                                    <p class="card-text"><?php echo 'Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
+                                    <p class="card-text"><?php echo 'Fecha y hora: ' . $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
                                     <p class="card-text"><?php
                                                             if ($dato['TIPO_SERVICIO'] == "Mantenimiento") {
                                                                 echo "Costo del servicio: $30.000";

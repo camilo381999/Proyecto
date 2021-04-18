@@ -44,10 +44,12 @@ include_once('templates/menu.php');
                         <div class="card">
                             <h5 class="card-header"><?php echo $dato['SERVICIO']; ?></h5>
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $dato['CLIENTE'] . ', ' . $dato['LOCALIDAD'] ?></h5>
-                                <p class="card-text"><?php echo $dato['TIPO'] . ' marca ' . $dato['MARCA'] ?></p>
-                                <p class="card-text"><?php echo $dato['DESCRIPCION'] ?></p>
-                                <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                                <label>Cliente:</label>
+                                <h5 class="card-title"><?php echo $dato['CLIENTE'] ?></h5>
+                                <p class="card-text"><?php echo 'Localidad: ' . $dato['LOCALIDAD'] ?></p>
+                                <p class="card-text"><?php echo 'Producto: ' . $dato['TIPO'] . ' marca ' . $dato['MARCA'] ?></p>
+                                <p class="card-text"><?php echo 'Descripción: ' . $dato['DESCRIPCION'] ?></p>
+                                <p class="card-text"><?php echo 'Fecha y hora: ' .$dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
                                 <p class="card-text"><?php
                                                         if ($dato['SERVICIO'] == "Mantenimiento") {
                                                             echo "Costo del servicio: $30.000";

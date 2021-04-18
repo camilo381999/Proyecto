@@ -37,11 +37,11 @@ include_once('templates/menu.php');
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO'] ?></h5>
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo $agenda['UBICACION'] ?></h5>
-                                    <p class="card-text"><?php echo $dato['NOMBRE_TECNICO'] ?></p>
-                                    <p class="card-text"><?php echo $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
+                                    <h5 class="card-title"><?php echo 'Localidad: '. $agenda['UBICACION'] ?></h5>
+                                    <p class="card-text"><?php echo 'Técnico: '. $dato['NOMBRE_TECNICO'] ?></p>
+                                    <p class="card-text"><?php echo 'Producto: '. $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                                     <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
-                                    <p class="card-text"><?php echo $agenda['FECHA'] . ' / ' . $agenda['HORA'] ?></p>
+                                    <p class="card-text"><?php echo 'Fecha y hora: '. $agenda['FECHA'] . ' / ' . $agenda['HORA'] ?></p>
                                     <p class="card-text"><?php
                                                             if ($dato['TIPO_SERVICIO'] == "Mantenimiento") {
                                                                 echo "Costo del servicio: $30.000";
@@ -50,7 +50,7 @@ include_once('templates/menu.php');
                                                             }
 
                                                             ?></p>
-                                    <p class="card-text"><?php echo $agenda['ESTADO'] ?></p>
+                                    <p class="card-text"><?php echo 'Estado: '. $agenda['ESTADO'] ?></p>
                                 </div>
                             </div><br>
             <?php

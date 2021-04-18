@@ -51,17 +51,17 @@ if (isset($_GET['aceptar'])) {
                 <input type="hidden" name="Id" value=<?php echo $idPublicacion;?> >
 
                 <div class="form-group">
-                    <label>Nombre del cliente</label>
+                    <label>Nombre del cliente:</label>
                     <input type="text" class="form-control" disabled value="<?php echo $resultado['CLIENTE']; ?>">
                 </div>
 
                 <div class="form-group">
-                    <label>Ubicación del cliente</label><br>
+                    <label>Ubicación del cliente:</label><br>
                     <input type="text" class="form-control" readonly name="Ubicacion" value=<?php echo $resultado['LOCALIDAD'];?> >
                 </div>
 
                 <div class="form-group">
-                    <label>Producto y tipo de servicio</label>
+                    <label>Producto y tipo de servicio:</label>
                     <input type="text" class="form-control" disabled value="<?php echo $resultado['TIPO'] . ' marca ' . $resultado['MARCA'] . ', ' . $resultado['SERVICIO']; ?>">
                 </div>
                                 

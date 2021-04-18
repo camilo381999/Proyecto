@@ -55,6 +55,7 @@ if (isset($_POST['publicar'])) {
                         <option value="Toshiba">Toshiba</option>
                         <option value="Sanyo">Sanyo</option>
                         <option value="Neff">Neff</option>
+                        <option value="Otra">Otra</option>
                     </select>
                 </div>
 

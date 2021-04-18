@@ -62,6 +62,7 @@ if (isset($_POST['actualizar'])) {
                 </div>
 
                 <div class="form-group">
+                    <label>Nombre:</label>
                     <input name="Nombre" type="text" class="form-control" placeholder="Nombre" <?php $validar->mostrar_nombre(); ?>>
                     <?php
                     $validar->mostrar_error_nombre();
@@ -69,6 +70,7 @@ if (isset($_POST['actualizar'])) {
                 </div>
 
                 <div class="form-group">
+                    <label>Apellido:</label>
                     <input name="Apellido" type="text" class="form-control" placeholder="Apellido" <?php $validar->mostrar_apellido(); ?>>
                     <?php
                     $validar->mostrar_error_apellido();
@@ -76,6 +78,7 @@ if (isset($_POST['actualizar'])) {
                 </div>
 
                 <div class="form-group">
+                    <label>Teléfono:</label>
                     <input name="Telefono" type="text" class="form-control" placeholder="Teléfono" <?php $validar->mostrar_telefono(); ?>>
                     <?php
                     if (isset($_POST['actualizar'])) {
@@ -85,6 +88,7 @@ if (isset($_POST['actualizar'])) {
                 </div>
 
                 <div class="form-group">
+                    <label>Localidad:</label>
                     <select name="Localidad" class="form-control">
                         <option selected><?php $validar->mostrar_localidad(); ?></option>
                         <option value="Antonio Nariño">Antonio Nariño</option>
@@ -114,7 +118,7 @@ if (isset($_POST['actualizar'])) {
                 </div>
 
                 <div class="form-group">
-                    <input name="Contrasena" type="password" class="form-control" placeholder="Nueva contraseña o Actual" >
+                    <input name="Contrasena" type="password" class="form-control" placeholder="Nueva contraseña o Actual">
                     <?php
                     $validar->mostrar_error_contrasena();
                     ?>

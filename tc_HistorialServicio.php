@@ -33,10 +33,10 @@ include_once('templates/menu.php');
                     <div class="card">
                         <h5 class="card-header"><?php echo $pendiente['TIPO_SERVICIO'] ?></h5>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $dato['UBICACION'] ?></h5>
-                            <p class="card-text"><?php echo $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
+                            <h5 class="card-title"><?php echo 'Localidad: '. $dato['UBICACION'] ?></h5>
+                            <p class="card-text"><?php echo 'Producto: '. $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                             <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
-                            <p class="card-text"><?php echo $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
+                            <p class="card-text"><?php echo 'Fecha y hora: '. $dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
                             <p class="card-text"><?php
                                                     if ($pendiente['TIPO_SERVICIO'] == "Mantenimiento") {
                                                         echo "Costo del servicio: $30.000";
@@ -45,7 +45,7 @@ include_once('templates/menu.php');
                                                     }
 
                                                     ?></p>
-                            <p class="card-text"><?php echo $dato['ESTADO'] ?></p>
+                            <p class="card-text"><?php echo 'Estado: '. $dato['ESTADO'] ?></p>
                         </div>
                     </div><br>
             <?php

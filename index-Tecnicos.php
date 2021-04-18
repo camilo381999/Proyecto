@@ -46,6 +46,15 @@ include_once('templates/menu.php');
                 </a>
             </div>
         </div>
+        
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="main-menu__options">
+                <a href="tc_HistorialServicio.php" class="menu__option" id="btnHistorial">
+                    <img class="option__image" src="img/icon-historial.svg" alt="icon-historial">
+                    Historial de Servicios
+                </a>
+            </div>
+        </div>
 
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
@@ -56,14 +65,6 @@ include_once('templates/menu.php');
             </div>
         </div>
 
-        <div class="col-md-4 col-sm-6 col-xs-6">
-            <div class="main-menu__options">
-                <a href="tc_HistorialServicio.php" class="menu__option" id="btnHistorial">
-                    <img class="option__image" src="img/icon-historial.svg" alt="icon-historial">
-                    Historial de Servicios
-                </a>
-            </div>
-        </div>
 
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
