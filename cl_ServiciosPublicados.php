@@ -55,9 +55,9 @@ include_once('templates/menu.php');
                                         echo "El técnico propone un cambio. Tu solicitud está para el ".$idpost['FECHA']." a las ".$idpost['HORA'];
                                         echo "</div>";
                                     }
-                                    ?>
+                                    ?> 
                                     <p class="card-text"><?php echo 'Localidad: ' . $tecnicos['LOCALIDAD'] ?></p>
-                                    <p class="card-text"><?php echo 'Estado del servicio: ' . $dato['ESTADO_SERVICIO'] ?></p>
+                                    <p class="card-text"><?php echo 'Producto: ' . $idpost['TIPO']  . ' marca ' . $idpost['MARCA'] ?></p>
                                     <p class="card-text"><?php echo 'Correo: ' . $tecnicos['CORREO']  ?></p>
                                     <p class="card-text"><?php echo  'Teléfono: ' . $tecnicos['TELEFONO'] ?></p>
                                     <p class="card-text"><?php echo 'Calificación:  ' . $tecnicos['CALIFICACION'] ?></p>
