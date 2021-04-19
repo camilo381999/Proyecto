@@ -6,6 +6,9 @@ $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionTecnicos();
 
+$idRequerimiento = $_GET['idRequerimiento'];
+$idPendiente = $_GET['idPendiente'];
+
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
@@ -22,7 +25,7 @@ include_once('templates/menu.php');
         <div class="col-md-8 col-sm-12 col-xs-12">
             <?php
             $Modelo = new Publicacion();
-            $resultado = $Modelo->get_agenda($ModeloUsuarios->getId());
+            $resultado = $Modelo->get_agenda_idPendiente($idPendiente);
             if (is_null($resultado)) {
                 echo "No hay servicios";
             } else {

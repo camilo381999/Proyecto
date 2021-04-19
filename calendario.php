@@ -15,7 +15,7 @@ $fechaFormat = $fechaSplit[2] . "-" . $fechaSplit[0] . "-" . $fechaSplit[1];
 
 $publicacion = new Publicacion();
 
-$pendiente = $publicacion->get_pendiente_idTecnico_fecha($idTecnico,$fechaFormat);
+$pendiente = $publicacion->get_pendiente_idTecnico_fecha($idTecnico, $fechaFormat);
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
@@ -30,8 +30,6 @@ include_once('templates/menu.php');
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">
 
-
-
             <div class="form-calendar-container">
                 <div id="container">
 
@@ -40,8 +38,8 @@ include_once('templates/menu.php');
                             <h2 id="monthDisplay"></h2>
                         </div>
                         <div>
-                            <button id="backButton">Anterior</button>
-                            <button id="nextButton">Siguiente</button>
+                            <button id="backButton"><</button>
+                            <button id="nextButton">></button>
                         </div>
                     </div>
 
@@ -83,22 +81,22 @@ include_once('templates/menu.php');
         </div>
 
         <div class="col-md-4 col-sm-12 col-xs-12">
+            <br>
             <div class="card">
                 <h5 class="card-header" id="fecha"><?php echo $fecha; ?></h5>
                 <div class="card-body">
 
                     <?php
-                    foreach($pendiente as $dato){
-                        $idRequerimiento= $publicacion->get_requerimiento_by_id($dato['REQUERIMIENTOS_ID_PUBLICACION']);
+                    foreach ($pendiente as $dato) {
+                        $idRequerimiento = $publicacion->get_requerimiento_by_id($dato['REQUERIMIENTOS_ID_PUBLICACION']);
                     ?>
-                        <p class="card-text"><?php echo $idRequerimiento['SERVICIO']."- ".$idRequerimiento['TIPO']." marca ".$idRequerimiento['MARCA']." - ".$idRequerimiento['HORA']; ?></p>
+                        <a href="tc_ConsultarAgenda.php?idRequerimiento=<?php echo $idRequerimiento['ID_PUBLICACION']; ?>&idPendiente=<?php echo $dato['ID_PENDIENTE']; ?>" >
+                            <p class="card-text"><?php echo $idRequerimiento['SERVICIO'] . "- " . $idRequerimiento['TIPO'] . " marca " . $idRequerimiento['MARCA'] . " - " . $idRequerimiento['HORA']; ?></p>
+                        </a><br>
                     <?php
                     }
                     ?>
 
-                    
-
-                    
                 </div>
             </div>
         </div>

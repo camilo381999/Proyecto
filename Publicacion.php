@@ -520,6 +520,18 @@ class Publicacion extends Conexion {
         $result = $statement->fetch();
         return $result;
 	}
+
+	//obtiene agenda por el id de pendiente
+	public function get_agenda_idPendiente($idPendiente)
+	{
+		$statement = $this->db->prepare("SELECT * FROM agenda
+		 WHERE PENDIENTE_ID_PENDIENTE = :idPendiente AND ESTADO = 'Aceptado' ");
+		$statement->bindParam(':idPendiente', $idPendiente);
+		$statement->execute();
+		$result = $statement->fetchAll();
+        return $result;
+	}
+
 }
 
 ?>

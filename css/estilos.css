@@ -113,6 +113,12 @@ body{
     margin: 0 auto 20px;
 }
 
+/*----------------calendario----------------*/
+
+a{
+    color: #000;
+}
+
 aside {
     width: 100%;
     height: 100%;
@@ -149,7 +155,9 @@ button {
     font-size: 30px;
     font-family: sans-serif;
     display: flex;
+    justify-content: space-between;
   }
+
   #header button {
     background-color:#118AB2;
     font-size: 10px;
