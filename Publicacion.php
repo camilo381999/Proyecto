@@ -340,6 +340,7 @@ class Publicacion extends Conexion {
         return $result;
 	}
 
+	//obtiene por id del tecnico
 	public function get_agenda($Id)
 	{
 		$statement = $this->db->prepare("SELECT * FROM agenda
@@ -499,6 +500,26 @@ class Publicacion extends Conexion {
 		}
 	}
 
+	//trae todos los servicios que tenga el cliente en la tabla de pendiente
+	public function get_pendiente_idTecnico_fecha($idTecnico,$fecha) {
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO='Aceptado' AND ID_TECNICO= :idTecnico AND FECHA= :fecha");
+        $statement->bindParam(':idTecnico', $idTecnico);
+		$statement->bindParam(':fecha', $fecha);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+		return $result;        
+	}
+
+
+	public function get_requerimiento_by_id($idRequerimiento) {
+		$statement = $this->db->prepare("SELECT * FROM requerimientos WHERE ID_PUBLICACION= :idRequerimiento"); 
+		$statement->bindParam(':idRequerimiento', $idRequerimiento);
+        $statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+	}
 }
 
 ?>

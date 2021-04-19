@@ -34,12 +34,11 @@ include_once('templates/menu.php');
                     <div class="card">
                         <h5 class="card-header"><?php echo $pendiente['TIPO_SERVICIO'] ?></h5>
                         <div class="card-body">
-                        <label >Cliente:</label>
-                            <h5 class="card-title"><?php echo $cliente['NOMBRE'] . ' ' . $cliente['APELLIDO'] ?></h5>
+                            <h5 class="card-title"><?php echo 'Cliente: ' . $cliente['NOMBRE'] . ' ' . $cliente['APELLIDO'] ?></h5>
                             <p class="card-text"><?php echo 'Localidad: ' . $dato['UBICACION'] ?></p>
                             <p class="card-text"><?php echo "Teléfono: " . $cliente['TELEFONO'] ?></p>
                             <p class="card-text"><?php echo "Dirección: " . $requerimiento['DIRECCION'] ?></p>
-                            <p class="card-text"><?php echo 'Producto' . $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
+                            <p class="card-text"><?php echo 'Producto: ' . $requerimiento['TIPO'] . ' marca ' . $requerimiento['MARCA'] ?></p>
                             <p class="card-text"><?php echo "Descripción: " . $requerimiento['DESCRIPCION'] ?></p>
                             <p class="card-text"><?php echo 'Fecha y hora: ' .$dato['FECHA'] . ' / ' . $dato['HORA'] ?></p>
                             <p class="card-text"><?php
