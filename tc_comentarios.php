@@ -24,9 +24,6 @@ $tecnico = $usuario->getByIdTecnico($idTecnico);
         <h3><?php echo $tecnico['NOMBRE'] . " " . $tecnico['APELLIDO'] . ", calificación: " . $tecnico['CALIFICACION'] ?></h3>
         <br>
     </div>
-    
-
-    
 
     <div class="row">
         <div class="col-md-2 col-sm-12 col-xs-12"></div>
@@ -47,6 +44,7 @@ $tecnico = $usuario->getByIdTecnico($idTecnico);
                                 <h6 class="card-title"><?php echo "Calificación: " . $dato['CALIFICACION'] ?></h6>
                                 <h6 class="card-title"><?php echo "Comentario: " ?></h6>
                                 <p class="card-text"><?php echo $dato['COMENTARIO'] ?></p>
+                                <p class="card-text"><?php echo "Fecha del comentario: ".$dato['Fecha'] ?></p>
                             </div>
                         </div><br>
             <?php

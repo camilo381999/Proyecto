@@ -432,13 +432,18 @@ class Publicacion extends Conexion {
 
 	//Agrega un nuevo comentario al tecnico
 	public function add_calificacion($idTecnico,$idCliente, $comentario,$calificacion,$tipoServicio,$idAgenda) {
-		$statement = $this->db->prepare("INSERT INTO calificacion (TECNICOS_ID_TECNICO, ID_CLIENTE, COMENTARIO,	CALIFICACION, TIPO_SERVICIO	) 
-		VALUES (:idTecnico, :idCliente, :comentario, :calificacion, :tipoServicio)");
+
+		date_default_timezone_set('America/Bogota');
+		$fecha = date("Y-n-j");
+
+		$statement = $this->db->prepare("INSERT INTO calificacion (TECNICOS_ID_TECNICO, ID_CLIENTE, COMENTARIO,	CALIFICACION, TIPO_SERVICIO, FECHA	) 
+		VALUES (:idTecnico, :idCliente, :comentario, :calificacion, :tipoServicio, :fecha)");
         $statement->bindParam(':idTecnico', $idTecnico);
 		$statement->bindParam(':idCliente', $idCliente);
 		$statement->bindParam(':comentario', $comentario);
 		$statement->bindParam(':calificacion', $calificacion);
 		$statement->bindParam(':tipoServicio', $tipoServicio);
+		$statement->bindParam(':fecha', $fecha);
 		$statement->execute();
 		
 		$statement = $this->db->prepare("UPDATE agenda SET CALIFICADO = 'true'
