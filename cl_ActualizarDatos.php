@@ -72,7 +72,7 @@ if (isset($_POST['actualizar'])) {
                 <div class="form-group">
                     <label>Apellido:</label>
                     <input name="Apellido" type="text" class="form-control" placeholder="Apellido" <?php $validar->mostrar_apellido(); ?>>
-                    <?php<
+                    <?php
                     $validar->mostrar_error_apellido();
                     ?>
                 </div>
