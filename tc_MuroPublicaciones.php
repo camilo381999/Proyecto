@@ -54,14 +54,14 @@ include_once('templates/menu.php');
                         //$tipos->add($dato['TIPO']);
                         array_push($tipos, $dato['TIPO']);
                     }
-                } else {
+                }/*  else {
                     //script del alert
                     echo "<script> Swal.fire('¡No hay servicios publicados, por favor revisa más tarde!').then(
                             function() {
                                 window.location.href = 'index.php';
                             });";
                     echo "</script>";
-                }
+                } */
             }
         }
         //print_r($tipos);

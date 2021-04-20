@@ -57,9 +57,9 @@ echo "</script>"; */
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                                 <div class="card-body">
                                     <label>Técnico:</label>
-                                    <a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>">
+                                   <u><a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>">
                                         <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] ?></h5>
-                                    </a>
+                                    </a></u> 
                                     <?php
                                     if ($dato['CAMBIOS_TECNICO'] == "true") {
                                         echo "<div class='alert alert-primary' role='alert'>";

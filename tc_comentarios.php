@@ -44,7 +44,7 @@ $tecnico = $usuario->getByIdTecnico($idTecnico);
                                 <h6 class="card-title"><?php echo "Calificación: " . $dato['CALIFICACION'] ?></h6>
                                 <h6 class="card-title"><?php echo "Comentario: " ?></h6>
                                 <p class="card-text"><?php echo $dato['COMENTARIO'] ?></p>
-                                <p class="card-text"><?php echo "Fecha del comentario: ".$dato['Fecha'] ?></p>
+                                <p class="card-text"><?php echo "Fecha del comentario: ".$dato['FECHA'] ?></p>
                             </div>
                         </div><br>
             <?php

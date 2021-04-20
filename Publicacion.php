@@ -105,7 +105,7 @@ class Publicacion extends Conexion
 
 	public function selectAceptadosPendienteByIdCliente($idCliente)
 	{
-		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO = 'Aceptado' AND ID_CLIENTE = :idCliente");
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO = 'Aceptado' AND ID_CLIENTE = :idCliente ORDER BY FECHA ASC, HORA ASC");
 		$statement->bindParam(':idCliente', $idCliente);
 
 		$statement->execute();
@@ -298,7 +298,7 @@ class Publicacion extends Conexion
 		FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		 (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO)
 		  AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos
-		WHERE ID_PUBLICACION = :idPublicacion ");
+		WHERE ID_PUBLICACION = :idPublicacion");
 		$statement->bindParam(':idPublicacion', $idPublicacion);
 		$statement->execute();
 
@@ -374,7 +374,7 @@ class Publicacion extends Conexion
 	public function get_agenda_historial($Id)
 	{
 		$statement = $this->db->prepare("SELECT * FROM agenda
-		 WHERE TECNICOS_ID_TECNICO = :Id AND (ESTADO = 'Terminado' OR ESTADO = 'Cancelado')");
+		 WHERE TECNICOS_ID_TECNICO = :Id AND (ESTADO = 'Terminado' OR ESTADO = 'Cancelado') ORDER BY FECHA DESC, HORA DESC");
 		$statement->bindParam(':Id', $Id);
 		$statement->execute();
 		$result = $statement->fetchAll();
@@ -433,7 +433,7 @@ class Publicacion extends Conexion
 	public function get_pendiente_idClient($idCliente)
 	{
 		$statement = $this->db->prepare("SELECT * FROM pendiente
-		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado')");
+		WHERE ID_CLIENTE  = :idUsuario AND (ESTADO_SERVICIO = 'Terminado' OR ESTADO_SERVICIO = 'Cancelado') ORDER BY FECHA DESC, HORA DESC");
 		$statement->bindParam(':idUsuario', $idCliente);
 		$statement->execute();
 
@@ -488,7 +488,7 @@ class Publicacion extends Conexion
 	public function get_comentarios_tecnico($idTecnico)
 	{
 
-		$statement = $this->db->prepare("SELECT * FROM calificacion WHERE TECNICOS_ID_TECNICO= :idTecnico");
+		$statement = $this->db->prepare("SELECT * FROM calificacion WHERE TECNICOS_ID_TECNICO= :idTecnico ORDER BY FECHA DESC");
 		$statement->bindParam(':idTecnico', $idTecnico);
 		$statement->execute();
 
@@ -536,7 +536,7 @@ class Publicacion extends Conexion
 	//trae todos los servicios que tenga el cliente en la tabla de pendiente
 	public function get_pendiente_idTecnico_fecha($idTecnico, $fecha)
 	{
-		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO='Aceptado' AND ID_TECNICO= :idTecnico AND FECHA= :fecha");
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO='Aceptado' AND ID_TECNICO= :idTecnico AND FECHA= :fecha  ORDER BY HORA ASC");
 		$statement->bindParam(':idTecnico', $idTecnico);
 		$statement->bindParam(':fecha', $fecha);
 		$statement->execute();
@@ -577,7 +577,7 @@ class Publicacion extends Conexion
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		 FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		  (SELECT LOCALIDAD FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS LOCALIDAD,
-		   ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos WHERE TIPO = :Tipo ");
+		   ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos WHERE TIPO = :Tipo");
 		$statement->bindParam(':Tipo', $Tipo);
 		$statement->execute();
 
