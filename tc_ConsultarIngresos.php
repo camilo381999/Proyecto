@@ -10,7 +10,7 @@ include_once('templates/menu.php');
 ?>
 <div class="publicacion-title">
     <br>
-    <h1>Consultar ingresos semanales</h1>
+    <h1>Consultar ingresos mensuales</h1>
     <br>
 </div>
 

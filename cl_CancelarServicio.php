@@ -13,7 +13,7 @@ include_once('templates/menu.php');
 <div class="container">
     <div class="publicacion-title">
         <br>
-        <h1>Cancelar servicio</h1>
+        <h1>Servicios activos</h1>
         <br>
     </div>
 
@@ -63,6 +63,13 @@ include_once('templates/menu.php');
 
             <?php }
                 }
+            }else{
+                //script del alert
+                echo "<script> Swal.fire('¡No hay servicios activos, por favor revisa más tarde!').then(
+                    function() {
+                        window.location.href = 'index.php';
+                    });";
+                echo "</script>";
             }
 
             ?>

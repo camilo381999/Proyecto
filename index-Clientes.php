@@ -50,7 +50,7 @@ if(!$finalizados==null){
             <div class="main-menu__options">
                 <a href="cl_ServiciosPublicados.php" class="menu__option" id="btnPublicado">
                     <img class="option__image" src="img/icon-ConsultarPost.svg" alt="icon-publicar">
-                    Perfiles de técnicos
+                    Perfil de técnicos
                 </a>
             </div>
         </div>
@@ -66,7 +66,7 @@ if(!$finalizados==null){
             <div class="main-menu__options">
                 <a href="cl_HistorialServicio.php" class="menu__option" id="btnHistorial">
                     <img class="option__image" src="img/icon-historial.svg" alt="icon-historial">
-                    Historial de Servicios
+                    Historial
                 </a>
             </div>
         </div>

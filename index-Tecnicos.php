@@ -29,7 +29,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="tc_MuroPublicaciones.php" class="menu__option" id="btnPublicaciones">
                     <img class="option__image" src="img/icon-publicaciones.svg" alt="icon-publicaciones">
-                    Muro de Publicaciones
+                    Muro de Servicios
                 </a>
             </div>
         </div>
@@ -45,7 +45,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="tc_ConsultarIngresos.php" class="menu__option" id="btnIngresos">
                     <img class="option__image" src="img/icon-ingresos.svg" alt="icon-ingresos">
-                     Ingresos Semanales
+                     Ingresos Mensuales
                 </a>
             </div>
         </div>
@@ -54,7 +54,7 @@ include_once('templates/menu.php');
             <div class="main-menu__options">
                 <a href="tc_HistorialServicio.php" class="menu__option" id="btnHistorial">
                     <img class="option__image" src="img/icon-historial.svg" alt="icon-historial">
-                    Historial de Servicios
+                    Historial
                 </a>
             </div>
         </div>
