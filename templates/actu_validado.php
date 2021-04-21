@@ -67,6 +67,7 @@
 </div>
 
 <div class="form-group">
+    <label>Si desea cambiar su contraseña, escriba su nueva contraseña a continuación o de lo contrario ignore este campo</label>
     <input name="ContrasenaNueva" type="password" class="form-control" placeholder="Nueva contraseña">
     <?php
    // $validar->mostrar_error_contrasenaNueva();
