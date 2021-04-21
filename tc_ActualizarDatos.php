@@ -46,8 +46,8 @@ if (isset($_POST['actualizar'])) {
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-sm-4 col-xs-12"></div>
-        <div class="col-md-6 col-sm-4 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <!-- form start -->
             <form class="form-container" id="form-registro" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
@@ -61,7 +61,7 @@ if (isset($_POST['actualizar'])) {
 
             </form>
         </div>
-        <div class="col-md-3 col-sm-4 col-xs-12"></div>
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
     </div>
 </div>
 

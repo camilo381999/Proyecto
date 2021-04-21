@@ -41,8 +41,8 @@ if (isset($_POST['enviar'])) {
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-sm-4 col-xs-12"></div>
-        <div class="col-md-6 col-sm-4 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <!-- form start -->
             <form class="form-container2" autocomplete="off" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
@@ -82,7 +82,7 @@ if (isset($_POST['enviar'])) {
                 <button name="enviar" type="submit" class="btn btn-primary btn-block">Enviar</button>
             </form>
         </div>
-        <div class="col-md-3 col-sm-4 col-xs-12"></div>
+        <div class="col-md-3 col-sm-3 col-xs-12"></div>
     </div>
 </div>
 

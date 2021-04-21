@@ -8,6 +8,10 @@ $ModeloUsuarios->validateSessionClientes();
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
+
+ //script del alert
+ echo "<script> Swal.fire('¡Estos son los servicios que usted ha agendado!');";
+ echo "</script>";
 ?>
 
 <div class="container">
@@ -40,7 +44,7 @@ include_once('templates/menu.php');
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo 'Técnico: ' . $idpost['NOMBRE_TECNICO']  ?></h5>
                                 <p class="card-text"><?php echo  'Localidad: ' . $idpost['LOCALIDAD']; ?></p>
-                                <p class="card-text"><?php echo 'Producto: ' . $dato['TIPO'] . ' - ' . $dato['MARCA']; ?></p>
+                                <p class="card-text"><?php echo 'Producto: ' . $dato['TIPO'] . ' marca ' . $dato['MARCA']; ?></p>
                                 <p class="card-text"><?php echo 'Fecha y hora: ' . $dato['FECHA'] . ' / ' . $dato['HORA']; ?></p>
                                 <p class="card-text"><?php
                                                         if ($idpost['TIPO_SERVICIO'] == "Mantenimiento") {

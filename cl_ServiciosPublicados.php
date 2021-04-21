@@ -11,9 +11,9 @@ $ModeloUsuarios->validateSessionClientes();
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 
-/* //script del alert
-echo "<script> Swal.fire('¡Los perfiles que encuentra a continuación fueron los técnicos que aplicaron para atender su servicio, por favor seleccione el de su preferencia!');";
-echo "</script>"; */
+ //script del alert
+ echo "<script> Swal.fire('¡Los perfiles que encuentra a continuación fueron los técnicos que aplicaron para atender su servicio, por favor seleccione el de su preferencia!');";
+ echo "</script>";
 ?>
 
 <div class="container">
@@ -47,9 +47,7 @@ echo "</script>"; */
 
                         //muestra el srvicio para aceptar un tecnico si el estado es pendiente
                         if ($dato['ESTADO_SERVICIO'] == "Pendiente") {
-                            //script del alert
-                            echo "<script> Swal.fire('¡Los perfiles que encuentra a continuación fueron los técnicos que aplicaron para atender su servicio, por favor seleccione el de su preferencia!');";
-                            echo "</script>";
+                           
             ?>
 
 

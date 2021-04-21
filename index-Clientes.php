@@ -13,7 +13,7 @@ $idUsuario = $ModeloUsuarios->getId();
 
 $publicacion = new Publicacion();
 
-$finalizados = $publicacion->selectFinalizadosPendienteByIdCliente($idUsuario);
+/* $finalizados = $publicacion->selectFinalizadosPendienteByIdCliente($idUsuario);
 
 if(!$finalizados==null){
     foreach($finalizados as $req){
@@ -24,7 +24,7 @@ if(!$finalizados==null){
             }
         }
     }
-}
+} */
 
 
 ?>

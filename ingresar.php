@@ -24,8 +24,8 @@ include_once('templates/menu.php');
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3 col-sm-4 col-xs-12"></div>
-		<div class="col-md-6 col-sm-4 col-xs-12">
+		<div class="col-md-4 col-sm-3 col-xs-12"></div>
+		<div class="col-md-4 col-sm-6 col-xs-12">
 			<!-- form start -->
 			<form class="form-container" id="form-ingreso" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 
@@ -56,7 +56,7 @@ include_once('templates/menu.php');
 				<a href="recuperar_password.php">¿Olvidó su contraseña?</a>
 			</form>
 		</div>
-		<div class="col-md-3 col-sm-4 col-xs-12"></div>
+		<div class="col-md-4 col-sm-3 col-xs-12"></div>
 	</div>
 </div>
 
