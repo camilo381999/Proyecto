@@ -15,9 +15,11 @@ class ValidarLogin
         if(!$this-> var_iniciada($correo) || !$this-> var_iniciada($contrasena)){
             $this -> error = "Se debe introducir un correo y una contraseña";
         }else{
-            $this -> result = $this -> usuarios-> login($correo);
+            $this -> result = $this -> usuarios-> login2($correo);
             if(is_null($this -> result) || !password_verify($contrasena,$this -> result['PASSWORD'])){
                 $this -> error = "Datos incorrectos";
+            }elseif(password_verify($contrasena,$this -> result['PASSWORD'])){
+                $this -> result = $this->usuarios ->login($correo);
             }
         }
     }

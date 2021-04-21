@@ -50,6 +50,30 @@ class Usuarios extends Conexion
 		return null;
 	}
 
+	public function login2($Correo)
+	{
+		$statement = $this->db->prepare("SELECT * FROM usuarios
+		 WHERE CORREO = :Correo");
+		$statement->bindParam(':Correo', $Correo);
+		$statement->execute();
+
+		if ($statement->rowCount() == 1) {
+			$result = $statement->fetch();
+			return $result;
+		} else {
+			$statement = $this->db->prepare("SELECT * FROM tecnicos
+			 WHERE CORREO = :Correo");
+
+			$statement->bindParam(':Correo', $Correo);
+			$statement->execute();
+			if ($statement->rowCount() == 1) {
+				$result = $statement->fetch();
+				return $result;
+			}
+		}
+		return null;
+	}
+
 	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password, $Localidad)
 	{
 
@@ -267,7 +291,8 @@ class Usuarios extends Conexion
 		return $result;
 	}
 
-	public function url_secreta_existe($url){
+	public function url_secreta_existe($url)
+	{
 		try {
 			$statement = $this->db->prepare("SELECT * FROM recuperacion_password WHERE URL_SECRETA = :url");
 			$statement->bindParam(':url', $url);
@@ -276,7 +301,7 @@ class Usuarios extends Conexion
 			//Comprueba si la consulta devuelve solo un usuario 
 			if ($statement->rowCount() == 1) {
 				$result = $statement->fetch();
-			} 
+			}
 		} catch (PDOException $ex) {
 			print 'ERROR' . $ex->getMessage();
 		}
@@ -303,7 +328,7 @@ class Usuarios extends Conexion
 	public function validateSessionTecnicos()
 	{
 		if ($_SESSION['ID'] == null) {
-			header('location: /Proyecto/ingresar.php');
+			header('location: ingresar.php');
 		}
 		if ($_SESSION['PERFIL'] == 'Usuario') {
 			header('location: index-Clientes.php');
@@ -343,7 +368,7 @@ class Usuarios extends Conexion
 	public function validateSessionClientes()
 	{
 		if ($_SESSION['ID'] == null) {
-			header('location: /Proyecto/ingresar.php');
+			header('location: ingresar.php');
 		}
 
 		if ($_SESSION['PERFIL'] == 'Técnico') {
@@ -351,4 +376,3 @@ class Usuarios extends Conexion
 		}
 	}
 }
-?>

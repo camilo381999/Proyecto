@@ -14,10 +14,9 @@ if (isset($_POST['ingresar'])) {
 	);
 
 	if ($validar->obtener_error() === '' && !is_null($validar->getResult())) {
-		header('Location: /Proyecto/index-Clientes.php');
+		header('Location: index-Clientes.php');
 	}
 }
-
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');

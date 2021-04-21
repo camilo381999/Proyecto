@@ -33,9 +33,9 @@ if (isset($_POST['registrar'])) {
 			password_hash($validar->getContrasena(), PASSWORD_DEFAULT),
 			$validar->getLocalidad()
 		)) {
-			header('Location: /Proyecto/index-Clientes.php');
+			header('Location: index-Clientes.php');
 		} else {
-			header('Location: /registro.php');
+			header('Location: registro.php');
 		}
 	}
 }

@@ -173,7 +173,6 @@ class ValidarRegistro{
     public function get_error_nombre(){
         return $this -> error_nombre;
     }
-
     public function get_error_apellido(){
         return $this -> error_apellido;
     }
