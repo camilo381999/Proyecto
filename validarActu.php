@@ -19,14 +19,13 @@ class ValidarActualizar
     private $error_nombre;
     private $error_apellido;
     private $error_telefono;
-    private $error_contrasena;
+    private $error_contrasenaActual;
+    private $error_contrasenaNueva;
     private $error_localidad;
 
     public function __construct($nombre, $apellido, $telefono, $contrasena, $contrasenaActual, $contrasenaNueva, $localidad)
     {
-
         $this->usuarios = new Usuarios();
-
         $this->aviso_inicio = "<br><div class='alert alert-primary' role='alert'>";
         $this->aviso_cierre = "</div>";
 
@@ -49,16 +48,16 @@ class ValidarActualizar
         }  */
 
         if (password_verify($contrasena, $contrasenaActual)) {
-            if ($this->error_contrasenaNueva != "") {
-                $this->contrasena1 = $contrasenaActual;
-            } else {
+            if ($this->error_contrasenaNueva === "") {
                 $this->contrasena1 = $contrasenaNueva;
+            } else {
+                $this->contrasena1 = $contrasena;
             }
         } else {
-            if($this->error_contrasenaActual === ""){
+            if ($this->error_contrasenaActual === "") {
                 $this->error_contrasenaActual = "Contraseña incorrecta";
-            }else{
-            $this->error_contrasenaActual = $this->validar_cont($contrasena);
+            } else {
+                $this->error_contrasenaActual = $this->validar_cont($contrasena);
             }
         }
     }
