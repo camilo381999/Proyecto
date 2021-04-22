@@ -54,7 +54,6 @@ include_once('templates/menu.php');
                                                         }
 
                                                         ?></p>
-                                <a href="#">Escribir un mensaje</a>
                                 <?php
                                 echo "<br>";
                                 ?>

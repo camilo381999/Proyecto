@@ -41,7 +41,7 @@ $publicacion = new Publicacion();
        
         <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="main-menu__options">
-                <a href="cl_PQRs.php" class="menu__option" id="btnPQRs">
+                <a href="verPqrs.php" class="menu__option" id="btnPQRs">
                     <img class="option__image" src="img/icon-pqrs.svg" alt="icon-pqrs">
                     PQRs
                 </a>

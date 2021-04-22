@@ -518,7 +518,7 @@ class Publicacion extends Conexion
 
 		$idUsuario = $usuario->getId();
 		$statement = $this->db->prepare("INSERT INTO pqr (ID_USUARIO,CORREO,SELECCION_AYUDA,DESCRIPCION,
-		NOMBRE) VALUES (:idUsuario,:Correo, :Seleccion, :Descripcion, :Nombre)");
+		NOMBRE,ESTADO) VALUES (:idUsuario,:Correo, :Seleccion, :Descripcion, :Nombre, 'Pendiente')");
 
 		$statement->bindParam(':Descripcion', $Descripcion);
 		$statement->bindParam(':Correo', $Correo);
@@ -529,6 +529,28 @@ class Publicacion extends Conexion
 		if ($statement->execute()) {
 			return true;
 		} else {
+			return false;
+		}
+	}
+
+	//trae todos los pqr que tengan estado pendiente
+	public function get_pqrs()
+	{
+		$statement = $this->db->prepare("SELECT * FROM pqr WHERE ESTADO='Pendiente'");
+		$statement->execute();
+
+		$result = $statement->fetchAll();
+		return $result;
+	}
+
+	//cambia el estado del pqr a resuelto
+	public function pqr_resuelto($Id)
+	{
+		$statement = $this->db->prepare("UPDATE pqr SET ESTADO='Respondido' WHERE ID_PQR= :Id");
+		$statement->bindParam(':Id', $Id);
+		if($statement->execute()){
+			return true;
+		}else{
 			return false;
 		}
 	}
