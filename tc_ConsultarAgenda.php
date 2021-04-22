@@ -59,7 +59,8 @@ include_once('templates/menu.php');
                             idUsuario=<?php echo $pendiente['ID_CLIENTE']; ?>&
                             idTecnico=<?php echo $pendiente['ID_TECNICO']; ?>&
                             Fecha=<?php echo $dato['FECHA']; ?>&
-                            Costo=<?php echo $dato['COSTO']; ?>" class="btn btn-primary">
+                            Costo=<?php echo $dato['COSTO'];?>&
+                            Correo=<?php echo $cliente['CORREO']; ?>" class="btn btn-primary">
                                 Terminar servicio
                             </a>
 

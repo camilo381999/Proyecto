@@ -1,13 +1,14 @@
 <?php
 
-$destinatario = "damit14449@kindbest.com";
-$asunto = "prueba email";
-$mensaje = "Esto es una prueba";
+$destinatario = "manuel-martinez2@upc.edu.co";
+$asunto = "prueba email con php";
+$mensaje = "Esto es una prueba php (Message part)";
+$headers = "From: sender email";
 
-$exito = mail($destinatario, $asunto, $mensaje);
-
-if ($exito) {
-    echo 'email enviado';
+if (mail($destinatario, $asunto, $mensaje,$headers)) {
+    echo "email enviado to $destinatario";
 } else {
-    echo 'envio fallido';
+    echo "envio fallido";
 }
+?>
+
