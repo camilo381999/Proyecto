@@ -37,7 +37,7 @@ $ControlSesion = new Usuarios();
                         <li>
                             <a class="nav-link" href="Usuarios/Salir.php">Cerrar sesión</a>
                         </li>
-                        
+
                     <?php
                     } elseif ($ControlSesion->getPerfil() == 'Técnico') {
                     ?>
@@ -48,6 +48,20 @@ $ControlSesion = new Usuarios();
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="tc_Perfil.php">Mi perfil</a>
                             </div>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="Usuarios/Salir.php">Cerrar sesión</a>
+                        </li>
+
+
+                    <?php
+                    } elseif ($ControlSesion->getPerfil() == 'Administrador') {
+                    ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $ControlSesion->getNombre(); ?>
+                            </a>
                         </li>
 
                         <li>
@@ -68,7 +82,7 @@ $ControlSesion = new Usuarios();
                         <a class="nav-link" href="#">Preguntas frecuentes</a>
                     </li>
                 </ul>
-                
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="nav-link" href="ingresar.php">Iniciar sesión</a>
@@ -83,4 +97,3 @@ $ControlSesion = new Usuarios();
         </div>
     </div>
 </nav>
-

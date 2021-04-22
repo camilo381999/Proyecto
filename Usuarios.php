@@ -24,10 +24,19 @@ class Usuarios extends Conexion
 		if ($statement->rowCount() == 1) {
 			$result = $statement->fetch();
 
-			//Obtener el nombre y el id del usuario
-			$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
-			$_SESSION['ID'] = $result['ID_USUARIO'];
-			$_SESSION['PERFIL'] = "Usuario";
+			if ($Correo == "administrador@tecniclick.com") {
+				$_SESSION['NOMBRE'] = "Administrador";
+				$_SESSION['ID'] = $result['ID_USUARIO'];
+				$_SESSION['PERFIL'] = "Administrador";
+				return $result;
+			} else {
+				//Obtener el nombre y el id del usuario
+				$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
+				$_SESSION['ID'] = $result['ID_USUARIO'];
+				$_SESSION['PERFIL'] = "Usuario";
+				return $result;
+			}
+
 			return $result;
 		} else {
 			$statement = $this->db->prepare("SELECT * FROM tecnicos
@@ -76,7 +85,6 @@ class Usuarios extends Conexion
 
 	public function add($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password, $Localidad)
 	{
-
 		$statement = $this->db->prepare("INSERT INTO usuarios (ID_USUARIO,NOMBRE,APELLIDO,
 		PASSWORD,CORREO,TELEFONO,LOCALIDAD) VALUES (:Cedula, :Nombre, :Apellido,
 		 :Password, :Correo, :Telefono, :Localidad)");
@@ -94,6 +102,28 @@ class Usuarios extends Conexion
 			$_SESSION['ID'] = $Cedula;
 			$_SESSION['PERFIL'] = "Usuario";
 
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function add_tecnico($Nombre, $Apellido, $Cedula, $Correo, $Telefono, $Password, $Localidad)
+	{
+
+		$statement = $this->db->prepare("INSERT INTO tecnicos (ID_TECNICO,NOMBRE,APELLIDO,
+		PASSWORD,CORREO,TELEFONO,LOCALIDAD) VALUES (:Cedula, :Nombre, :Apellido,
+		 :Password, :Correo, :Telefono, :Localidad)");
+
+		$statement->bindParam(':Cedula', $Cedula);
+		$statement->bindParam(':Nombre', $Nombre);
+		$statement->bindParam(':Apellido', $Apellido);
+		$statement->bindParam(':Password', $Password);
+		$statement->bindParam(':Correo', $Correo);
+		$statement->bindParam(':Telefono', $Telefono);
+		$statement->bindParam(':Localidad', $Localidad);
+
+		if ($statement->execute()) {
 			return true;
 		} else {
 			return false;
@@ -333,6 +363,9 @@ class Usuarios extends Conexion
 		if ($_SESSION['PERFIL'] == 'Usuario') {
 			header('location: index-Clientes.php');
 		}
+		if ($_SESSION['PERFIL'] == 'Administrador') {
+			header('location: index-Admin.php');
+		}
 	}
 
 	public function sesionIniciada()
@@ -362,6 +395,9 @@ class Usuarios extends Conexion
 			if ($_SESSION['PERFIL'] == 'Usuario') {
 				header('location: index-Clientes.php');
 			}
+			if ($_SESSION['PERFIL'] == 'Administrador') {
+				header('location: index-Admin.php');
+			}
 		}
 	}
 
@@ -373,6 +409,23 @@ class Usuarios extends Conexion
 
 		if ($_SESSION['PERFIL'] == 'Técnico') {
 			header('location: index-Tecnicos.php');
+		}
+		if ($_SESSION['PERFIL'] == 'Administrador') {
+			header('location: index-Admin.php');
+		}
+	}
+	
+	public function validateSessionAdmin()
+	{
+		if ($_SESSION['ID'] == null) {
+			header('location: ingresar.php');
+		}
+
+		if ($_SESSION['PERFIL'] == 'Técnico') {
+			header('location: index-Tecnicos.php');
+		}
+		if ($_SESSION['PERFIL'] == 'Usuario') {
+			header('location: index-Clientes.php');
 		}
 	}
 }
