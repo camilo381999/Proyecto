@@ -104,6 +104,9 @@ include_once('templates/menu.php');
     </div>
 
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('currentDay').innerText = <?php echo $fechaSplit[1] ?>;
+    </script>
     <?php
     include_once('templates/terminar-html.php');
     ?>

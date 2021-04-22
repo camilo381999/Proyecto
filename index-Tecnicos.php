@@ -7,6 +7,7 @@ $ModeloUsuarios->validateSessionTecnicos();
 
 date_default_timezone_set('America/Bogota');
 $hoy = date("n/j/Y");
+$mesActual = date("n");
 
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
@@ -43,7 +44,7 @@ include_once('templates/menu.php');
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
-                <a href="tc_ConsultarIngresos.php" class="menu__option" id="btnIngresos">
+                <a href="tc_ConsultarIngresos.php?nMes=<?php echo $mesActual; ?>" class="menu__option" id="btnIngresos">
                     <img class="option__image" src="img/icon-ingresos.svg" alt="icon-ingresos">
                      Ingresos Mensuales
                 </a>
