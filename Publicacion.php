@@ -567,6 +567,27 @@ class Publicacion extends Conexion
 		return $result;
 	}
 
+	//trae todos los servicios que tenga el cliente en la tabla de pendiente
+	public function get_pendiente_idTecnico($idTecnico) {
+
+		$data = array();
+
+		$statement = $this->db->prepare("SELECT * FROM pendiente WHERE ESTADO_SERVICIO='Aceptado' AND ID_TECNICO= :idTecnico ORDER BY HORA DESC");
+		$statement->bindParam(':idTecnico', $idTecnico);
+		$statement->execute();
+		$result = $statement->fetchAll();
+
+		foreach($result as $fila){
+			$data[] = array(
+				'id' => $fila["ID_PENDIENTE"],
+				'title' => $fila["TIPO_SERVICIO"]." - ".$fila['HORA'],
+				'start' => $fila["FECHA"],
+				'end' => $fila["FECHA"]
+			);
+		}
+		return json_encode($data);
+	}
+
 
 	public function get_requerimiento_by_id($idRequerimiento)
 	{

@@ -6,7 +6,7 @@ $ModeloUsuarios = new Usuarios();
 $ModeloUsuarios->validateSessionTecnicos();
 
 date_default_timezone_set('America/Bogota');
-$hoy = date("n/j/Y");
+$hoy = date("Y-n-j");
 $mesActual = date("n");
 
 include_once('templates/iniciar-html.php');
@@ -36,7 +36,7 @@ include_once('templates/menu.php');
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
-                <a href="calendario.php?fecha=<?php echo $hoy; ?>" class="menu__option" id="btnAgenda">
+                <a href="tc_calendario.php?getFecha=<?php echo $hoy; ?>" class="menu__option" id="btnAgenda">
                     <img class="option__image" src="img/icon-agenda.svg" alt="icon-agenda.svg">
                     Consultar Agenda
                 </a>

@@ -6,7 +6,6 @@ $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionTecnicos();
 
-$idRequerimiento = $_GET['idRequerimiento'];
 $idPendiente = $_GET['idPendiente'];
 
 include_once('templates/iniciar-html.php');

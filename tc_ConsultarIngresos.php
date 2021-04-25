@@ -53,15 +53,17 @@ for ($i = 1; $i < 13; $i++) {
                     <div class="card-body">
                         <h5 class="card-title">Este es el estimado de ingresos que usted ganará en <?php echo $mesesStr[$nMes - 1]; ?></h5>
 
-                        <p class="card-text" style="font-size:200%;"> <?php echo "$" . $arrEstimado[$nMes - 1]; ?> </p>
+                        
+                        
+                        <p class="card-text" style="font-size:200%;"> <?php echo "$ ".number_format(intval($arrEstimado[$nMes - 1]), 0, ",", "."); ?> </p>
                     </div>
                 </div><br>
 
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Este es el total de ingresos que usted ha obtenido en <?php echo $mesesStr[$nMes - 1]; ?></h5>
-
-                        <p class="card-text" style="font-size:200%;"> <?php echo "$" . ($arrGanancias[$nMes - 1]) * 1; ?> </p>
+                        
+                        <p class="card-text" style="font-size:200%;"> <?php echo "$ ".number_format(intval(($arrGanancias[$nMes - 1]) * 1), 0, ",", "."); ?> </p>
                     </div>
                 </div><br>
                 <div>
