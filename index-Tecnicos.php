@@ -9,6 +9,14 @@ date_default_timezone_set('America/Bogota');
 $hoy = date("Y-n-j");
 $mesActual = date("n");
 
+$id = $ModeloUsuarios->getId();
+
+$result = $ModeloUsuarios->getByIdTecnico($id);
+
+if($result['ESTADO'] == 'Inactivo'){
+    $ModeloUsuarios->setEstado();
+}
+
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
