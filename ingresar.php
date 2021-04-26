@@ -33,25 +33,27 @@ include_once('templates/menu.php');
 					<h1>Inicio de Sesión</h1>
 				</div>
 
-				<div class="form-group">
-					<input name="Correo" type="email" class="form-control" required="" autofocus placeholder="Correo" <?php
-																														if (isset($_POST['ingresar']) && isset($_POST['Correo']) && !empty($_POST['Correo'])) {
-																															echo 'value="' . $_POST['Correo'] . '"';
-																														}
-																														?>>
+				<div class="input-group">
+					<input name="Correo" id="correo" type="email" class="form-control" required="" autofocus placeholder="Correo" <?php
+																																	if (isset($_POST['ingresar']) && isset($_POST['Correo']) && !empty($_POST['Correo'])) {
+																																		echo 'value="' . $_POST['Correo'] . '"';
+																																	}
+																																	?>>
 
+					<img src="img/mail.png" id="mail">
 				</div>
+				<br>
 
-				<div class="form-group">
-					<input name="Contrasena" type="password" class="form-control" required="" placeholder="Contraseña">
+				<div class="input-group">
+					<input name="Contrasena" id="contrasena" type="password" class="form-control" required="" placeholder="Contraseña">
+					<img src="img/abierto.png" id="ojo">
 				</div>
-
+				<br>
 				<?php
 				if (isset($_POST['ingresar'])) {
 					$validar->mostrar_error();
 				}
 				?>
-
 				<button name="ingresar" type="submit" class="btn btn-primary btn-block">Inicia Sesión</button>
 				<a href="recuperar_password.php">¿Olvidó su contraseña?</a>
 			</form>
@@ -59,6 +61,29 @@ include_once('templates/menu.php');
 		<div class="col-md-4 col-sm-3 col-xs-12"></div>
 	</div>
 </div>
+
+<script text="text/javascript">
+	var ver = document.getElementById('ojo');
+	var input = document.getElementById('contrasena');
+
+	ver.addEventListener('click', mostrarContraseña);
+
+	function mostrarContraseña() {
+		if (input.type == "password") {
+			input.type = "text";
+			ver.src = "img/cerrado.png";
+			setTimeout("cerrado()", 3000);
+		} else {
+			input.type = "password";
+			ver.src = "img/abierto.png";
+		}
+	}
+
+	function cerrado() {
+		input.type = "password";
+		ver.src = "img/abierto.png";
+	}
+</script>
 
 <?php
 include_once('templates/terminar-html.php');

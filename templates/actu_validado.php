@@ -58,20 +58,24 @@
     ?>
 </div>
 
-<div class="form-group">
-    <label>Contraseña:</label>
-    <input name="Contrasena" type="password" class="form-control" placeholder="Contraseña actual">
+<label>Contraseña:</label>
+<div class="input-group">
+    <input name="Contrasena" id="contrasena" type="password" class="form-control" placeholder="Contraseña actual">
+    <img src="img/abierto.png" id="ojo">
     <?php
     $validar->mostrar_error_contrasenaActual();
     ?>
 </div>
+<br>
 
-<div class="form-group">
-    <label>Si desea cambiar su contraseña, escriba su nueva contraseña a continuación o de lo contrario ignore este campo</label>
-    <input name="ContrasenaNueva" type="password" class="form-control" placeholder="Nueva contraseña">
+<label>Si desea cambiar su contraseña, escriba su nueva contraseña a continuación o de lo contrario ignore este campo</label>
+<div class="input-group">
+    <input name="ContrasenaNueva" id="contrasena2" type="password" class="form-control" placeholder="Nueva contraseña">
+    <img src="img/abierto.png" id="ojo2">
     <?php
    // $validar->mostrar_error_contrasenaNueva();
     ?>
 </div>
+<br>
 
 <button name="actualizar" type="submit" class="btn btn-primary btn-block">Actualizar</button>
