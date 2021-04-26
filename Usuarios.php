@@ -52,6 +52,7 @@ class Usuarios extends Conexion
 				$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
 				$_SESSION['ID'] = $result['ID_TECNICO'];
 				$_SESSION['PERFIL'] = "Técnico";
+				$_SESSION['ESTADO'] = $result['ESTADO'];
 
 				return $result;
 			}
@@ -71,7 +72,7 @@ class Usuarios extends Conexion
 			return $result;
 		} else {
 			$statement = $this->db->prepare("SELECT * FROM tecnicos
-			 WHERE CORREO = :Correo");
+			 WHERE CORREO = :Correo AND ESTADO = 'Activo' ");
 
 			$statement->bindParam(':Correo', $Correo);
 			$statement->execute();
@@ -112,8 +113,8 @@ class Usuarios extends Conexion
 	{
 
 		$statement = $this->db->prepare("INSERT INTO tecnicos (ID_TECNICO,NOMBRE,APELLIDO,
-		PASSWORD,CORREO,TELEFONO,LOCALIDAD) VALUES (:Cedula, :Nombre, :Apellido,
-		 :Password, :Correo, :Telefono, :Localidad)");
+		PASSWORD,CALIFICACION,CORREO,TELEFONO,ESTADO,LOCALIDAD) VALUES (:Cedula, :Nombre, :Apellido,
+		 :Password, 4 , :Correo, :Telefono, 'Activo', :Localidad)");
 
 		$statement->bindParam(':Cedula', $Cedula);
 		$statement->bindParam(':Nombre', $Nombre);
@@ -169,6 +170,21 @@ class Usuarios extends Conexion
 			return false;
 		}
 	}
+
+	public function estadoTecnico($id,$estado)
+	{
+		$statement = $this->db->prepare("UPDATE tecnicos SET ESTADO =:Estado WHERE ID_TECNICO = :Id");
+		$statement->bindParam(':Id', $id);
+		$statement->bindParam(':Estado', $estado);
+
+		if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 
 	public function getById($Id)
 	{
@@ -354,6 +370,11 @@ class Usuarios extends Conexion
 		return $_SESSION['PERFIL'];
 	}
 
+	public function setEstado(){
+		$_SESSION['ESTADO']= 'Inactivo';
+		$this->Salir2();
+	}
+
 
 	public function validateSessionTecnicos()
 	{
@@ -365,6 +386,9 @@ class Usuarios extends Conexion
 		}
 		if ($_SESSION['PERFIL'] == 'Administrador') {
 			header('location: index-Admin.php');
+		}
+		if ($_SESSION['ESTADO'] == 'Inactivo') {
+			header('location: ingresar.php');
 		}
 	}
 
@@ -384,6 +408,15 @@ class Usuarios extends Conexion
 		$_SESSION['NOMBRE'] = null;
 		session_destroy();
 		header('Location: ../index.php');
+	}
+
+	public function Salir2()
+	{
+		$_SESSION['ID'] = null;
+		$_SESSION['PERFIL'] = null;
+		$_SESSION['NOMBRE'] = null;
+		session_destroy();
+		header('Location: index.php');
 	}
 
 	public function validateSessionIndex()

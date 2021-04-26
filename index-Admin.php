@@ -30,18 +30,27 @@ $publicacion = new Publicacion();
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
-                <a href="registrarTecnico.php" class="menu__option" id="btnPublicar">
+                <a href="ad_registrarTecnico.php" class="menu__option" id="btnPublicar">
                     <img class="option__image" src="img/icon-publicar.svg" alt="icon-publicar">
                     Registrar técnico
                 </a>
             </div>
         </div>
-       
-        <div class="col-md-6 col-sm-6 col-xs-6">
+
+        <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="main-menu__options">
-                <a href="verPqrs.php" class="menu__option" id="btnPQRs">
+                <a href="ad_estadoTecnicos.php" class="menu__option" id="btnPublicado">
+                    <img class="option__image" src="img/icon-ConsultarPost.svg" alt="icon-publicar">
+                    Técnicos
+                </a>
+            </div>
+        </div>
+       
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="main-menu__options">
+                <a href="ad_verPqrs.php" class="menu__option" id="btnPQRs">
                     <img class="option__image" src="img/icon-pqrs.svg" alt="icon-pqrs">
                     PQRs
                 </a>
