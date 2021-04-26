@@ -66,11 +66,13 @@
 	?>
 </div>
 
-<div class="form-group">
-	<input name="Contrasena" type="password" class="form-control" placeholder="Contraseña">
+<div class="input-group">
+	<input name="Contrasena" id="contrasena" type="password" class="form-control" placeholder="Contraseña">
+	<img src="img/abierto.png" id="ojo">
 	<?php
 	$validar->mostrar_error_contrasena();
 	?>
 </div>
+<br>
 
 <button name="registrar" type="submit" class="btn btn-primary btn-block">Registrar</button>

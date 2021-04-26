@@ -64,6 +64,29 @@ include_once('templates/menu.php');
 	</div>
 </div>
 
+<script text="text/javascript">
+	var ver = document.getElementById('ojo');
+	var input = document.getElementById('contrasena');
+
+	ver.addEventListener('click', mostrarContraseña);
+
+	function mostrarContraseña() {
+		if (input.type == "password") {
+			input.type = "text";
+			ver.src = "img/cerrado.png";
+			setTimeout("cerrado()", 3000);
+		} else {
+			input.type = "password";
+			ver.src = "img/abierto.png";
+		}
+	}
+
+	function cerrado() {
+		input.type = "password";
+		ver.src = "img/abierto.png";
+	}
+</script>
+
 <?php
 include_once('templates/terminar-html.php');
 ?>
