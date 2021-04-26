@@ -30,7 +30,7 @@ if ($Modelo->servicioTerminado($idAgenda, $idPendiente, $idUsuario, $idTecnico, 
     $body = "Tu técnico ha indicado que ha concluido tu servicio por un valor de: $Costo, por favor recuerda calificarlo. Esto ayudará a que mejore a futuro la calidad de su servicio.\n\n\nGracias por preferir TecniClick";
 
     $headers = array(
-        'Authorization: Bearer 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',
+        'Authorization: Bearer ',
         'Content-Type: application/json'
     );
 

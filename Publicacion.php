@@ -582,7 +582,8 @@ class Publicacion extends Conexion
 				'id' => $fila["ID_PENDIENTE"],
 				'title' => $fila["TIPO_SERVICIO"]." - ".$fila['HORA'],
 				'start' => $fila["FECHA"],
-				'end' => $fila["FECHA"]
+				'end' => $fila["FECHA"],
+				'display' => 'background',
 			);
 		}
 		return json_encode($data);

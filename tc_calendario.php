@@ -85,7 +85,8 @@ $pendiente = $publicacion->get_pendiente_idTecnico($idTecnico);
                         }
                     });
                 },
-                events: <?php echo $pendiente; ?>,
+                events: <?php echo $pendiente; ?>
+                
             });
             calendar.render();
         });

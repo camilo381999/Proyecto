@@ -452,16 +452,17 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     background: var(--fc-non-business-color, rgba(215, 215, 215, 0.3));
   }
 .fc .fc-bg-event {
-    background: rgb(143, 223, 130);
-    background: var(--fc-bg-event-color, rgb(143, 223, 130));
+    background: #2a9d5a9c;
+    background: var(--fc-bg-event-color, #2a9d5a9c);
     opacity: 0.3;
     opacity: var(--fc-bg-event-opacity, 0.3)
   }
 .fc .fc-bg-event .fc-event-title {
       margin: .5em;
-      font-size: .85em;
+      font-size: .75em;
       font-size: var(--fc-small-font-size, .85em);
       font-style: italic;
+      color: transparent;
     }
 .fc .fc-highlight {
     background: rgba(188, 232, 241, 0.3);
@@ -715,8 +716,8 @@ A HORIZONTAL event
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
   }
 .fc .fc-daygrid-day.fc-day-today {
-      background-color: rgba(255, 220, 40, 0.15);
-      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+      background-color: #118ab288;
+      background-color: var(--fc-today-bg-color, #118ab288);
     }
 .fc .fc-daygrid-day-frame {
     position: relative;
