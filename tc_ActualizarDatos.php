@@ -65,6 +65,49 @@ if (isset($_POST['actualizar'])) {
     </div>
 </div>
 
+<script text="text/javascript">
+	var ver = document.getElementById('ojo');
+    var input = document.getElementById('contrasena');
+
+    ver.addEventListener('click', mostrarContraseña);
+
+    function mostrarContraseña() {
+        if (input.type == "password") {
+            input.type = "text";
+            ver.src = "img/cerrado.png";
+            setTimeout("cerrado()", 3000);
+        } else {
+            input.type = "password";
+            ver.src = "img/abierto.png";
+        }
+    }
+
+    function cerrado() {
+        input.type = "password";
+        ver.src = "img/abierto.png";
+    }
+
+    var ver2 = document.getElementById('ojo2');
+    var input2 = document.getElementById('contrasena2');
+
+    ver2.addEventListener('click', mostrarContraseña2);
+
+    function mostrarContraseña2() {
+        if (input2.type == "password") {
+            input2.type = "text";
+            ver2.src = "img/cerrado.png";
+            setTimeout("cerrado2()", 3000);
+        } else {
+            input2.type = "password";
+            ver2.src = "img/abierto.png";
+        }
+    }
+
+    function cerrado2() {
+        input2.type = "password";
+        ver2.src = "img/abierto.png";
+    }
+</script>
 
 <?php
 include_once('templates/terminar-html.php');
