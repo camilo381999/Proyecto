@@ -23,6 +23,9 @@ include_once('templates/menu.php');
     </div>
 </div>
 
+
+<img src="img/vista-dispositivos.png" width="30%">
+
 <?php
 include_once('templates/terminar-html.php');
 ?>
