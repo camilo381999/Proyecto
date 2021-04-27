@@ -127,9 +127,16 @@ body{
 
 /*----------------calendario----------------*/
 
-a{
+ a{
     color: #000;
 }
+
+ 
+
+ .comentarios{
+  color: #118AB2 !important;
+   
+ }
 
 button {
    /*  width: 75px; */

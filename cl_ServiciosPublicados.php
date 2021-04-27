@@ -51,10 +51,11 @@ echo "</script>";
                             <div class="card">
                                 <h5 class="card-header"><?php echo $dato['TIPO_SERVICIO']; ?></h5>
                                 <div class="card-body">
-                                    <label>Técnico:</label>
-                                    <u><a href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>">
-                                            <h5 class="card-title"><?php echo $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] ?></h5>
-                                        </a></u>
+                                    <!-- <label>Técnico:</label> -->
+                                    <h5 class="card-title"><?php echo 'Técnico: ' . $tecnicos['NOMBRE'] . ' ' . $tecnicos['APELLIDO'] ?></h5>
+                                    <u><a class="comentarios" href="tc_comentarios.php?idTecnico=<?php echo $dato['ID_TECNICO']; ?>">
+                                            <p class="card-text">Ver comentarios del técnico</p>
+                                        </a></u><br>
                                     <?php
                                     if ($dato['CAMBIOS_TECNICO'] == "true") {
                                         echo "<div class='alert alert-primary' role='alert'>";

@@ -51,6 +51,7 @@ include_once('templates/menu.php');
 
                                                             ?></p>
                                     <p class="card-text"><?php echo 'Estado: '. $agenda['ESTADO'] ?></p>
+
                                 </div>
                             </div><br>
             <?php

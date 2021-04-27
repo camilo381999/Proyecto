@@ -417,13 +417,6 @@ class Publicacion extends Conexion
 		$statement = $this->db->prepare("UPDATE pendiente SET ESTADO_SERVICIO = 'Terminado'
 		WHERE ID_PENDIENTE = :idPendiente ");
 		$statement->bindParam(':idPendiente', $idPendiente);
-		$statement->execute();
-
-		$statement = $this->db->prepare("INSERT INTO factura (FECHA, COSTO, USUARIOS_ID_USUARIO, TECNICOS_ID_TECNICO) VALUES (:Fecha, :Costo, :idUsuario, :idTecnico)");
-		$statement->bindParam(':Fecha', $Fecha);
-		$statement->bindParam(':Costo', $Costo);
-		$statement->bindParam(':idUsuario', $idUsuario);
-		$statement->bindParam(':idTecnico', $idTecnico);
 		if ($statement->execute()) {
 			return true;
 		} else {

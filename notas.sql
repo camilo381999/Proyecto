@@ -37,24 +37,6 @@ CREATE TABLE IF NOT EXISTS `TECNICOS`
 );
 
 -- -----------------------------------------------------
--- Table `FACTURA`
--- -----------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `FACTURA` 
-(
-  `ID_FACTURA` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `FECHA` DATE NOT NULL,
-  `COSTO` INT(10) NOT NULL,
-  `AGENDA_ID_CITA` INT NOT NULL,
-  INDEX `fk_FACTURA_AGENDA1_idx` (`AGENDA_ID_CITA` ASC),
-  CONSTRAINT `fk_FACTURA_AGENDA1`
-    FOREIGN KEY (`AGENDA_ID_CITA`)
-    REFERENCES `AGENDA` (`ID_CITA`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-);
-
--- -----------------------------------------------------
 -- Table `REQUERIMIENTOS`
 -- -----------------------------------------------------
 

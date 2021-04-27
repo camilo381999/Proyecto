@@ -24,7 +24,7 @@ if ($Modelo->servicioTerminado($idAgenda, $idPendiente, $idUsuario, $idTecnico, 
     //$mensaje = "Tu técnico ha indicado que ha concluido tu servicio por un valor de: $Costo, por favor recuerda calificarlo. Esto ayudará a que mejore a futuro la calidad de su servicio.\n\n\nGracias por preferir TecniClick";
     //$headers = "From: sender email";
 
-    $from_email = "tecniclickcolombia@gmail.com";
+   /*  $from_email = "tecniclickcolombia@gmail.com";
     $to_email = $Correo;
     $subject = "Tu servicio ha finalizado";
     $body = "Tu técnico ha indicado que ha concluido tu servicio por un valor de: $Costo, por favor recuerda calificarlo. Esto ayudará a que mejore a futuro la calidad de su servicio.\n\n\nGracias por preferir TecniClick";
@@ -66,7 +66,7 @@ if ($Modelo->servicioTerminado($idAgenda, $idPendiente, $idUsuario, $idTecnico, 
     $response = curl_exec($curlHandler);
     curl_close($curlHandler);
 
-    echo $response;
+    echo $response; */
 
     echo "<script> Swal.fire('¡Se ha finalizado este servicio!').then(
         function() {
@@ -74,19 +74,6 @@ if ($Modelo->servicioTerminado($idAgenda, $idPendiente, $idUsuario, $idTecnico, 
         });
         </script>";
 
-    /*if (mail($Correo, $asunto, $mensaje, $headers)) {
-        echo "<script> Swal.fire('¡Se ha finalizado este servicio!').then(
-            function() {
-                window.location.href = 'index.php';
-            });";
-        echo "</script>";
-    } else {
-        echo "<script> Swal.fire('¡No se pudo finalizar este servicio!').then(
-            function() {
-                window.location.href = 'index.php';
-            });";
-        echo "</script>";
-    }*/
 } else {
     echo "<script> Swal.fire('¡No se pudo finalizar este servicio!').then(
         function() {
