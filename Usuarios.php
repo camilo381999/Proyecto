@@ -176,12 +176,12 @@ class Usuarios extends Conexion
 		$statement = $this->db->prepare("UPDATE usuarios SET PASSWORD =:Password WHERE ID_USUARIO =:Id");
 		$statement->bindParam(':Id', $Id);
 		$statement->bindParam(':Password', $Password);
+		$statement->execute();
 
-		if ($statement->execute()) {
-			return true;
-		} else {
-			return false;
-		}
+		/* $statement = $this->db->prepare("UPDATE tecnicos SET PASSWORD =:Password WHERE ID_TECNICO =:Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->bindParam(':Password', $Password);
+		$statement->execute(); */
 	}
 
 	public function updatePasswordTecnico($Id, $Password)
@@ -189,13 +189,8 @@ class Usuarios extends Conexion
 		$statement = $this->db->prepare("UPDATE tecnicos SET PASSWORD =:Password WHERE ID_TECNICO =:Id");
 		$statement->bindParam(':Id', $Id);
 		$statement->bindParam(':Password', $Password);
-
-		if ($statement->execute()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+		$statement->execute();
+	} 
 
 	public function estadoTecnico($id, $estado)
 	{

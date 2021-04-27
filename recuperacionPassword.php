@@ -25,11 +25,15 @@ if (isset($_POST['enviar'])) {
 
     if ($_POST['Contrasena1'] == $_POST['Contrasena2']) {
         $clave = password_hash($_POST['Contrasena1'], PASSWORD_DEFAULT);
-        if ($ModeloUsuarios->updatePassword($id, $clave) || $ModeloUsuarios->updatePasswordTecnico($id, $clave)) {
+        if ($ModeloUsuarios->updatePassword($id, $clave)) {
             if ($ModeloUsuarios->eliminar_url_secreta_existe($idRegistro)) {
                 header("Location: ingresar.php");
             }
         }else{
+            $ModeloUsuarios->updatePasswordTecnico($id, $clave);
+            if ($ModeloUsuarios->eliminar_url_secreta_existe($idRegistro)) {
+                header("Location: ingresar.php");
+            }
             echo "hubo un problema";
         }
 
