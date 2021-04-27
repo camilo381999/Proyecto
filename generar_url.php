@@ -24,7 +24,13 @@ if (isset($_POST['recuperar'])) {
         $usuario = $ModeloUsuarios->getByCorreoTecnico($email);
         $idUsuario=$usuario['ID_TECNICO'];
     }else{
-        return;
+        ?>
+        <script text="text/javascript">
+        alert("¡Este correo no está registrado!");
+        window.location.href = 'recuperar_password.php';
+        </script>
+        <?php
+
     }
 
     $nombre = $usuario['NOMBRE'] . " " . $usuario['APELLIDO'];
