@@ -1,32 +1,45 @@
 <?php
-
+include_once('templates/iniciar-html.php');
+include_once('templates/menu.php');
 
 include_once("Usuarios.php");
 
 $ModeloUsuarios = new Usuarios();
 
-$componentes_url = parse_url($_SERVER['REQUEST_URI']);
+$host = $_SERVER["HTTP_HOST"];
+$url = $_SERVER["REQUEST_URI"];
+//echo "http://" . $host . $url;
 
-$ruta = $componentes_url['path'];
+$url_personal = $_GET['key'];
 
-$partes_ruta = explode('/', $ruta);
-$partes_ruta = array_filter($partes_ruta);
-$partes_ruta = array_slice($partes_ruta, 0);
-
-if ($partes_ruta[1] == 'recuperacionPassword.php') {
-    $url_personal = $partes_ruta[2];
-    $ruta_elegida = 'recuperacionPassword.php';
-}
 $result = $ModeloUsuarios->url_secreta_existe($url_personal);
 if ($result != null) {
     $id = $result['ID_USUARIO'];
-    echo 'El id de usuario es: ' . $id;
+    $idRegistro = $result['ID_RECUPERACION'];
+    //echo 'El id de usuario es: ' . $id;
 } else {
-    echo '404';
+    header("Location: recuperar_password.php");
 }
- 
-include_once('templates/iniciar-html.php');
-include_once('templates/menu.php');
+
+if (isset($_POST['enviar'])) {
+
+    if ($_POST['Contrasena1'] == $_POST['Contrasena2']) {
+        $clave = password_hash($_POST['Contrasena1'], PASSWORD_DEFAULT);
+        if ($ModeloUsuarios->updatePassword($id, $clave)) {
+            if ($ModeloUsuarios->eliminar_url_secreta_existe($idRegistro)) {
+                header("Location: ingresar.php");
+            }
+        } else if ($ModeloUsuarios->updatePasswordTecnico($id, $clave)) {
+            if ($ModeloUsuarios->eliminar_url_secreta_existe($idRegistro)) {
+                header("Location: registro.php");
+            }
+        }
+
+    } else {
+        echo "error";
+    }
+}
+
 ?>
 
 <div class="container-fluid">
@@ -34,27 +47,88 @@ include_once('templates/menu.php');
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <!-- form start -->
-            <form class="form-container" id="form-ingreso" autocomplete="off" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+            <form class="form-container" id="form-ingreso" autocomplete="off" method="POST" action="<?php echo $url ?>">
 
                 <div class="title">
                     <h1>Crea una nueva contraseña</h1>
                 </div>
 
-                <div class="form-group">
-                    <input name="Contrasena1" type="password" class="form-control" required="" autofocus placeholder="Nueva contraseña">
-
+                <div class="input-group">
+                    <input name="Contrasena1" type="password" id="contrasena" class="form-control" required="" autofocus placeholder="Nueva contraseña">
+                    <img src="img/abierto.png" id="ojo">
                 </div>
+                <br>
 
-                <div class="form-group">
-                    <input name="Contrasena2" type="password" class="form-control" required="" placeholder="Escribe de nuevo la contraseña">
+                <div class="input-group">
+                    <input name="Contrasena2" type="password" id="contrasena2" class="form-control" required="" placeholder="Confirmar contraseña">
+                    <img src="img/abierto.png" id="ojo2">
                 </div>
+                <br>
 
-                <button name="enviar" type="submit" class="btn btn-primary btn-block">Cambiar contraseña</button>
+                <button name="enviar" type="submit" class="btn btn-primary btn-block" onClick="comprobarClave()">Cambiar contraseña</button>
             </form>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>
 </div>
+
+<script text="text/javascript">
+    function comprobarClave() {
+        password1 = document.getElementById("contrasena").value;
+        password2 = document.getElementById("contrasena2").value;
+
+        if (password1 == password2) {
+            alert("Las dos contraseñas son iguales");
+        } else {
+            alert("Las dos contraseñas son distintas");
+        }
+    }
+</script>
+
+<script text="text/javascript">
+    var ver = document.getElementById('ojo');
+    var input = document.getElementById('contrasena');
+
+    ver.addEventListener('click', mostrarContraseña);
+
+    function mostrarContraseña() {
+        if (input.type == "password") {
+            input.type = "text";
+            ver.src = "img/cerrado.png";
+            setTimeout("cerrado()", 3000);
+        } else {
+            input.type = "password";
+            ver.src = "img/abierto.png";
+        }
+    }
+
+    function cerrado() {
+        input.type = "password";
+        ver.src = "img/abierto.png";
+    }
+
+    var ver2 = document.getElementById('ojo2');
+    var input2 = document.getElementById('contrasena2');
+
+    ver2.addEventListener('click', mostrarContraseña2);
+
+    function mostrarContraseña2() {
+        if (input2.type == "password") {
+            input2.type = "text";
+            ver2.src = "img/cerrado.png";
+            setTimeout("cerrado2()", 3000);
+        } else {
+            input2.type = "password";
+            ver2.src = "img/abierto.png";
+        }
+    }
+
+    function cerrado2() {
+        input2.type = "password";
+        ver2.src = "img/abierto.png";
+    }
+</script>
+
 
 <?php
 include_once('templates/terminar-html.php');

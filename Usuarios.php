@@ -171,9 +171,35 @@ class Usuarios extends Conexion
 		}
 	}
 
-	public function estadoTecnico($id,$estado)
+	public function updatePassword($Id, $Password)
 	{
-		$statement = $this->db->prepare("UPDATE tecnicos SET ESTADO =:Estado WHERE ID_TECNICO = :Id");
+		$statement = $this->db->prepare("UPDATE usuarios SET PASSWORD =:Password WHERE ID_USUARIO =:Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->bindParam(':Password', $Password);
+
+		if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function updatePasswordTecnico($Id, $Password)
+	{
+		$statement = $this->db->prepare("UPDATE tecnicos SET PASSWORD =:Password WHERE ID_TECNICO =:Id");
+		$statement->bindParam(':Id', $Id);
+		$statement->bindParam(':Password', $Password);
+
+		if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function estadoTecnico($id, $estado)
+	{
+		$statement = $this->db->prepare("UPDATE tecnicos SET ESTADO =:Estado WHERE ID_TECNICO =:Id");
 		$statement->bindParam(':Id', $id);
 		$statement->bindParam(':Estado', $estado);
 
@@ -354,6 +380,18 @@ class Usuarios extends Conexion
 		return $result;
 	}
 
+	public function eliminar_url_secreta_existe($id)
+	{
+		$statement = $this->db->prepare("DELETE FROM recuperacion_password WHERE ID_RECUPERACION = :Id");
+		$statement->bindParam(':Id', $id);
+
+		if ($statement->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 	public function getNombre()
 	{
@@ -370,8 +408,9 @@ class Usuarios extends Conexion
 		return $_SESSION['PERFIL'];
 	}
 
-	public function setEstado(){
-		$_SESSION['ESTADO']= 'Inactivo';
+	public function setEstado()
+	{
+		$_SESSION['ESTADO'] = 'Inactivo';
 		$this->Salir2();
 	}
 
@@ -447,7 +486,7 @@ class Usuarios extends Conexion
 			header('location: index-Admin.php');
 		}
 	}
-	
+
 	public function validateSessionAdmin()
 	{
 		if ($_SESSION['ID'] == null) {
