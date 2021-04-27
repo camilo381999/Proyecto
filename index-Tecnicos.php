@@ -6,7 +6,7 @@ $ModeloUsuarios = new Usuarios();
 $ModeloUsuarios->validateSessionTecnicos();
 
 date_default_timezone_set('America/Bogota');
-$hoy = date("Y-n-j");
+$hoy = date("Y-m-d");
 $mesActual = date("n");
 
 $id = $ModeloUsuarios->getId();

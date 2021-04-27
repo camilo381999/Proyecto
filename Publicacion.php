@@ -47,7 +47,7 @@ class Publicacion extends Conexion
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		 FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		  (SELECT LOCALIDAD FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS LOCALIDAD,
-		   ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos");
+		   ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA, USUARIOS_ID_USUARIO FROM requerimientos ORDER BY FECHA ASC, HORA ASC");
 
 		$statement->execute();
 
@@ -210,7 +210,7 @@ class Publicacion extends Conexion
 	//busca las publicaciones en las que los tecnicos han aceptado pq quieren tomar ese servicio
 	public function selectPublicacionXidCliente($idCliente)
 	{
-		$statement = $this->db->prepare("SELECT * FROM requerimientos WHERE USUARIOS_ID_USUARIO  = :idCliente ");
+		$statement = $this->db->prepare("SELECT * FROM requerimientos WHERE USUARIOS_ID_USUARIO  = :idCliente ORDER BY FECHA ASC, HORA ASC");
 		$statement->bindParam(':idCliente', $idCliente);
 		$statement->execute();
 
@@ -297,7 +297,9 @@ class Publicacion extends Conexion
 		$statement = $this->db->prepare("SELECT (SELECT CONCAT(NOMBRE, ' ', APELLIDO)
 		FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO) AS CLIENTE,
 		 (SELECT CONCAT(LOCALIDAD) FROM usuarios WHERE ID_USUARIO = USUARIOS_ID_USUARIO)
-		  AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, FECHA, HORA FROM requerimientos
+		  AS LOCALIDAD,ID_PUBLICACION, DESCRIPCION, SERVICIO, MARCA, TIPO, 
+		  (SELECT FECHA FROM pendiente WHERE REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion) AS FECHA, 
+		  (SELECT HORA FROM pendiente WHERE REQUERIMIENTOS_ID_PUBLICACION = :idPublicacion) AS HORA FROM requerimientos
 		WHERE ID_PUBLICACION = :idPublicacion");
 		$statement->bindParam(':idPublicacion', $idPublicacion);
 		$statement->execute();

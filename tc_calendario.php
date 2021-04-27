@@ -45,7 +45,7 @@ $pendiente = $publicacion->get_pendiente_idTecnico($idTecnico);
                 buttonIcons: true, // show the prev/next text
                 navLinks: true, // can click day/week names to navigate views
                 navLinkDayClick: function(date, jsEvent) {
-                    dateStr=date.toISOString().split("T");
+                    dateStr = date.toISOString().split("T");
                     document.getElementById("fecha").innerText = dateStr[0];
 
                     let div = document.getElementById("divCardEventos");
@@ -86,11 +86,13 @@ $pendiente = $publicacion->get_pendiente_idTecnico($idTecnico);
                     });
                 },
                 events: <?php echo $pendiente; ?>
-                
+
             });
             calendar.render();
         });
     </script>
+
+
 </head>
 
 <body>
@@ -127,7 +129,17 @@ $pendiente = $publicacion->get_pendiente_idTecnico($idTecnico);
 
         </div>
     </div>
-
+    <script>
+        let div = document.getElementById("divCardEventos");
+        let dateDiv = document.getElementById("fecha").innerText;
+        const data = <?php echo $pendiente; ?>;
+        data.forEach(obj => {
+            let dateJson = obj.start;
+            if (dateDiv == dateJson) {
+                div.insertAdjacentHTML('afterbegin', '<div class="servAgendado"><a href="tc_ConsultarAgenda.php?idPendiente=' + obj.id + '" ><p class="card-text">' + obj.title + '</p></a><br></div>');
+            }
+        });
+    </script>
     <?php
     include_once('templates/terminar-html.php');
     ?>
