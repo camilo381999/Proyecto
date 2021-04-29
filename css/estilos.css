@@ -1,8 +1,21 @@
 
 body{
       background-color: #118AB2;  
+      transition: background 1s ease;
      /*background-color: #2a9d8f;  */
      /* background-color: #ef476f;  */
+}
+
+.content {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -11,7 +24,7 @@ body{
 }
 
 .nav-link:link, .nav-link:visited{
-    color: white !important;
+    color: #fff !important;
 }
 
 .nav-link:hover, .nav-link:active{
@@ -125,154 +138,45 @@ body{
     margin: 0 auto 20px;
 }
 
-/*----------------calendario----------------*/
-
- a{
-    color: #000;
-}
-
- 
-
  .comentarios{
   color: #118AB2 !important;
    
  }
 
-button {
-   /*  width: 75px; */
-    cursor: pointer;
-    box-shadow: 0px 0px 2px gray;
-    border: none;
-    outline: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
+ a{
+   color: #000;
+ }
+
+ .form-calendar-container{
+  background: #fff;
+  padding: 35px;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
 }
 
-.form-calendar-container{
-    background: #fff;
-    padding: 35px;
-    margin-top: 3vh;
-    margin-bottom: 5vh;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #000;
+.img-info{
+  display:block;
+  margin:auto;
 }
-  
-  #header {
-    padding: 5px;
-    color: #000;
-    font-size: 30px;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-between;
-  }
 
-  #header button {
-    background-color:#118AB2;
-    font-size: 10px;
-  }
-  #container {
-    width: 100%;
-  }
+.h2-titulos{
+  color: #06D6A0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
 
-  #weekdays {
-    width: 100%;
-    display: flex;
-    font-family: sans-serif;
-    color: #000;
-  }
+.h3-Subtitulos{
+  color: #118AB2;
+  font-weight: bold;
+  text-align: center;
+  font-size: 23px;
+}
 
-  #weekdays div {
-    width: 100%;
-    padding: 10px;
-    font-size: 10px;
-  }
-
-  #calendar {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .day {
-    width: 13%;
-    padding: 10px;
-    height: 65px;
-    cursor: pointer;
-    box-sizing: border-box;
-    background-color: white;
-    margin: 2px;
-    box-shadow: 0px 0px 3px #CBD4C2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .day:hover {
-    background-color: #b8f0e9;
-  }
-  
-  .day + #currentDay {
-    background-color:#bce2f5;
-  }
-
-  .event {
-    font-size: 10px;
-    padding: 3px;
-    background-color: #58bae4;
-    color: white;
-    border-radius: 5px;
-    max-height: 55px;
-    overflow: hidden;
-  }
-  .padding {
-    cursor: default !important;
-    background-color: #FFFCFF !important;
-    box-shadow: none !important;
-  }
-  #newEventModal, #deleteEventModal {
-    display: none;
-    z-index: 20;
-    padding: 25px;
-    background-color: #e8f4fa;
-    box-shadow: 0px 0px 3px black;
-    border-radius: 5px;
-    width: 350px;
-    top: 100px;
-    left: calc(50% - 175px);
-    position: absolute;
-    font-family: sans-serif;
-  }
-  #eventTitleInput {
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-    border-radius: 3px;
-    outline: none;
-    border: none;
-    box-shadow: 0px 0px 3px gray;
-  }
-  #eventTitleInput.error {
-    border: 2px solid red;
-  }
-  #cancelButton, #deleteButton {
-    background-color: #d36c6c;
-  }
-  #saveButton, #closeButton {
-    background-color: #92a1d1;
-  }
-  #eventText {
-    font-size: 14px;
-  }
-  #modalBackDrop {
-    display: none;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: rgba(0,0,0,0.8);
-  }
-
-  
+.parrafo-Subtitulos{
+  color:#073B4C;
+  text-align: center;
+  font-size: 17px;
+}
