@@ -32,7 +32,7 @@ if(!$finalizados==null){
 <div class="container">
     <div class="publicacion-title">
         <br>
-        <h1>Bienvenido <?php echo $ModeloUsuarios->getNombre(); ?></h1>
+        <h1>Bienvenid@ <?php echo $ModeloUsuarios->getNombre(); ?></h1>
         <h3>¿Qué deseas hacer?</h3>
         <br>
     </div>

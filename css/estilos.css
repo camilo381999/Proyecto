@@ -44,6 +44,14 @@ body{
     }
 }
 
+@media (min-width: 1400px){
+  .centrar{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
 
 #ojo, #ojo2{
   cursor: pointer;
@@ -179,4 +187,12 @@ body{
   color:#073B4C;
   text-align: center;
   font-size: 17px;
+}
+
+.footer-p{
+  text-align: center;
+}
+
+.btnFooter{
+  color: #fff;
 }

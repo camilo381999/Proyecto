@@ -1,5 +1,5 @@
 <div class="title">
-	<h1>Registro</h1>
+	<h1>Registro clientes</h1>
 </div>
 
 <div class="form-group">

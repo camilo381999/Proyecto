@@ -76,11 +76,11 @@ $ControlSesion = new Usuarios();
             ?>
                 <ul class="navbar-nav mr-auto">
                     <li>
-                        <a class="nav-link" href="#">Técnicos</a>
+                        <a class="nav-link" href="tecnicos.php">Técnicos</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="nav-link" href="#">Preguntas frecuentes</a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
