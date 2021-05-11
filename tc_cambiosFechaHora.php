@@ -19,7 +19,7 @@ if (isset($_GET['aceptar'])) {
 
         //script del alert
         if($validacionPost){
-            echo "<script> Swal.fire('¡Usted ha aceptado este servicio!').then(
+            echo "<script> Swal.fire('¡Usted ha aplicado a este servicio, por favor espere ser aceptado por el cliente!').then(
                 function() {
                     window.location.href = 'index.php';
                 });";
