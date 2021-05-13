@@ -27,7 +27,7 @@ if ($Modelo->servicioTerminado($idAgenda, $idPendiente, $idUsuario, $idTecnico, 
    /*  $from_email = "tecniclickcolombia@gmail.com";
     $to_email = $Correo;
     $subject = "Tu servicio ha finalizado";
-    $body = "Tu técnico ha indicado que ha concluido tu servicio por un valor de: $Costo, por favor recuerda calificarlo. Esto ayudará a que mejore a futuro la calidad de su servicio.\n\n\nGracias por preferir TecniClick";
+    $body = "Tu técnico ha indicado que ha concluido tu servicio por un valor de: $Costo, por favor recuerda calificarlo en la sección de Historial. Esto ayudará a que mejore a futuro la calidad de su servicio.\n\n\nGracias por preferir TecniClick";
 
     $headers = array(
         'Authorization: Bearer ',
