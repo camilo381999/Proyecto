@@ -51,7 +51,7 @@ include_once('templates/menu.php');
 
                                                             ?></p>
                                     <p class="card-text"><?php echo 'Estado: '. $agenda['ESTADO'] ?></p>
-
+                                    <a class="btn btn-primary" href="cl_Calificacion.php">Calificar técnico</a>
                                 </div>
                             </div><br>
             <?php

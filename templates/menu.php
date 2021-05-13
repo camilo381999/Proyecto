@@ -30,7 +30,6 @@ $ControlSesion = new Usuarios();
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="cl_Perfil.php">Mi perfil</a>
-                                <a class="dropdown-item" href="cl_Calificacion.php">Calificar técnicos</a>
                             </div>
                         </li>
 
@@ -78,9 +77,6 @@ $ControlSesion = new Usuarios();
                     <li>
                         <a class="nav-link" href="tecnicos.php">Técnicos</a>
                     </li>
-                    <!-- <li>
-                        <a class="nav-link" href="#">Preguntas frecuentes</a>
-                    </li> -->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

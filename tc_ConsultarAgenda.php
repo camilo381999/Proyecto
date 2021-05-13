@@ -65,7 +65,8 @@ include_once('templates/menu.php');
 
                             <a href="cl_controladorCancelar.php?Fecha=<?php echo $dato['FECHA']; ?>&
                             Hora=<?php echo $dato['HORA']; ?>&
-                            idPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>" class="btn btn-primary" >Cancelar</a>
+                            idPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>&
+                            Correo=<?php echo $cliente['CORREO']; ?>" class="btn btn-primary" >Cancelar</a>
                         </div>
                     </div><br>
             <?php

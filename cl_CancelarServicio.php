@@ -36,14 +36,17 @@ include_once('templates/menu.php');
 
                     $servAceptado = $Modelo->getPublicacionByidPost($idpost['REQUERIMIENTOS_ID_PUBLICACION']);
                     //print_r($servAceptado);
-
+                    $tecnico = $Modelo->informacionTecnico($idpost['ID_TECNICO']);
                     foreach ($servAceptado as $dato) {
+
             ?>
                         <div class="card">
                             <h5 class="card-header"><?php echo "Servicio de " . $idpost['TIPO_SERVICIO']; ?></h5>
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo 'Técnico: ' . $idpost['NOMBRE_TECNICO']  ?></h5>
                                 <p class="card-text"><?php echo  'Localidad: ' . $idpost['LOCALIDAD']; ?></p>
+                                <p class="card-text"><?php echo  'Correo: ' . $idpost['CORREO_TECNICO']; ?></p>
+                                <p class="card-text"><?php echo  'Teléfono: ' . $tecnico['TELEFONO']; ?></p>
                                 <p class="card-text"><?php echo 'Producto: ' . $dato['TIPO'] . ' marca ' . $dato['MARCA']; ?></p>
                                 <p class="card-text"><?php echo 'Fecha y hora: ' . $dato['FECHA'] . ' / ' . $dato['HORA']; ?></p>
                                 <p class="card-text"><?php
@@ -59,7 +62,8 @@ include_once('templates/menu.php');
                                 ?>
                                 <a href="cl_controladorCancelar.php?Fecha=<?php echo $dato['FECHA']; ?>&
                             Hora=<?php echo $dato['HORA']; ?>&
-                            idPendiente=<?php echo $idpost['ID_PENDIENTE']; ?>" class="btn btn-primary">Cancelar</a>
+                            idPendiente=<?php echo $idpost['ID_PENDIENTE']; ?>&
+                            Correo=<?php echo $idpost['CORREO_TECNICO']; ?>" class="btn btn-primary">Cancelar</a>
 
                             </div>
                         </div><br>
