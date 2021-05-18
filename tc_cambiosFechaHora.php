@@ -8,6 +8,10 @@ $idPublicacion = $_GET['Id'];
 $Fecha = $_GET['Fecha'];
 $Hora = $_GET['Hora'];
 
+$month     = date('Y-m');
+$aux         = date('Y-m-d', strtotime("{$month} + 1 month"));
+$last_day = date('Y-m-d', strtotime("{$aux} - 1 day"));
+
 $ModeloUsuarios = new Usuarios();
 //Validar la sesion si es cliente o tecnico
 $ModeloUsuarios->validateSessionTecnicos();
@@ -67,7 +71,7 @@ if (isset($_GET['aceptar'])) {
                                 
                 <div class="form-group">
                     <label for="fecha">¿Qué día propones?:</label><br>
-                    <input type="date" class="form-control" id="fecha" name="Fecha" value=<?php echo $resultado['FECHA'];?> min="2021-01-01" max="2025-12-31" required>
+                    <input type="date" class="form-control" id="fecha" name="Fecha" value=<?php echo $resultado['FECHA'];?> min=<?php echo $resultado['FECHA'];?> max=<?php echo $last_day;?> required>
                 </div>
 
                 <div class="form-group">

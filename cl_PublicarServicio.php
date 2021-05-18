@@ -8,6 +8,9 @@ $ModeloUsuarios->validateSessionClientes();
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 
+$month     = date('Y-m');
+$aux         = date('Y-m-d', strtotime("{$month} + 1 month"));
+$last_day = date('Y-m-d', strtotime("{$aux} - 1 day"));
 
 if (isset($_POST['publicar'])) {
     $Modelo = new Publicacion();
@@ -86,9 +89,14 @@ if (isset($_POST['publicar'])) {
                 </div>
 
                 <label for="fecha">Escoge la fecha de tu servicio:</label><br>
-                <input type="date" class="form-control" id="fecha" name="fecha" value="<?php $hoy = date('Y-m-j');
-                                                                                        echo $hoy; ?>" min="<?php $hoy = date('Y-m-j');
-                                                                                                            echo $hoy; ?>" max="2021-12-31" required><br>
+                <input type="date" class="form-control" id="fecha" name="fecha" value="<?php 
+                                                                                        $hoy = date('Y-m-j');
+                                                                                        echo $hoy; 
+                                                                                        ?>" 
+                                                                                        min="<?php 
+                                                                                             $hoy = date('Y-m-j');
+                                                                                             echo $hoy; 
+                                                                                        ?>" max="<?php echo $last_day; ?>" required><br>
 
                 <label for="hora">Escoge la hora de tu servicio:</label><br>
                 <input type="time" class="form-control" id="hora" name="hora" min="09:00" max="18:00" required><br>
@@ -100,5 +108,8 @@ if (isset($_POST['publicar'])) {
 </div>
 
 <?php
+
+
+
 include_once('templates/terminar-html.php');
 ?>
