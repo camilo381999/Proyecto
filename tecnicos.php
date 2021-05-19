@@ -26,7 +26,7 @@ include_once('templates/menu.php');
         <div class="col-md-5 col-sm-12 col-xs-12">
             <br>
             <h2 class="h2-titulos">¿Cómo registrarte?</h2>
-            <p style="text-align: justify;">Si eres un técnico especializado en productos de línea blanca y quieres trabajar con nosotros, debes enviar todos los datos que se piden en el siguiente enlace, y luego de esto serás contactado por uno de nuestros encargados.</p>
+            <p style="text-align: justify;">Si eres un técnico especializado en productos de línea blanca y quieres trabajar con nosotros, debes enviar todos los datos que se piden en el siguiente <u><a href="https://forms.gle/AssdHcRCC4vy7SZg9">enlace</a></u>, y luego de esto serás contactado por uno de nuestros encargados.</p>
 
             <br>
             <h2 class="h2-titulos">¿Cómo ingresar a la aplicación?</h2>
@@ -65,7 +65,7 @@ include_once('templates/menu.php');
 
         <div class="container-fluid text-center text-md-left footer1">
             <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="col-md-6 col-sm-12 col-xs-12">
                     <h5 class="text-uppercase font-weight-bold h2-titulos">Contáctanos</h5><br>
                     <p class="footer-p">Correo: Tecniclick@gmail.com</p>
                     <p class="footer-p">Teléfono: 318923246</p>
@@ -73,10 +73,22 @@ include_once('templates/menu.php');
                 </div>
                 <hr class="clearfix w-100 d-md-none pb-3">
                 <div class="col-md-6 col-sm-12 col-xs-12">
-                    <h5 class="text-uppercase font-weight-bold h2-titulos">Ya tienes cuenta?</h5><br>
-                    <div class="row justify-content-center">
-                        <a href="ingresar.php" class="btn btn-default btnFooter">Ingresar</a>
-                    </div>
+                    <ul class="list-unstyled list-inline text-center py-2">
+                        <li class="list-inline-item">
+                            <h5 class="mb-1">Ingresa aquí:</h5>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="ingresar.php" class="btn btnFooter btn-rounded">Ingresar</a>
+                        </li>
+                    </ul>
+                    <ul class="list-unstyled list-inline text-center py-2">
+                        <li class="list-inline-item">
+                            <h5 class="mb-1">Registrate aquí: </h5>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://forms.gle/gdD5NpsQRHRcT9Jj7" class="btn btnFooter btn-rounded">Registrar</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
