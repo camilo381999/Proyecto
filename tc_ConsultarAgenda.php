@@ -8,6 +8,8 @@ $ModeloUsuarios->validateSessionTecnicos();
 
 $idPendiente = $_GET['idPendiente'];
 
+$hoy = date('Y-m-j');
+
 include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
@@ -52,17 +54,22 @@ include_once('templates/menu.php');
 
                                                     ?></p>
                             <p class="card-text"><?php echo 'Estado: ' . $dato['ESTADO'] ?></p>
-
+                            
+                            <?php
+                            if($hoy == $dato['FECHA']){
+                            ?>
                             <a href="tc_ServicioTerminado.php?Id=<?php echo $dato['ID_CITA']; ?>&
                             IdPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>&
                             idUsuario=<?php echo $pendiente['ID_CLIENTE']; ?>&
                             idTecnico=<?php echo $pendiente['ID_TECNICO']; ?>&
                             Fecha=<?php echo $dato['FECHA']; ?>&
                             Costo=<?php echo $dato['COSTO'];?>&
-                            Correo=<?php echo $cliente['CORREO']; ?>" class="btn btn-primary">
+                            Correo=<?php echo $cliente['CORREO']; ?>"  class="btn btn-primary">
                                 Terminar servicio
                             </a>
-
+                            <?php
+                            }
+                            ?>
                             <a href="cl_controladorCancelar.php?Fecha=<?php echo $dato['FECHA']; ?>&
                             Hora=<?php echo $dato['HORA']; ?>&
                             idPendiente=<?php echo $dato['PENDIENTE_ID_PENDIENTE']; ?>&
